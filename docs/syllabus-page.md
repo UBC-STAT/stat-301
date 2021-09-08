@@ -138,7 +138,7 @@ Our server will automatically snapshot at the due date/time. Also, please **do n
 #### Test Dates
 
 - Midterm 1: Thursday, October 7 at 12:30pm
-- Midterm 2: Tuesday, November 2 at 12:30pm
+- Midterm 2: Thursday, November 4 at 12:30pm
 - Final Exam: TBD.
 
 #### Exams
