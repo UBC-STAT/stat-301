@@ -25,7 +25,7 @@
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Coming soon... </li>
+                    <li> <a href="https://lourenzutti.github.io/tutorials/ab-testing/ab-test.html">A/B testing</a> </li>
                 </ul>
             </td>
             <td style="text-align: left;">
