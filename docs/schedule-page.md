@@ -100,8 +100,8 @@
             <td>Oct 03 ~ Oct 09</td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Mid-Term #1 (Oct 5th) </li>
                     <li> Topics </li>
+                    <li> Mid-Term #1 (Oct 7th) </li>
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -189,7 +189,8 @@
             <td> Oct 31 ~ Nov 06 </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Midterm #2 (Nov 2nd)</li>
+                    <li> Topics </li>
+                    <li> Mid-Term #2 (Nov 4th) </li>
                 </ul>
             </td>
             <td style="text-align: left;">
