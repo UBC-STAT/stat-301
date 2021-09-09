@@ -5,6 +5,8 @@ FROM $BASE_CONTAINER
 
 LABEL maintainer="Tiffany Timbers <tiffany.timbers@gmail.com>"
 
+RUN pip install SQLAlchemy==1.3
+
 # Install testthat version 2.3
 RUN Rscript -e "devtools::install_version('testthat', version = '2.3.2', repos = 'http://cran.us.r-project.org')"
 
