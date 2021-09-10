@@ -12,9 +12,13 @@ Please read the [COVID-19 instructions](https://ubc-stat.github.io/stat-301/covi
     - If a student does not have their own laptop or chromebook, students may be able to [loan a laptop from the UBC library](https://services.library.ubc.ca/computers-technology/technology-borrowing/).
 
 ### When and where?
-- The lectures will be on Tuesdays and Thursdays from 12:30 to 14:00.
+- The lectures will be on Tuesdays and Thursdays from 12:30 to 2:00 pm.
 - The lectures will be held in Henry Angus building, Room 234. 
-- Office hours will be held on Wednesdays 3:30pm via Zoom (link on Canvas).
+
+### Office hours and questions
+- **Instructor**: Wednesdays 3:30 pm via Zoom (link on Canvas, each week the same instructor that teaches will cover office hours).
+- **TA**: Fridays 1:00 pm via Zoom (link on Canvas).
+- Post questions on PIAZZA for general discussions and answers!
 
 ### Software Platforms
 - Students will learn to perform their analysis using the [R programming language](https://cran.r-project.org/).

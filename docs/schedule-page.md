@@ -299,8 +299,8 @@
 All due dates will be on the last day of the week (Saturday at 23:59:59).
 
 #### Test Dates
-- Midterm 1: Tuesday, October 5th at 12:30pm
-- Midterm 2: Tuesday, November 2nd at 12:30pm
+- Midterm 1: Thursday, October 7th at 12:30pm
+- Midterm 2: Thursday, November th at 12:30pm
 - Final Exam: TBA.
   
 ### Learning Outcomes per Week
