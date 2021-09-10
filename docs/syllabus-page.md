@@ -14,11 +14,13 @@ Please read the [COVID-19 instructions](https://ubc-stat.github.io/stat-301/covi
 ### When and where?
 - The lectures will be on Tuesdays and Thursdays from 12:30 to 2:00 pm.
 - The lectures will be held in Henry Angus building, Room 234. 
+- This course **does not have a lab session** run by TAs. Instead, you can see the TAs during their office hours. 
 
 ### Office hours and questions
 - **Instructor**: Wednesdays 3:30 pm via Zoom (link on Canvas, each week the same instructor that teaches will cover office hours).
 - **TA**: Fridays 1:00 pm via Zoom (link on Canvas).
-- Post questions on PIAZZA for general discussions and answers!
+- Post questions on PIAZZA for general discussions and answers! D
+- Please, do not ask questions about course material through email!!
 
 ### Software Platforms
 - Students will learn to perform their analysis using the [R programming language](https://cran.r-project.org/).
