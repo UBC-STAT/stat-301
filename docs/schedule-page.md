@@ -45,7 +45,7 @@
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Coming soon... </li>
+                    <li> <a href="Multi-Armed Bandits as an A/B Testing Solution">R Blogger: Multi-armed Bandits as an A/B Testing Solution</a> </li>
                 </ul>
             </td>
             <td style="text-align: left;">
