@@ -64,7 +64,10 @@ function load_from_md(file){
                 document.getElementById("from-md").appendChild(tags[i]);
                 i--;
             }
-        });
+        })
+        .then(() => {
+            if (path_js) load_js(path_js);
+        });;
 }
 
 
