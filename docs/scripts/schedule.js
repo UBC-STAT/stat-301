@@ -13,6 +13,7 @@ function update_schedule_color(){
         'July': 06,
         'Aug': 07,
         'Sep': 08,
+        'Sept': 08
         'Oct': 09,
         'Nov': 10,
         'Dec': 11

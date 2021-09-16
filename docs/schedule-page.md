@@ -45,7 +45,9 @@
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Coming soon... </li>
+                    <li> <a href="https://www.r-bloggers.com/2019/09/multi-armed-bandits-as-an-a-b-testing-solution/">R Blogger: Multi-armed Bandits as an A/B Testing Solution</a> </li>
+                    <li> <a href="https://raw.githubusercontent.com/Nth-iteration-labs/contextual/master/docs/articles/arxiv_2018/jss.pdf">contextual: Evaluating Contextual Multi-Armed Bandit
+Problems in R</a> </li>
                 </ul>
             </td>
             <td style="text-align: left;">
