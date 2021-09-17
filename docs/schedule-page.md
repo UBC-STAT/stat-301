@@ -326,12 +326,12 @@ By the end of this section, students will be able to:
 By the end of this section, students will be able to:
 1. 	Give an example of a question that could be answered by generative modelling.
 2. 	Explain how a linear regression can be used to approximate the underlying mechanism that generated the data (quantitative response and input variables).
-3.   Interpret the estimated coefficients and p-values derived from theoretical results in this simple setting.
-4.   Discuss the assumptions made to estimate the coefficients and approximate their sampling distribution.
-5.   Explain how to approximate the sampling distribution of the regression coefficient estimators using bootstrapping. 
-6.   Contrast the sampling distribution approximated using theoretical results with bootstrapping alternatives in a simple setting (e.g., one input variable).
+3.   Interpret the estimated coefficients and p-values derived from theoretical results for a simple linear regression (i.e., one input variable).
+4.   Discuss the assumptions made to estimate the simple linear regression coefficients and approximate their sampling distribution.
+5.   Explain how to approximate the sampling distribution of the simple linear regression coefficient estimators using bootstrapping. 
+6.   Contrast the sampling distribution approximated using theoretical results with bootstrapping alternatives for simple linear regression setting.
 7.   Compute confidence intervals for the regression coefficients using theoretical approximations and bootstrapping results.
-8.   Write a computer script to perform linear regression.
+8.   Write a computer script to perform a simple linear regression analysis.
 9. 	Explain the necessity of model-based approaches when the goal is to make inference about the generative model, whereas when the goal is to predict, both model-based and non-model based approaches can be used.
 
 #### Week 4: Different kinds of input variables, and the difference between causation and association
