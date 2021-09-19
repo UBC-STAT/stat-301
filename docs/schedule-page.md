@@ -67,7 +67,7 @@ Problems in R</a> </li>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html">Chapter 1 of BMLR</a></li>
+                    <li> <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html">Sections 1.1-1.6.1 of BMLR</a></li>
                     <li> <a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Chapters 2 and 3.1 of ISL (more advanced, follow only main ideas)</a></li>
                 </ul>
             </td>
@@ -332,7 +332,6 @@ By the end of this section, students will be able to:
 6.   Contrast the sampling distribution approximated using theoretical results with bootstrapping alternatives for simple linear regression setting.
 7.   Compute confidence intervals for the regression coefficients using theoretical approximations and bootstrapping results.
 8.   Write a computer script to perform a simple linear regression analysis.
-9. 	Explain the necessity of model-based approaches when the goal is to make inference about the generative model, whereas when the goal is to predict, both model-based and non-model based approaches can be used.
 
 #### Week 4: Different kinds of input variables, and the difference between causation and association
 By the end of this section, students will be able to:
