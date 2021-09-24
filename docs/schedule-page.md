@@ -340,6 +340,7 @@ By the end of this section, students will be able to:
 2. 	Interpret the coefficients and p-values of different types of input variables, including categorical or ordinal.
 3. 	Define interactions in the context of linear regression.
 4. 	Write a computer script to perform linear regression when input variables are continuous or discrete, and when there are interactions between some of these variables.
+
 *Note*: due to the National Day of Truth and Reconciliation holiday, the list original learning objectives has been shortened. Topics removed will be covered later in the course, depending on available time 
 
 #### Week 5: Mid-term #1 and preparation for projects
