@@ -88,7 +88,8 @@ Problems in R</a> </li>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Required readings.</li>
+                    <li> <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html">Sections 1.6.2-1.6.6 of BMLR</a></li>
+                    <li> <a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Chapter 3 of ISL (more advanced, follow main ideas and examples)
                 </ul>
             </td>
             <td style="text-align: left;">
