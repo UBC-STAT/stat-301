@@ -278,7 +278,7 @@ test_2.1.1 <- function() {
     check_numeric(MLR_coverage_coef, 100, '5da8c181bb8d1ad30f337090304a9f20') 
 }
     
-    
+
 
 # +
 # Question 2.2
@@ -292,7 +292,7 @@ test_2.2.0 <- function() {
 test_2.2.1 <- function() {
     check_numeric(answer2.2.1, 100, '5da8c181bb8d1ad30f337090304a9f20') 
 }
-    
+
 
 # +
 # Question 2.3
@@ -332,8 +332,8 @@ test_3.0 <- function() {
   
   properties <- c(read_grades_boxplots$layers[[1]]$mapping, read_grades_boxplots$mapping)
   
-  test_that(paste("Plot should have ", x_axis_var," on the x-axis"), {
-    expect_true(x_axis_var == rlang::get_expr(properties$x))
+  test_that(paste("Plot should have ", "grades" ," on the x-axis"), {
+    expect_true("grades" == rlang::get_expr(properties$x))
   })
   
   test_that("Plot does not have the correct layers", {
@@ -382,7 +382,7 @@ test_3.1.0 <- function() {
 test_3.1.1 <- function() {
     check_numeric_element(read_grades_LR$coefficients[2], 1000, 'a4d02d58f24887f1dd5e74b211dab682') 
 }
-    
+
 
 # +
 # Question 3.2
