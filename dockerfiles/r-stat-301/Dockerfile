@@ -48,3 +48,6 @@ RUN Rscript -e "install.packages('binom', repos='http://cran.us.r-project.org')"
 
 # Install gridGraphics package
 RUN Rscript -e "install.packages('gridGraphics', repos='http://cran.us.r-project.org')"
+
+# Install AER package
+RUN Rscript -e "install.packages('AER', repos='http://cran.us.r-project.org')"

@@ -88,7 +88,8 @@ Problems in R</a> </li>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Required readings.</li>
+                    <li> <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html">Sections 1.6.2-1.6.6 of BMLR</a></li>
+                    <li> <a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Chapter 3 of ISL (more advanced, follow main ideas and examples)</a></li>
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -324,8 +325,8 @@ By the end of this section, students will be able to:
 
 #### Week 3: Introduction to generative modelling
 By the end of this section, students will be able to:
-1. 	Give an example of a question that could be answered by generative modelling.
-2. 	Explain how a linear regression can be used to approximate the underlying mechanism that generated the data (quantitative response and input variables).
+1. 	 Give an example of a question that could be answered by generative modelling.
+2. 	 Explain how a linear regression can be used to approximate the underlying mechanism that generated the data (quantitative response and input variables).
 3.   Interpret the estimated coefficients and p-values derived from theoretical results for a simple linear regression (i.e., one input variable).
 4.   Discuss the assumptions made to estimate the simple linear regression coefficients and approximate their sampling distribution.
 5.   Explain how to approximate the sampling distribution of the simple linear regression coefficient estimators using bootstrapping. 
@@ -333,15 +334,14 @@ By the end of this section, students will be able to:
 7.   Compute confidence intervals for the regression coefficients using theoretical approximations and bootstrapping results.
 8.   Write a computer script to perform a simple linear regression analysis.
 
-#### Week 4: Different kinds of input variables, and the difference between causation and association
+#### Week 4: Different kinds of input variables
 By the end of this section, students will be able to:
-1. 	Interpret the coefficients and p-values when input variables are categorical or ordinal.
-2. 	Define interactions in the context of linear regression.
-3. 	Write a computer script to perform linear regression when input variables are continuous or discrete, and when there are interactions between some of these variables.
-4. 	Give an example of a real problem that aims to test a causal relationship between variables.
-5.  Give an example of a real problem where the model can only establish an association between the response and the input variables.
-6. 	Discuss how the desired goal of generative modelling is usually to make causal claims but it is often not easy do so (e.g., in observational studies).
-7. Discuss the role of confounders in causal inference. 
+1.  Give an example of a real problem that that could be answered by a multiple linear regression.
+2. 	Interpret the coefficients and p-values of different types of input variables, including categorical or ordinal.
+3. 	Define interactions in the context of linear regression.
+4. 	Write a computer script to perform linear regression when input variables are continuous or discrete, and when there are interactions between some of these variables.
+
+*Note*: due to the National Day of Truth and Reconciliation holiday, the list original learning objectives has been shortened. Topics removed will be covered later in the course, depending on available time 
 
 #### Week 5: Mid-term #1 and preparation for projects
 Part of the class time this week will be used for mid-term #1.  The remaining time is for independent studying where the students will propose a project to perform a data analysis using statistical models with several input variables.  
