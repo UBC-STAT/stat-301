@@ -363,10 +363,7 @@ By the end of this section, students will be able to:
     • Forward selection
     • Backward selection
 
-#### Week 8: Mid-term #2 and preparation for projects
-Part of the class time this week will be used for mid-term #2.  The remaining time is for independent studying on the selected project.  
-
-#### Week 9: Introduction to predictive modelling 
+#### Week 8: Introduction to predictive modelling 
 By the end of this section, students will be able to:
 1. 	Give an example of a question that can be answered by predictive modelling.
 2. 	Explain when a linear regression is an appropriate model to predict new outcomes based on new values of the input variables.
@@ -375,6 +372,9 @@ By the end of this section, students will be able to:
 5.   Discuss how different estimation methods can result in different predictions.
 6.   Explain the difference between confidence intervals for prediction and prediction confidence intervals and what elements need to be estimated to construct these intervals.
 7.   Write a computer script to calculate these intervals. Interpret and communicate the results from that computer script.
+
+#### Week 9: Mid-term #2 and preparation for projects
+Part of the class time this week will be used for mid-term #2.  The remaining time is for independent studying on the selected project.  
 
 #### Week 10 : Predictive versus generative modelling - what’s the difference?
 By the end of this section, students will be able to:
