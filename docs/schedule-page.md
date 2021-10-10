@@ -133,7 +133,8 @@ Problems in R</a> </li>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Readings.</li>
+                    <li> <a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Non-linear Relationships in 3.3.2 and Section 3.3.3 of ISL</a></li>
+                    <li> <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html">Ch.1 (again) BMLR</a></li>
                 </ul>
             </td>
             <td style="text-align: left;">
