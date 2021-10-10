@@ -355,6 +355,10 @@ By the end of this section, students will be able to:
 3. 	Describe collinearity, the problem it presents to generative modelling, and whether this problem needs to be addressed
 4. 	Write a computer script to assess whether collinearity exists between input variables in a given data set, and if so, use practical solutions to manage it.
 5. 	Discuss what model diagnostics the data scientist can use themselves and when the data scientist needs to consult a domain expert.
+6. 	Give an example of a real problem that aims to test a causal relationship between variables.
+7. 	Give an example of a real problem where the model can only establish an association between the response and the input variables.
+8. 	Discuss how the desired goal of generative modelling is usually to make causal claims but it is often not easy do so (e.g., in observational studies).
+9. 	Discuss the impact of confounders in causal inference.
 
 #### Week 7: Model selection and model metrics for generative modelling
 By the end of this section, students will be able to:
