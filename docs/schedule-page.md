@@ -133,7 +133,9 @@ Problems in R</a> </li>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Readings.</li>
+                    <li> <a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Non-linear Relationships in 3.3.2, and Section 3.3.3 of ISL</a></li>
+                    <li> <a href="https://rafalab.github.io/dsbook/">Ch.19 of IntroDS</a></li>
+                    <li> <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html">Ch.1 (again) BMLR</a></li>
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -353,6 +355,10 @@ By the end of this section, students will be able to:
 3. 	Describe collinearity, the problem it presents to generative modelling, and whether this problem needs to be addressed
 4. 	Write a computer script to assess whether collinearity exists between input variables in a given data set, and if so, use practical solutions to manage it.
 5. 	Discuss what model diagnostics the data scientist can use themselves and when the data scientist needs to consult a domain expert.
+6. 	Give an example of a real problem that aims to test a causal relationship between variables.
+7. 	Give an example of a real problem where the model can only establish an association between the response and the input variables.
+8. 	Discuss how the desired goal of generative modelling is usually to make causal claims but it is often not easy do so (e.g., in observational studies).
+9. 	Discuss the impact of confounders in causal inference.
 
 #### Week 7: Model selection and model metrics for generative modelling
 By the end of this section, students will be able to:
@@ -363,10 +369,7 @@ By the end of this section, students will be able to:
     • Forward selection
     • Backward selection
 
-#### Week 8: Mid-term #2 and preparation for projects
-Part of the class time this week will be used for mid-term #2.  The remaining time is for independent studying on the selected project.  
-
-#### Week 9: Introduction to predictive modelling 
+#### Week 8: Introduction to predictive modelling 
 By the end of this section, students will be able to:
 1. 	Give an example of a question that can be answered by predictive modelling.
 2. 	Explain when a linear regression is an appropriate model to predict new outcomes based on new values of the input variables.
@@ -375,6 +378,9 @@ By the end of this section, students will be able to:
 5.   Discuss how different estimation methods can result in different predictions.
 6.   Explain the difference between confidence intervals for prediction and prediction confidence intervals and what elements need to be estimated to construct these intervals.
 7.   Write a computer script to calculate these intervals. Interpret and communicate the results from that computer script.
+
+#### Week 9: Mid-term #2 and preparation for projects
+Part of the class time this week will be used for mid-term #2.  The remaining time is for independent studying on the selected project.  
 
 #### Week 10 : Predictive versus generative modelling - what’s the difference?
 By the end of this section, students will be able to:

@@ -4,9 +4,8 @@ As in DSCI 100 and STAT 201, students will work in groups to complete a Data Sci
 (downloading data from the web) to the end (communicating their methods and conclusions in an electronic
 report). The electronic report will be a Jupyter notebook in which the code cells will download a dataset from the web, reproducibly and sensibly wrangle and clean, summarize and visualize the data, as well as fitting and selecting a model. Throughout the document, markdown cells will be used to communicate the question asked, methods used, and the conclusion reached.
 
-For this project, you will need to formulate and answer a research question about a dataset of your
-choice. We list some suggested data sets below; however, we encourage you to use another data set that
-interests you. If you are unsure whether your dataset is adequate, please reach out to a member of the
+For this project, you will need to formulate formulate a research question of your choice, 
+and then identify and use a dataset to answer to the question. We list some suggested data sets below; however, we encourage you to use another data set that interests you. If you are unsure whether your dataset is adequate, please reach out to a member of the
 teaching team.
 
 ### Deliverable 1: Team Contract
@@ -32,9 +31,8 @@ How will we address non-performance regarding these goals, expectations, policie
 ### Deliverable 2: Project Proposal
 
 Each group is expected to prepare a written proposal within 500 words
-(about 1 page) that identifies the dataset they plan to work on, as well
-as the question they would like to answer using that dataset for their
-group project. The proposal should be done in a Jupyter notebook, and
+(about 1 page) with a research question of interest, and the dataset they plan to use. 
+The proposal should be done in a Jupyter notebook, and
 then submitted both as an `.html` file (`File` &#8594; `Download As` &#8594; `HTML`) and
 an `.ipynb` file that is reproducible (i.e. works and runs without any additional files).
 
@@ -58,7 +56,8 @@ that someone unfamiliar with it will be prepared to understand the rest
 of your proposal.
 
 Clearly state the question you will try to answer with your project.
-Your question should involve one random variable of interest (the response) and several explanatory variables. Of the response variable, explain whether your project is focused on prediction or inference.
+Your question should involve one random variable of interest (the response) and one or more explanatory variables. 
+Of the response variable, explain whether your project is focused on prediction, inference, or both.
 
 Identify and describe the dataset that will be used to answer the
 question. Remember, this dataset is allowed to contain more variables
@@ -77,7 +76,8 @@ In this section, you will:
 - Demonstrate that the dataset can be read from the web into R.
 - Clean and wrangle your data into a tidy format.
 - Plot the relevant raw data, tailoring your plot in a way that addresses your question.
-  - make sure to explore the association of the explanatory variables with the response. 
+  - make sure to explore the association of the explanatory variables with the response.
+  - your Exploratory Data Analysis (EDA) must be comprehensive with high quality plots. 
 - Any summary tables that is relevant to your analysis.
 
 Be sure to not print output that takes up a lot of screen space.
@@ -172,10 +172,10 @@ components:
 - Describe in written English the methods you used to perform your
 analysis from beginning to end that narrates the code the does the
 analysis.
-- the "feature selection" process, how and why you choose the covariates of your final model.
+- the "Feature Selection" process, how and why you choose the covariates of your final model.
 - Make sure to interpret/explain the results you obtain. It’s not enough to just say "I fitted a linear model with these covariates, and my R-square is 0.87".
   - if inference is the aim of your project, detailed interpretation of your fitted model is required, as well as a discussion of relevant quantities (e.g., are the coefficients significant? how is the model fitting the data)?
-  - if your model is focused on prediction, a careful model assessment must be conducted.
+  - a careful model assessment must be conducted.
 - Ensure your tables and/or figures are labeled with a figure/table number.
 
 #### Discussion
