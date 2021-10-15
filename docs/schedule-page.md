@@ -62,7 +62,7 @@ Problems in R</a> </li>
             <td>Sept 19 ~ Sept 25</td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Topics</li>
+                    <li>Simple Linear Regression</li>
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -83,7 +83,7 @@ Problems in R</a> </li>
             <td> Sept 26 ~ Oct 02</td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Topics</li>
+                    <li>Multiple Linear Regression</li>
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -104,7 +104,7 @@ Problems in R</a> </li>
             <td>Oct 03 ~ Oct 09</td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Topics </li>
+                    <li> Project </li>
                     <li> Mid-Term #1 (Oct 7th) </li>
                 </ul>
             </td>
@@ -128,7 +128,7 @@ Problems in R</a> </li>
             <td> Oct 10 ~ Oct 16 </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Topics </li>
+                    <li> Diagnostics and confounding factors </li>
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -150,12 +150,12 @@ Problems in R</a> </li>
             <td> Oct 17 ~ Oct 23 </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Topics </li>
+                    <li> Model assessment and selection </li>
                 </ul>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Readings.</li>
+                    <li> <a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Sections 3.1.3, 3.2.2 and 6.1 of ISL (for main ideas and examples)</a></li>
                 </ul>
             </td>
             <td style="text-align: left;">
