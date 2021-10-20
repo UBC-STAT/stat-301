@@ -243,7 +243,7 @@ Problems in R</a> </li>
         </tr>
         <tr>
             <td>#12</td>
-            <td> Nov 21 ~ Nov 28 </td>
+            <td> Nov 21 ~ Nov 27 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Topics </li>
@@ -263,7 +263,7 @@ Problems in R</a> </li>
         </tr>
         <tr>
             <td>#13</td>
-            <td> Nov 29 ~ Dec 04 </td>
+            <td> Nov 28 ~ Dec 04 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Topics </li>
@@ -348,7 +348,7 @@ By the end of this section, students will be able to:
 #### Week 5: Mid-term #1 and preparation for projects
 Part of the class time this week will be used for mid-term #1.  The remaining time is for independent studying where the students will propose a project to perform a data analysis using statistical models with several input variables.  
 
-#### Week 6: Model diagnostics
+#### Week 6: Model diagnostics and confounding factors
 By the end of this section, students will be able to:
 1. 	Describe heteroscedasticity and the problem it presents to generative modelling. 
 2. 	Write a computer script to assess whether there is heteroscedasticity in a given data set, and if so, use practical solutions to manage it. 
