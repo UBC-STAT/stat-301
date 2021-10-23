@@ -170,12 +170,14 @@ Problems in R</a> </li>
             <td> Oct 24 ~ Oct 30 </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Topics </li>
+                    <li> Predictive Modelling </li>
                 </ul>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Readings.</li>
+                    <li><a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Sections 2.1 and 2.2 of ISL</a></li>
+                    <li><a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Sections 5.1 of ISL</a></li>
+                    <li><a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Sections 6.1 and 6.2 of ISL</a></li>
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -216,9 +218,9 @@ Problems in R</a> </li>
         </tr>
         <tr>
             <td>#10</td>
-            <td> Nov 07 ~ Nov 13 </td>
+            <td> Nov 10 ~ Nov 13 </td>
             <td colspan="3">
-                <p style="text-align: center; margin-bottom: 0;">Midterm Break</p>
+                <p style="text-align: center; margin-bottom: 0;">Tuesday class, Thursday: Midterm Break</p>
             </td>
         </tr>
         <tr>
