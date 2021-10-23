@@ -220,7 +220,9 @@ Problems in R</a> </li>
             <td>#10</td>
             <td> Nov 07 ~ Nov 13 </td>
             <td colspan="3">
-                <p style="text-align: center; margin-bottom: 0;">Tuesday: **In class** work on project, Thursday: Midterm Break</p>
+                <p style="text-align: center; margin-bottom: 0;">
+                    <li>Tuesday: In class work on project</li>
+                    <li>Thursday: Midterm Break</li></p>
             </td>
         </tr>
         <tr>
