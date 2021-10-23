@@ -218,34 +218,14 @@ Problems in R</a> </li>
         </tr>
         <tr>
             <td>#10</td>
-            <td> Nov 10 ~ Nov 13 </td>
+            <td> Nov 07 ~ Nov 13 </td>
             <td colspan="3">
-                <p style="text-align: center; margin-bottom: 0;">Tuesday class, Thursday: Midterm Break</p>
+                <p style="text-align: center; margin-bottom: 0;">Tuesday: **In class** work on project, Thursday: Midterm Break</p>
             </td>
         </tr>
         <tr>
             <td>#11</td>
             <td> Nov 14 ~ Nov 20 </td>
-            <td style="text-align: left;">
-                <ul>
-                    <li> Topics </li>
-                </ul>
-            </td>
-            <td style="text-align: left;">
-                <ul>
-                    <li>Readings.</li>
-                </ul>
-            </td>
-            <td style="text-align: left;">
-                <ul>
-                    <li>Worksheet 10</li>
-                    <li>Tutorial 10</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>#12</td>
-            <td> Nov 21 ~ Nov 27 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Topics </li>
@@ -264,6 +244,26 @@ Problems in R</a> </li>
             </td>
         </tr>
         <tr>
+            <td>#12</td>
+            <td> Nov 21 ~ Nov 27 </td>
+            <td style="text-align: left;">
+                <ul>
+                    <li> Topics </li>
+                </ul>
+            </td>
+            <td style="text-align: left;">
+                <ul>
+                    <li>Readings.</li>
+                </ul>
+            </td>
+            <td style="text-align: left;">
+                <ul>
+                    <li>Worksheet 12</li>
+                    <li>Tutorial 12</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
             <td>#13</td>
             <td> Nov 28 ~ Dec 04 </td>
             <td style="text-align: left;">
@@ -278,7 +278,8 @@ Problems in R</a> </li>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>...</li>
+                    <li>Worksheet 13</li>
+                    <li>Tutorial 13</li>
                 </ul>
             </td>
         </tr>
@@ -384,7 +385,10 @@ By the end of this section, students will be able to:
 #### Week 9: Mid-term #2 and preparation for projects
 Part of the class time this week will be used for mid-term #2.  The remaining time is for independent studying on the selected project.  
 
-#### Week 10 : Predictive versus generative modelling - what’s the difference?
+#### Week 10: Work on projects (Tuesday only)
+Class time will be used for independent studying where the students will work on their projects with other group members. There's no class on Thursday due to the midterm break.  
+
+#### Week 11 : Predictive versus generative modelling - what’s the difference?
 By the end of this section, students will be able to:
 1.   Give examples of questions that can be answered by generative models and others that can be answered by predictive models.
 2. 	Discuss how the research question being asked impacts the statistical modelling procedures.
@@ -394,7 +398,7 @@ By the end of this section, students will be able to:
 6. 	Write a computer script to apply currently available practical solutions to post inference problems.
 7. 	Discuss how the research question being asked impacts the communication of the results.
 
-#### Week 11: Introduction to explanatory modelling when the response variable is categorical or a discrete count
+#### Week 12: Introduction to explanatory modelling when the response variable is categorical or a discrete count
 By the end of this section, students will be able to:
 1. 	Describe the logistic regression estimation procedure (categorical data as the response variable and explanatory variables), and Poisson regression estimation procedure (discrete counts as the response variable and explanatory variables).
 2.   Discuss the relationship between linear regression and logistic and Poisson regression. Discuss the consequences of modelling data that is more suitable for logistic and Poisson regression models as a linear regression model.
@@ -402,7 +406,7 @@ By the end of this section, students will be able to:
 4.   Discuss useful diagnostics for logistic and Poisson regression and explain why they should be performed. 
 5.   Write a computer script to perform logistic and Poisson regression and perform model diagnostics. Interpret and communicate the results from that computer script.
 
-#### Week 12: Classifiers as an important class of predictive models
+#### Week 13: Classifiers as an important class of predictive models
 By the end of this section, students will be able to:
 1.   Give an example of a research question that requires a predictive model to predict classes for new observations.
 2. 	Explain the trade-offs between model-based and non-model based approaches, and describe situations where each might be the preferred approach.
@@ -410,5 +414,5 @@ By the end of this section, students will be able to:
 4.   List model metrics that are suitable to evaluate predicted classes given by a predictive model with binary responses (e.g., Accuracy, Precision, Sensitivity, Specificity, Cohen's kappa).
 5. 	Write a computer script to compute these model metrics. Interpret and communicate the results from that computer script.
  
-#### Week 13: Project
+#### Week 14: Project
 This week is designed as independent studying where the students will be working on the selected project.
