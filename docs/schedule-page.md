@@ -184,11 +184,6 @@ Problems in R</a> </li>
                 <ul>
                     <li>Worksheet 08</li>
                     <li>Tutorial 08</li>
-                    <li>Project:
-                        <ul>
-                            <li>Proposal</li>
-                        </ul>
-                    </li>
                 </ul>
             </td>
         </tr>
@@ -197,8 +192,8 @@ Problems in R</a> </li>
             <td> Oct 31 ~ Nov 06 </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Topics </li>
-                    <li> Mid-Term #2 (Nov 4th) </li>
+                    <li> Tuesday, Nov 2nd: In-class work on project peer-review </li>
+                    <li> Thursday, Nov 4th: Mid-Term #2 and in-class work on project proposal </li>
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -210,7 +205,7 @@ Problems in R</a> </li>
                 <ul>
                     <li>Project:
                         <ul>
-                            <li>Peer Review</li>
+                            <li>Peer Project</li>
                         </ul>
                     </li>
                 </ul>
@@ -219,10 +214,19 @@ Problems in R</a> </li>
         <tr>
             <td>#10</td>
             <td> Nov 07 ~ Nov 13 </td>
-            <td colspan="3">
+            <td colspan="2">
                 <p style="text-align: center; margin-bottom: 0;">
-                    <li>Tuesday: In class work on project</li>
-                    <li>Thursday: Midterm Break</li></p>
+                    <li>Tuesday, Nov 9th: Topic and in-class work on project peer-review</li>
+                    <li>Thursday, Nov 11th: NO CLASS due to Midterm Break</li></p>
+            </td>
+            <td style="text-align: left;">
+                <ul>
+                    <li>Project:
+                        <ul>
+                            <li>Peer Review</li>
+                        </ul>
+                    </li>
+                </ul>
             </td>
         </tr>
         <tr>
