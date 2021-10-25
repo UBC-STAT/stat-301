@@ -108,7 +108,7 @@ Problems in R</a> </li>
                     <li> Project </li>
                     <li> Mid-Term #1 (Oct 7th) </li>
                 </ul>
-             </td>
+            </td>   
              <td style="text-align: left;">
                 <ul>
                         <li>Project:
@@ -208,8 +208,10 @@ Problems in R</a> </li>
             <td> Nov 07 ~ Nov 13 </td>
             <td colspan="2">
                 <p style="text-align: center; margin-bottom: 0;">
+                <ul>
                     <li>Tuesday: Topic and in-class work on project peer-review</li>
                     <li>Thursday: NO CLASS due to Midterm Break</li>
+                </ul>
             </td>
             <td style="text-align: left;">
                 <ul>
