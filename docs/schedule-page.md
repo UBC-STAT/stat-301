@@ -189,7 +189,7 @@ Problems in R</a> </li>
             <td colspan="2">
                 <p style="text-align: center; margin-bottom: 0;">
                 <ul>
-                    <li> Tuesday: In-class work on project peer-review </li>
+                    <li> Tuesday: Review </li>
                     <li> Thursday (Nov 4th): Mid-Term #2 and in-class work on project proposal </li>
                 </ul>
             </td>
