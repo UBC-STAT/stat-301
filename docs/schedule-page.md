@@ -108,7 +108,6 @@ Problems in R</a> </li>
                     <li> Project </li>
                     <li> Mid-Term #1 (Oct 7th) </li>
                 </ul>
-         </td>
              <td style="text-align: left;">
                 <ul>
                         <li>Project:
