@@ -16,11 +16,12 @@
             <td>Sept 05 ~ Sept 11</td>
             <td style="text-align: left;">
                 <ul>
-                    <li> A/B Testing </li>
-                    <ul>
-                        <li> Early Stopping </li>
-                        <li> Principled Peeking </li>
-                    </ul>
+                    <li> A/B Testing 
+                        <ul>
+                            <li> Early Stopping </li>
+                            <li> Principled Peeking </li>
+                        </ul>
+                    </li>
                 </ul>
             </td>
             <td style="text-align: left;">
