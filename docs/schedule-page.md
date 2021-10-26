@@ -105,7 +105,6 @@ Problems in R</a> </li>
             <td>#5</td>
             <td>Oct 03 ~ Oct 09</td>
             <td colspan="2">
-                <p style="text-align: center; margin-bottom: 0;">
                 <ul>
                     <li> Project </li>
                     <li> Mid-Term #1 (Oct 7th) </li>
