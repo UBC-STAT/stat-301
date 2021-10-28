@@ -112,6 +112,11 @@ Problems in R</a> </li>
             </td>
             <td style="text-align: left;">
                 <ul>
+                        <li></li>
+                </ul>
+            </td>
+            <td style="text-align: left;">
+                <ul>
                         <li>Project:
                         <ul>
                             <li> Team Work Contract</li>
@@ -195,6 +200,11 @@ Problems in R</a> </li>
             </td>
             <td style="text-align: left;">
                 <ul>
+                        <li></li>
+                </ul>
+            </td>
+            <td style="text-align: left;">
+                <ul>
                     <li>Project:
                         <ul>
                             <li>Proposal</li>
@@ -210,6 +220,11 @@ Problems in R</a> </li>
                 <ul>
                     <li>Tuesday: Topic and in-class work on project peer-review</li>
                     <li>Thursday: NO CLASS due to Midterm Break</li>
+                </ul>
+            </td>
+            <td style="text-align: left;">
+                <ul>
+                        <li></li>
                 </ul>
             </td>
             <td style="text-align: left;">
