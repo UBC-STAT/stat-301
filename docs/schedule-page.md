@@ -208,7 +208,11 @@ Problems in R</a> </li>
             <td> Nov 07 ~ Nov 13 </td>
             <td colspan="2">
                 <ul>
-                    <li>Tuesday: Topic and in-class work on project peer-review</li>
+                    <li>Tuesday: 
+                        <ul>
+                            <li>Cross-validation: <a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Sections 5.1 of ISL</a></li>
+                        <li>In-class work on project's peer-review</li>
+                        </ul>
                     <li>Thursday: NO CLASS due to Midterm Break</li>
                 </ul>
             </td>
