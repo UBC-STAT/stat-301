@@ -104,15 +104,10 @@ Problems in R</a> </li>
         <tr>
             <td>#5</td>
             <td>Oct 03 ~ Oct 09</td>
-            <td style="text-align: left;">
+            <td colspan="2">
                 <ul>
                     <li> Project </li>
                     <li> Mid-Term #1 (Oct 7th) </li>
-                </ul>
-            </td>
-            <td style="text-align: left;">
-                <ul>
-                        <li></li>
                 </ul>
             </td>
             <td style="text-align: left;">
