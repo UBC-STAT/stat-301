@@ -188,7 +188,7 @@ Problems in R</a> </li>
         <tr>
             <td>#9</td>
             <td> Oct 31 ~ Nov 06 </td>
-            <td colspan="2">
+            <td>
                 <ul>
                     <li> Tuesday: Review </li>
                     <li> Thursday (Nov 4th): Mid-Term #2 and in-class work on project proposal </li>

@@ -52,3 +52,9 @@ RUN Rscript -e "install.packages('gridGraphics', repos='http://cran.us.r-project
 
 # Install AER package
 RUN Rscript -e "install.packages('AER', repos='http://cran.us.r-project.org')"
+
+# Install faux package
+RUN Rscript -e "install.packages('faux', repos='http://cran.us.r-project.org')"
+
+# Install faux package
+RUN Rscript -e "install.packages('latex2exp', repos='http://cran.us.r-project.org')"
