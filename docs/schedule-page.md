@@ -194,6 +194,7 @@ Problems in R</a> </li>
                     <li> Thursday (Nov 4th): Mid-Term #2 and in-class work on project proposal </li>
                 </ul>
             </td>
+            <td></td>
             <td style="text-align: left;">
                 <ul>
                     <li>Project:
