@@ -13,6 +13,7 @@
     </thead>
     <tbody>
         <tr>
+            <td>#1</td> 
             <td>Sept 05 ~ Sept 11</td>
             <td style="text-align: left;">
                 <ul>
@@ -37,6 +38,7 @@
             </td>
         </tr>
         <tr>
+            <td>#2</td>
             <td>Sept 12 ~ Sept 18</td>
             <td style="text-align: left;">
                 <ul>
@@ -58,6 +60,7 @@ Problems in R</a> </li>
             </td>
         </tr>
         <tr>
+            <td>#3</td>
             <td>Sept 19 ~ Sept 25</td>
             <td style="text-align: left;">
                 <ul>
@@ -78,6 +81,7 @@ Problems in R</a> </li>
             </td>
         </tr>
         <tr>
+            <td>#4</td>
             <td> Sept 26 ~ Oct 02</td>
             <td style="text-align: left;">
                 <ul>
@@ -98,6 +102,7 @@ Problems in R</a> </li>
             </td>
         </tr>
         <tr>
+            <td>#5</td>
             <td>Oct 03 ~ Oct 09</td>
             <td>
                 <ul>
@@ -117,6 +122,7 @@ Problems in R</a> </li>
             </td>
         </tr>
         <tr>
+            <td>#6</td>
             <td> Oct 10 ~ Oct 16 </td>
             <td style="text-align: left;">
                 <ul>
@@ -138,6 +144,7 @@ Problems in R</a> </li>
             </td>
         </tr>
         <tr>
+            <td>#7</td>
             <td> Oct 17 ~ Oct 23 </td>
             <td style="text-align: left;">
                 <ul>
@@ -157,6 +164,7 @@ Problems in R</a> </li>
             </td>
         </tr>
         <tr>
+            <td>#8</td>
             <td> Oct 24 ~ Oct 30 </td>
             <td style="text-align: left;">
                 <ul>
@@ -178,6 +186,7 @@ Problems in R</a> </li>
             </td>
         </tr>
         <tr>
+            <td>#9</td>
             <td> Oct 31 ~ Nov 06 </td>
             <td>
                 <ul>
@@ -196,6 +205,7 @@ Problems in R</a> </li>
             </td>
         </tr>
         <tr>
+            <td>#10</td>
             <td> Nov 07 ~ Nov 13 </td>
             <td>
                 <ul>
@@ -220,6 +230,7 @@ Problems in R</a> </li>
             </td>
         </tr>
         <tr>
+            <td>#11</td>
             <td> Nov 14 ~ Nov 20 </td>
             <td style="text-align: left;">
                 <ul>
@@ -239,6 +250,7 @@ Problems in R</a> </li>
             </td>
         </tr>
         <tr>
+            <td>#12</td>
             <td> Nov 21 ~ Nov 27 </td>
             <td style="text-align: left;">
                 <ul>
@@ -258,6 +270,7 @@ Problems in R</a> </li>
             </td>
         </tr>
         <tr>
+            <td>#13</td>
             <td> Nov 28 ~ Dec 04 </td>
             <td style="text-align: left;">
                 <ul>
@@ -277,6 +290,7 @@ Problems in R</a> </li>
             </td>
         </tr>
         <tr>
+            <td>#14</td>
             <td> Dec 05 ~ Dec 07 </td>
             <td style="text-align: left;">
                 <ul>
