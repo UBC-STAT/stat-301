@@ -104,12 +104,13 @@ Problems in R</a> </li>
         <tr>
             <td>#5</td>
             <td>Oct 03 ~ Oct 09</td>
-            <td colspan="2">
+            <td>
                 <ul>
                     <li> Project </li>
                     <li> Mid-Term #1 (Oct 7th) </li>
                 </ul>
             </td>
+            <td></td>
             <td style="text-align: left;">
                 <ul>
                         <li>Project:
@@ -206,7 +207,7 @@ Problems in R</a> </li>
         <tr>
             <td>#10</td>
             <td> Nov 07 ~ Nov 13 </td>
-            <td colspan="2">
+            <td>
                 <ul>
                     <li>Tuesday: 
                         <ul>
@@ -217,6 +218,7 @@ Problems in R</a> </li>
                     <li>Thursday: NO CLASS due to Midterm Break</li>
                 </ul>
             </td>
+            <td></td>
             <td style="text-align: left;">
                 <ul>
                     <li>Project:
