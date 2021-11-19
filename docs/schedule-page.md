@@ -17,7 +17,7 @@
             <td>Sept 05 ~ Sept 11</td>
             <td style="text-align: left;">
                 <ul>
-                    <li> A/B Testing 
+                    <li> A/B Testing
                         <ul>
                             <li> Early Stopping </li>
                             <li> Principled Peeking </li>
@@ -235,12 +235,12 @@ Problems in R</a> </li>
             <td> Nov 14 ~ Nov 20 </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Topics </li>
+                    <li>Post Selection Inference</li>
                 </ul>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Readings.</li>
+                    <li><a href="http://bactra.org/notebooks/post-model-selection-inference.html">Blog Post: Post-Model-Selection Inference</a></li>
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -255,12 +255,14 @@ Problems in R</a> </li>
             <td> Nov 21 ~ Nov 27 </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Topics </li>
+                    <li> Modelling Discrete Count </li>
+                    <li> Modelling Categorical Variables </li>
                 </ul>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Readings.</li>
+                    <li><a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html">BMLR: Chapter 4 - Poisson Regression</a></li>
+                    <li><a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-logreg.html">BMLR: Chapter 6 - Logistic Regression</a></li>
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -327,7 +329,7 @@ All due dates will be on the last day of the week (Saturday at 23:59:59).
 By the end of this section, students will be able to:
 
 1. Discuss why the methods they have learned in past courses are not sufficient to answer the more complex research problems being posed in this course (in particular stopping an A/B test early).
-2. Explain principled peeking and how it can be used for early stopping of an experiment (e.g., A/B testing). 
+2. Explain principled peeking and how it can be used for early stopping of an experiment (e.g., A/B testing).
 3. Write a computer script to perform A/B testing optimization using principled peeking.
 4. Discuss the limitations of principled peeking for A/B testing optimization/early stopping of experiments.
 
