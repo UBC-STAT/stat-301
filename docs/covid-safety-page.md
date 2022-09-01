@@ -4,7 +4,7 @@
 
 For our in-person meetings in this class, it is important that all of us feel as comfortable as possible engaging in class activities while sharing an indoor space. 
 
-- **Masks:** Masks **are required** for all for all indoor public spaces on campus, including classrooms, as per the BC Public Health Officer orders. Mask wearing protects you as well as others in your environment. **Let’s do everything we can as a community to stop the spread of this virus**. 
+- **Masks:** Masks **are no longer required** for indoor public spaces on campus, including classrooms, as per the BC Public Health Officer orders. Mask wearing protects you as well as others in your environment. **Let’s do everything we can as a community to stop the spread of this virus**. 
  - You will need to wear a medical or non-medical mask for the duration of our class meetings, for your own protection, and the safety and comfort of everyone else in the class.
 
  - For the purposes of this order, the term “masks” refers to medical and non-medical masks that cover our noses and mouths.  Masks are a primary tool to make it harder for Covid-19 to find a new host.  
