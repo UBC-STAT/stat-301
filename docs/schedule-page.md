@@ -14,20 +14,22 @@
     <tbody>
         <tr>
             <td>#1</td> 
-            <td>Sept 05 ~ Sept 11</td>
+            <td>Sept 07</td>
             <td style="text-align: left;">
                 <ul>
-                    <li> A/B Testing
+                    <li> Review of STAT 201
                         <ul>
-                            <li> Early Stopping </li>
-                            <li> Principled Peeking </li>
+                            <li> Terminology </li>
+                            <li> 2-sample tests </li>
+                            <li> Errors, Power and p-value </li>
                         </ul>
                     </li>
                 </ul>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> <a href="https://lourenzutti.github.io/tutorials/ab-testing/ab-test.html">A/B testing</a> </li>
+                    <li> <a href=https://moderndive.com/9-hypothesis-testing.html>MD Chapter 9: Hypothesis Testing</a> </li>
+                    <li> Any additional topics you need to review from STAT 201 </li>
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -42,14 +44,18 @@
             <td>Sept 12 ~ Sept 18</td>
             <td style="text-align: left;">
                 <ul>
-                    <li> A/B Testing with Multi-Armed Bandit </li>
+                    <li> A/B Testing
+                        <ul>
+                            <li> Early Stopping </li>
+                            <li> Principled Peeking </li>
+                        </ul>
+                    </li>
                 </ul>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> <a href="https://www.r-bloggers.com/2019/09/multi-armed-bandits-as-an-a-b-testing-solution/">R Blogger: Multi-armed Bandits as an A/B Testing Solution</a> </li>
-                    <li> <a href="https://raw.githubusercontent.com/Nth-iteration-labs/contextual/master/docs/articles/arxiv_2018/jss.pdf">contextual: Evaluating Contextual Multi-Armed Bandit
-Problems in R</a> </li>
+                    <li> <a href="https://lourenzutti.github.io/tutorials/ab-testing/ab-test.html">A/B Testing </a> </li>
+                    <li> <a href="https://raw.githubusercontent.com/Nth-iteration-labs/contextual/master/docs/articles/arxiv_2018/jss.pdf">TBD </li>
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -324,23 +330,27 @@ All due dates will be on the last day of the week (Saturday at 23:59:59).
 
 ### Learning Outcomes per Week
 
-#### Week 1: Introduction to statistical modelling, and planned peeking for A/B testing optimization
+#### Week 1: Introduction to statistical modelling and A/B testing optimization
+
+By the end of this section, students will be able to:
+
+1. Describe the goals of hypothesis testing, in particular difference in means tests related to A/B testing.
+2. Give an example of a problem that requires A/B testing.
+3. List methods used to test difference in means between two populations.
+4. Interpret the results of hypothesis tests.
+5. Explain the relation between type I and type II errors, power and sample size in 2-sample hypothesis testing.
+6. Write a computer script to perform difference in means hypothesis testing and compute errors, power and p-values.
+7. Discuss the limitations of principled peeking for A/B testing optimization/early stopping of experiments.
+
+#### Week 2: A/B testing and planned peeking
 
 By the end of this section, students will be able to:
 
 1. Discuss why the methods they have learned in past courses are not sufficient to answer the more complex research problems being posed in this course (in particular stopping an A/B test early).
 2. Explain principled peeking and how it can be used for early stopping of an experiment (e.g., A/B testing).
-3. Write a computer script to perform A/B testing optimization using principled peeking.
-4. Discuss the limitations of principled peeking for A/B testing optimization/early stopping of experiments.
-
-#### Week 2: A/B testing optimization with a multi-armed bandit solution
-
-By the end of this section, students will be able to:
-
-1. Describe a multi-armed bandit solution for A/B testing optimization.
-2. Write a computer script to perform A/B testing optimization using a multi-armed bandit solution.
-3. Discuss the tradeoff between stopping earlier and certainty of significance, and thereal world implications (e.g., what does the FDA require for early stopping of clinical trials versus Facebook ads optimization?).
-4. List other questions related to A/B testing optimization that may be relevant in a real data application (e.g., what features cause a Facebook ad to perform best?)
+3. Write a computer script to perform A/B testing optimization with and without using principled peeking.
+4. Discuss the tradeoff between stopping earlier and certainty of significance, and thereal world implications (e.g., what does the FDA require for early stopping of clinical trials versus Facebook ads optimization?).
+5. List other questions related to A/B testing optimization that may be relevant in a real data application (e.g., what features cause a Facebook ad to perform best?)
 
 #### Week 3: Introduction to generative modelling
 
