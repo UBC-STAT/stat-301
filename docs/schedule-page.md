@@ -14,7 +14,7 @@
     <tbody>
         <tr>
             <td>#1</td> 
-            <td>Sept 05 ~ Sept 11</td>
+            <td>Sept 04 ~ Sept 10</td>
             <td style="text-align: left;">
                 <ul>
                     <li> Review of STAT 201
@@ -41,7 +41,7 @@
         </tr>
         <tr>
             <td>#2</td>
-            <td>Sept 12 ~ Sept 18</td>
+            <td>Sept 11 ~ Sept 17</td>
             <td style="text-align: left;">
                 <ul>
                     <li> A/B Testing 
@@ -67,7 +67,7 @@
         </tr>
         <tr>
             <td>#3</td>
-            <td>Sept 19 ~ Sept 25</td>
+            <td>Sept 18 ~ Sept 24</td>
             <td style="text-align: left;">
                 <ul>
                     <li>Simple Linear Regression</li>
@@ -88,7 +88,7 @@
         </tr>
         <tr>
             <td>#4</td>
-            <td> Sept 26 ~ Oct 02</td>
+            <td> Sept 25 ~ Oct 01</td>
             <td style="text-align: left;">
                 <ul>
                     <li>Multiple Linear Regression</li>
@@ -109,11 +109,11 @@
         </tr>
         <tr>
             <td>#5</td>
-            <td>Oct 03 ~ Oct 09</td>
+            <td>Oct 02 ~ Oct 08</td>
             <td>
                 <ul>
                     <li> Project </li>
-                    <li> Mid-Term #1 (Oct 7th) </li>
+                    <li> Thursday (Oct 6th): Mid-Term #1 and in-class work on project </li>
                 </ul>
             </td>
             <td></td>
@@ -121,7 +121,7 @@
                 <ul>
                         <li>Project:
                         <ul>
-                            <li> Team Work Contract</li>
+                            <li> Team Contract</li>
                         </ul>
                     </li>
                 </ul>
@@ -129,7 +129,7 @@
         </tr>
         <tr>
             <td>#6</td>
-            <td> Oct 10 ~ Oct 16 </td>
+            <td> Oct 09 ~ Oct 15 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Diagnostics and confounding factors </li>
@@ -151,7 +151,7 @@
         </tr>
         <tr>
             <td>#7</td>
-            <td> Oct 17 ~ Oct 23 </td>
+            <td> Oct 16 ~ Oct 22 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Model assessment and selection </li>
@@ -171,7 +171,7 @@
         </tr>
         <tr>
             <td>#8</td>
-            <td> Oct 24 ~ Oct 30 </td>
+            <td> Oct 23 ~ Oct 29 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Predictive Modelling </li>
@@ -193,11 +193,11 @@
         </tr>
         <tr>
             <td>#9</td>
-            <td> Oct 31 ~ Nov 06 </td>
+            <td> Oct 30 ~ Nov 05 </td>
             <td>
                 <ul>
                     <li> Tuesday: Review </li>
-                    <li> Thursday (Nov 4th): Mid-Term #2 and in-class work on project proposal </li>
+                    <li> Thursday (Nov 3th): Mid-Term #2 and in-class work on project proposal </li>
                 </ul>
             </td>
             <td></td>
@@ -213,19 +213,23 @@
         </tr>
         <tr>
             <td>#10</td>
-            <td> Nov 07 ~ Nov 13 </td>
+            <td> Nov 06 ~ Nov 12 </td>
             <td>
                 <ul>
                     <li>Tuesday: 
                         <ul>
-                            <li>Cross-validation: <a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Sections 5.1 of ISL</a></li>
+                            <li>Cross-validation</li>
                             <li>In-class work on project's peer-review</li>
                         </ul>
                     </li>    
                     <li>Thursday: NO CLASS due to Midterm Break</li>
                 </ul>
             </td>
-            <td></td>
+            <td style="text-align: left;">
+                <ul>
+                    <li><a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Sections 5.1 of ISL</a></li> 
+                </ul>    
+            </td>
             <td style="text-align: left;">
                 <ul>
                     <li>Project:
@@ -238,7 +242,7 @@
         </tr>
         <tr>
             <td>#11</td>
-            <td> Nov 14 ~ Nov 20 </td>
+            <td> Nov 13 ~ Nov 19 </td>
             <td style="text-align: left;">
                 <ul>
                     <li>Post Selection Inference</li>
@@ -258,7 +262,7 @@
         </tr>
         <tr>
             <td>#12</td>
-            <td> Nov 21 ~ Nov 27 </td>
+            <td> Nov 20 ~ Nov 26 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Modelling Discrete Count </li>
@@ -280,40 +284,41 @@
         </tr>
         <tr>
             <td>#13</td>
-            <td> Nov 28 ~ Dec 04 </td>
+            <td> Nov 27 ~ Dec 03 </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Topics </li>
+                    <li> Classifiers </li>
                 </ul>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Readings.</li>
+                    <li>Readings: TBD</li>
                 </ul>
             </td>
             <td style="text-align: left;">
                 <ul>
                     <li>Worksheet 13</li>
                     <li>Tutorial 13</li>
+                    <li>Final Project</li>
                 </ul>
             </td>
         </tr>
         <tr>
             <td>#14</td>
-            <td> Dec 05 ~ Dec 07 </td>
+            <td> Dec 04 ~ Dec 07 </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Topics </li>
+                    <li> Review </li>
                 </ul>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Readings.</li>
+                    <li>Review all course material</li>
                 </ul>
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>...</li>
+                    
                 </ul>
             </td>
         </tr>
@@ -324,8 +329,9 @@ All due dates will be on the last day of the week (Saturday at 23:59:59).
 
 #### Test Dates
 
-- Midterm 1: Thursday, October 7th at 12:30pm
-- Midterm 2: Thursday, November 4th at 12:30pm
+- Midterm 1: Thursday, October 6th at 12:30pm
+- Midterm 2: Thursday, November 3th at 12:30pm
+- Final Group Project: Dec 3rd at 11:59pm
 - Final Exam: TBA.
 
 ### Learning Outcomes per Week
