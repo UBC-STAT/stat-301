@@ -6,7 +6,7 @@ For our in-person meetings in this class, it is important that all of us feel as
 
  - **Masks:** As of June 30, masks are no longer required for indoor public spaces on campus, including classrooms. Some students may wish to continue wearing masks so please be respectful of everyone's decisions.
  
-- **Vaccination:** If you have not yet had a chance to get vaccinated against Covid-19, vaccines are available to you, free, and on campus: visit https://planning.ubc.ca/news/how-get-covid-19-vaccine-clinic-ubc and http://www.vch.ca/covid-19/covid-19-vaccine for more information.
+- **Vaccination:** If you have not yet had a chance to get vaccinated against Covid-19, vaccines are available to you, free, and on campus: visit [https://planning.ubc.ca/news/how-get-covid-19-vaccine-clinic-ubc](https://planning.ubc.ca/news/how-get-covid-19-vaccine-clinic-ubc) and [http://www.vch.ca/covid-19/covid-19-vaccine](http://www.vch.ca/covid-19/covid-19-vaccine) for more information.
   - The higher the rate of vaccination in our community overall, the lower the chance of spreading this virus. You are an important part of the UBC community. Please arrange to get vaccinated if you have not already done so.
   
 - **Seating in class**: To reduce the risk of Covid transmission, please sit in a consistent area of the classroom each day. This will minimize your contacts and will still allow for the pedagogical methods planned for this class to help your learning.
@@ -28,9 +28,9 @@ If you’re sick, it’s important that you stay home – no matter what you t
 
 **If you’re sick, it’s important that you stay home. Do not come to class**
 
-- Make a connection early in the term to another student or a group of students in the class.  You can help each other by sharing notes.  If you don’t yet know anyone in the class, post on the PIAZZA discussion forum (https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1) to connect with other students. 
+- Make a connection early in the term to another student or a group of students in the class.  You can help each other by sharing notes.  If you don’t yet know anyone in the class, post on the PIAZZA discussion forum ([https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1](https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1)) to connect with other students. 
 - Consult the class resources on this class website regularly. We will post all the slides, readings, worksheets, and tutorials for each class day.  
-- Use the PIAZZA online discussion forum for help: https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1
+- Use the PIAZZA online discussion forum for help: [https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1](https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1)
 - Come to virtual office hours.
 - See the marking scheme for reassurance about what flexibility you have. 
 - If you are concerned that you will need to miss a particular key activity due to illness, contact us to discuss. 
@@ -42,9 +42,9 @@ If you are sick on a midterm exam day, **please do not attend the exam**.
 
 #### Missing the final because of illness: 
 If you are sick on a final exam day, **please do not attend the exam**. 
-- You **must** report to their faculty advising office within 48 hours of the missed exam, and must apply for deferred standing: https://students.ubc.ca/enrolment/academic-learning-resources/academic-advising. Only **your faculty advising office** can grant deferred standing in a course. 
+- You **must** report to their faculty advising office within 48 hours of the missed exam, and must apply for deferred standing: [https://students.ubc.ca/enrolment/academic-learning-resources/academic-advising](https://students.ubc.ca/enrolment/academic-learning-resources/academic-advising). Only **your faculty advising office** can grant deferred standing in a course. 
 
-If you're a <em>Science student</em>, you must apply for deferred standing (an academic concession) through Science Advising no later than 48 hours after the missed final exam/assignment. Learn more and find the application online: https://science.ubc.ca/students/advising/concession.
+If you're a <em>Science student</em>, you must apply for deferred standing (an academic concession) through Science Advising no later than 48 hours after the missed final exam/assignment. Learn more and find the application online: [https://science.ubc.ca/students/advising/concession](https://science.ubc.ca/students/advising/concession).
 
 - Students who are granted deferred standing write the final exam/assignment at a later date.Your instructor will let you know when you are expected to write your deferred exam. Deferred exams will ONLY be provided to students who have applied for and received deferred standing from their faculty.
 
