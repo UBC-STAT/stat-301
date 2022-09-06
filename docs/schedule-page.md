@@ -299,7 +299,11 @@
                 <ul>
                     <li>Worksheet 13</li>
                     <li>Tutorial 13</li>
-                    <li>Final Project</li>
+                    <li>Project:
+                        <ul>
+                            <li>Final Report</li>
+                        </ul>
+                    </li>
                 </ul>
             </td>
         </tr>
