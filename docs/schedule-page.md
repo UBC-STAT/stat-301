@@ -112,7 +112,7 @@
             <td>Oct 02 ~ Oct 08</td>
             <td>
                 <ul>
-                    <li> Project </li>
+                    <li> Tuesday: Review and work on roject </li>
                     <li> Thursday (Oct 6th): Mid-Term #1 and in-class work on project </li>
                 </ul>
             </td>
@@ -196,7 +196,7 @@
             <td> Oct 30 ~ Nov 05 </td>
             <td>
                 <ul>
-                    <li> Tuesday: Review </li>
+                    <li> Tuesday: Review and work on project </li>
                     <li> Thursday (Nov 3th): Mid-Term #2 and in-class work on project proposal </li>
                 </ul>
             </td>
