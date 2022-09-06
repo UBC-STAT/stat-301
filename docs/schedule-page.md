@@ -28,7 +28,7 @@
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> <a href=https://moderndive.com/9-hypothesis-testing.html>MD Chapter 9: Hypothesis Testing</a> </li>
+                    <li> <a href="https://moderndive.com/9-hypothesis-testing.html">MD Chapter 9: Hypothesis Testing</a> </li>
                     <li> Any additional topics you need to review from STAT 201 </li>
                 </ul>
             </td>
