@@ -17,7 +17,7 @@
             <td>Sept 07</td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Review of STAT 201
+                    <li> Review of STAT 201</li>
                         <ul>
                             <li> Terminology </li>
                             <li> 2-sample tests </li>
@@ -44,10 +44,10 @@
             <td>Sept 12 ~ Sept 18</td>
             <td style="text-align: left;">
                 <ul>
-                    <li> A/B Testing
+                    <li> A/B Testing </li>
                         <ul>
                             <li> Early Stopping </li>
-                            <li> Principled Peeking </li>
+                            <li> Sequential Testing and Principled Peeking </li>
                         </ul>
                     </li>
                 </ul>
@@ -330,7 +330,7 @@ All due dates will be on the last day of the week (Saturday at 23:59:59).
 
 ### Learning Outcomes per Week
 
-#### Week 1: Introduction to statistical modelling and A/B testing optimization
+#### Week 1: Introduction to statistical modelling and A/B testing optimization (Thursday only)
 
 By the end of this section, students will be able to:
 
@@ -347,7 +347,7 @@ By the end of this section, students will be able to:
 By the end of this section, students will be able to:
 
 1. Discuss why the methods they have learned in past courses are not sufficient to answer the more complex research problems being posed in this course (in particular stopping an A/B test early).
-2. Explain principled peeking and how it can be used for early stopping of an experiment (e.g., A/B testing).
+2. Explain sequential testing and principled peeking and how it can be used for early stopping of an experiment (e.g., A/B testing).
 3. Write a computer script to perform A/B testing optimization with and without using principled peeking.
 4. Discuss the tradeoff between stopping earlier and certainty of significance, and thereal world implications (e.g., what does the FDA require for early stopping of clinical trials versus Facebook ads optimization?).
 5. List other questions related to A/B testing optimization that may be relevant in a real data application (e.g., what features cause a Facebook ad to perform best?)
