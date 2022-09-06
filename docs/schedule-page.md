@@ -14,10 +14,10 @@
     <tbody>
         <tr>
             <td>#1</td> 
-            <td>Sept 07</td>
+            <td>Sept 05 ~ Sept 11</td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Review of STAT 201</li>
+                    <li> Review of STAT 201
                         <ul>
                             <li> Terminology </li>
                             <li> 2-sample tests </li>
@@ -44,7 +44,7 @@
             <td>Sept 12 ~ Sept 18</td>
             <td style="text-align: left;">
                 <ul>
-                    <li> A/B Testing </li>
+                    <li> A/B Testing 
                         <ul>
                             <li> Early Stopping </li>
                             <li> Sequential Testing and Principled Peeking </li>
