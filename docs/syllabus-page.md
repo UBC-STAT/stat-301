@@ -3,27 +3,39 @@
 Explanatory and predictive data analysis with multiple explanatory variables. Choosing the right methods to apply based on the statistical question and data at hand. Trade-offs between model-based and non-model based approaches. Emphasis placed on case studies and real data sets, as well as reproducible and transparent workflows when writing computer scripts for analysis and reports.
 
 ### COVID-19 Statement
-Please read the [COVID-19 instructions](https://ubc-stat.github.io/stat-301/covid-safety.html).
+Please read the [COVID-19 instructions](https://ubc-stat.github.io/stat-301/covid-safety.html)
 
 ### Prerequisites
 
 - STAT 201: Statistical Inference for Data Science
-- One of MATH 100, MATH 102, MATH 104, MATH 110, MATH 120, MATH 180, MATH 184, SCIE 001.
-- Access to a computer.
-    - If a student does not have their own laptop or chromebook, students may be able to [loan a laptop from the UBC library](https://services.library.ubc.ca/computers-technology/technology-borrowing/).
+- One of MATH 100, MATH 102, MATH 104, MATH 110, MATH 120, MATH 180, MATH 184, SCIE 001
+- Access to a computer
+    - If a student does not have their own laptop or chromebook, students may be able to [loan a laptop from the UBC library](https://services.library.ubc.ca/computers-technology/technology-borrowing/)
 
 ### When and where?
+Times are in Pacific Time
 
-- The lectures will be on Tuesdays and Thursdays from 12:30 to 2:00 pm.
-- The lectures will be held in Henry Angus building, Room 234. 
-- This course **does not have a lab session** run by TAs. Instead, you can see the TAs during their office hours. 
+- The lectures are **mandatory** *and* **in person** on Tuesdays and Thursdays from 12:30 to 2:00 pm
+- The lectures will be held in Leonard S. Klinck (LSK) building, Room 201
+- Tutorials will be held **in person** in Biological Sciences, Room 1000, on Thursdays from 5:00 to 6:00 pm
+
+**NOTE:**
+    - Tuesday September 6th is UBC Imagine Day, so we will have our first lecture and tutorial on Thursday Sep 8th
+    - Nov 9-11th is mid-term break, so we will have only one lecture that week on Tuesday Nov 8th and there won't be a tutorial
 
 ### Office hours and questions
+Times are in Pacific Time
 
-- **Instructor**: Wednesdays 3:30 pm via Zoom (link on Canvas, each week the same instructor that teaches will cover office hours).
-- **TA**: Fridays 1:00 pm via Zoom (link on Canvas).
-- Post questions on PIAZZA for general discussions and answers! D
-- Please, do not ask questions about course material through email!!
+- **Instructor**: Wednesdays 3:30 pm via Zoom (link on Canvas).
+- **TA**: TBD via Zoom (link on Canvas).
+- Post questions on [PIAZZA](https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1) for general discussions and answers!
+- **Please, do not ask questions about course material through email!!**
+
+#### Test Dates
+
+- Midterm 1: Thursday, October 6th at 12:30pm
+- Midterm 2: Thursday, November 3rd at 12:30pm
+- Final Exam: TBD.
 
 ### Software Platforms
 
@@ -42,6 +54,7 @@ Please read the [COVID-19 instructions](https://ubc-stat.github.io/stat-301/covi
 
   - [Chapter 5: Basic Regression](https://moderndive.com/5-regression.html)
   - [Chapter 6: Multiple Regression](https://moderndive.com/6-multiple-regression.html)
+  - [Chapter 9: Hypothesis Testing](https://moderndive.com/9-hypothesis-testing.html)
   - [Chapter 10: Inference for Regression](https://moderndive.com/10-inference-for-regression.html)
 
 ### Learning Outcomes
@@ -145,11 +158,6 @@ Our server will automatically snapshot at the due date/time. Also, please **do n
     </table>
 </div>
 
-#### Test Dates
-
-- Midterm 1: Thursday, October 7 at 12:30pm
-- Midterm 2: Thursday, November 4 at 12:30pm
-- Final Exam: TBD.
 
 #### Exams
 
@@ -197,7 +205,6 @@ If you have concerns about the way your work was graded, please open a request w
 7. The TAs will see the request and will take a look at the assignment. If necessary, they will involve the instructors. Finally, once the TA is finished reassessing the assignment:
     - If the grade deserves more marks: the TA will update the mark on Canvas and comment on the question so everyone can see that the question has been addressed.
     - If your grade goes down or stays the same: the TA will answer the post on Piazza, giving the student a reason for their final decision.
-
 
 
 #### Device/Browser
