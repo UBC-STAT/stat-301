@@ -55,7 +55,7 @@
             <td style="text-align: left;">
                 <ul>
                     <li> <a href="https://lourenzutti.github.io/tutorials/ab-testing/ab-test.html">A/B Testing </a></li>
-                    <li> <a href="https://raw.githubusercontent.com/Nth-iteration-labs/contextual/master/docs/articles/arxiv_2018/jss.pdf">TBD </a></li>
+                    <li> TBD </li>
                 </ul>
             </td>
             <td style="text-align: left;">
