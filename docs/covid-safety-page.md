@@ -28,9 +28,9 @@ If you’re sick, it’s important that you stay home – no matter what you t
 
 **If you’re sick, it’s important that you stay home. Do not come to class**
 
-- Make a connection early in the term to another student or a group of students in the class.  You can help each other by sharing notes.  If you don’t yet know anyone in the class, post on the PIAZZA discussion forum ([https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1](https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1)) to connect with other students. 
+- Make a connection early in the term to another student or a group of students in the class.  You can help each other by sharing notes.  If you don’t yet know anyone in the class, post on the [PIAZZA](https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1) discussion forum to connect with other students. 
 - Consult the class resources on this class website regularly. We will post all the slides, readings, worksheets, and tutorials for each class day.  
-- Use the PIAZZA online discussion forum for help: [https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1](https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1)
+- Use the [PIAZZA](https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1) online discussion forum for help
 - Come to virtual office hours.
 - See the marking scheme for reassurance about what flexibility you have. 
 - If you are concerned that you will need to miss a particular key activity due to illness, contact us to discuss. 
