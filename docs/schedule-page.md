@@ -316,11 +316,7 @@
                     <li>Review all course material</li>
                 </ul>
             </td>
-            <td style="text-align: left;">
-                <ul>
-                    
-                </ul>
-            </td>
+            <td></td>
         </tr>
     </tbody>
 </table>
