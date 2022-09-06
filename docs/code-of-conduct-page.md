@@ -60,9 +60,7 @@ appropriate sanctions.
 If someone violates the Code of Conduct during a STAT 301 event or in an online
 space outside of organised events, we ask that you report it to the instructor (ideally!).
 But in case you want to report a STAT 301 code of conduct violation to a third party that will 
-not be seen by your current instructor, you can choose any of the instructors below:
-- [Prof. Gabriela V. Cohen Freue](mailto:gcohen@stat.ubc.ca)
-- [Prof. Rodolfo Lourenzutti](mailto:lourenzutti@stat.ubc.ca)
+not be seen by your course instructor, an alternative contact person is [Prof. Rodolfo Lourenzutti](mailto:lourenzutti@stat.ubc.ca), Assistant Professor of Teaching in the Department of STatistics at UBC.
 
 ### Attribution
 
