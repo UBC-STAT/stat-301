@@ -346,7 +346,6 @@ By the end of this section, students will be able to:
 4. Interpret the results of hypothesis tests.
 5. Explain the relation between type I and type II errors, power and sample size in 2-sample hypothesis testing.
 6. Write a computer script to perform difference in means hypothesis testing and compute errors, power and p-values.
-7. Discuss the limitations of principled peeking for A/B testing optimization/early stopping of experiments.
 
 #### Week 2: A/B testing and planned peeking
 
