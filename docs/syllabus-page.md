@@ -26,8 +26,8 @@ Times are in Pacific Time
 ### Office hours and questions
 Times are in Pacific Time
 
-- **Instructor**: Wednesdays 3:30 pm via Zoom (link on Canvas).
-- **TA**: TBD via Zoom (link on Canvas).
+- **Instructor**: Wednesdays 3:30 - 4:30 pm via Zoom (link on Canvas).
+- **TA**: Fridays 2:00 - 3:00 pm via Zoom (link on Canvas).
 - Post questions on [PIAZZA](https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1) for general discussions and answers!
 - **Please, do not ask questions about course material through email!!**
 
