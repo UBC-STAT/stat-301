@@ -1,4 +1,4 @@
-# Copyright (c) UBC-DSCI Development Team.
+# Copyright (c) UBC-DSCI Development Team. 
 # Distributed under the terms of the Modified BSD License.
 FROM jupyter/r-notebook
 
