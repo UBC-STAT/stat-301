@@ -55,7 +55,12 @@
             <td style="text-align: left;">
                 <ul>
                     <li> <a href="https://lourenzutti.github.io/tutorials/ab-testing/ab-test.html">A/B Testing </a></li>
-                    <li> <a href="https://www.youtube.com/watch?v=AJX4W3MwKzU">Optimizely video (11'-14'40''; 24'03''-25', optional: 29'30''-32'42'') </a></li>
+                    <li> <a href="https://www.youtube.com/watch?v=AJX4W3MwKzU">Optimizely video</a></li>
+                        <ul>
+                            <li> 11' to 14'40'' </li>
+                            <li> 24'03'' to 25' </li>
+                            <li> optional: 29'30'' to 32'42'' </li>
+                        </ul>
                 </ul>
             </td>
             <td style="text-align: left;">
