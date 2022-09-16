@@ -229,11 +229,11 @@ test_3.4 <- function() {
   })
   
   test_that("Data frame does not contain the correct data", {
-    expect_equal(digest(as.integer(sum(answer3.4$n_rejections_OF) * 1e3)), "317d1cec3b1ee7a9ee5b84a636bcebd9")
+    expect_equal(digest(as.integer(sum(answer3.4$n_rejections_OF) * 1e3)), "189e2f1b2fbb3743811990e9708c226a")
   })
   
   test_that("Data frame does not contain the correct data", {
-    expect_equal(digest(as.integer(sum(answer3.4$n_rejections_unadj) * 1e3)), "5564fa9c839a49eac3525e6f8c15faf3")
+    expect_equal(digest(as.integer(sum(answer3.4$n_rejections_unadj) * 1e3)), "7ea55401005f54e88bdc2ce0c9a9ceb1")
   })
   
   print("Success! One more and you are done!")
