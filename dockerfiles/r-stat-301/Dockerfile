@@ -1,60 +1,57 @@
-# Copyright (c) UBC-DSCI Development Team.
+# Copyright (c) UBC-DSCI Development Team. 
 # Distributed under the terms of the Modified BSD License.
-ARG BASE_CONTAINER=ubcdsci/r-dsci-100:latest
-FROM $BASE_CONTAINER
+FROM jupyter/r-notebook
 
 LABEL maintainer="Tiffany Timbers <tiffany.timbers@gmail.com>"
 
-RUN pip install SQLAlchemy==1.3
-RUN pip install jupyter-client==6.1.7
+USER root
 
-# Install testthat version 2.3
-RUN Rscript -e "devtools::install_version('testthat', version = '2.3.2', repos = 'http://cran.us.r-project.org')"
+# install vim
+RUN apt-get update && apt-get install -y vim
 
-# Install the palmerpenguins dataset
-RUN Rscript -e "devtools::install_github('allisonhorst/palmerpenguins@v0.1.0')" 
+USER ${NB_UID}
 
-# Install ISLR package for the Credit data set
-RUN Rscript -e "install.packages('ISLR', repos='http://cran.us.r-project.org')"
+WORKDIR "${HOME}"
 
-# Install contextual package for multi-armed bandit
-RUN Rscript -e "install.packages('contextual', repos='http://cran.us.r-project.org')"
+# remove the "work/" directory added in an earlier layer...
+RUN rm -rf work
 
-# Install contextual package for multi-armed bandit
-RUN Rscript -e "install.packages('GGally', repos='http://cran.us.r-project.org')"
+# Install R packages
+RUN mamba install --quiet --yes \
+    'r-cowplot' \
+    'r-ggally' \
+    'r-gridextra' \
+    'r-infer' \
+    'r-kknn' \
+    'r-testthat' \
+    'r-rpostgres' \
+    'r-janitor' \
+    'r-mltools' \
+    'r-leaps' \
+    'r-faraway' \
+    'r-glmnet' \
+    'r-titanic' \
+    'r-performance' \
+    'r-binom' \
+    'r-gridgraphics' \
+    'r-aer' \
+    'r-latex2exp' \
+    && mamba clean --all -f -y \
+    && fix-permissions "${CONDA_DIR}" \
+    && fix-permissions "/home/${NB_USER}" \
+    && Rscript -e "remotes::install_github('allisonhorst/palmerpenguins@v0.1.0')" \
+    && Rscript -e "install.packages('faux', repos='http://cran.us.r-project.org')" \
+    && Rscript -e "install.packages('contextual', repos='http://cran.us.r-project.org')" \
+    && Rscript -e "install.packages('ISLR', repos='http://cran.us.r-project.org')"
 
-# Install janitor package
-RUN Rscript -e "install.packages('janitor', repos='http://cran.us.r-project.org')"
+# Install nbgitpuller, jupytext, jlab-git
+RUN pip install git+https://github.com/data-8/nbgitpuller@c23461d4f7ce47ec4e0d2bcfc3b2fde4939b80f8 \
+  && jupyter serverextension enable --sys-prefix nbgitpuller \
+  && pip install jupyterlab-git \
+  && pip install jupytext --upgrade \
+  && jupyter labextension install @techrah/text-shortcuts \
+  && jupyter lab build  
 
-# Install mltools package
-RUN Rscript -e "install.packages('mltools', repos='http://cran.us.r-project.org')"
-
-# Install leaps package
-RUN Rscript -e "install.packages('leaps', repos='http://cran.us.r-project.org')"
-
-# Install faraway package
-RUN Rscript -e "install.packages('faraway', repos='http://cran.us.r-project.org')"
-
-# Install glmnet package
-RUN Rscript -e "install.packages('glmnet', repos='http://cran.us.r-project.org')"
-
-# Install titanic package
-RUN Rscript -e "install.packages('titanic', repos='http://cran.us.r-project.org')"
-
-# Install performance package
-RUN Rscript -e "install.packages('performance', repos='http://cran.us.r-project.org')"
-
-# Install binom package
-RUN Rscript -e "install.packages('binom', repos='http://cran.us.r-project.org')"
-
-# Install gridGraphics package
-RUN Rscript -e "install.packages('gridGraphics', repos='http://cran.us.r-project.org')"
-
-# Install AER package
-RUN Rscript -e "install.packages('AER', repos='http://cran.us.r-project.org')"
-
-# Install faux package
-RUN Rscript -e "install.packages('faux', repos='http://cran.us.r-project.org')"
-
-# Install faux package
-RUN Rscript -e "install.packages('latex2exp', repos='http://cran.us.r-project.org')"
+# Install the extension to remove the shift+M merge shortcut
+RUN mkdir -p /home/${NB_USER}/.jupyter/lab/user-settings/\@jupyterlab/shortcuts-extension
+COPY rm-merge-shortcut.py /home/${NB_USER}/.jupyter/lab/user-settings/\@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings
