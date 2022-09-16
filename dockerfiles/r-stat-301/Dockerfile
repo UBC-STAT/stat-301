@@ -36,6 +36,7 @@ RUN mamba install --quiet --yes \
     'r-gridgraphics' \
     'r-aer' \
     'r-latex2exp' \
+    'r-gsdesign' \
     && mamba clean --all -f -y \
     && fix-permissions "${CONDA_DIR}" \
     && fix-permissions "/home/${NB_USER}" \
