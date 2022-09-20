@@ -1,6 +1,6 @@
 # Copyright (c) UBC-DSCI Development Team.
 # Distributed under the terms of the Modified BSD License.
-FROM ubcstat/r-stat-301:latest
+FROM ubcdsci/r-stat-301:latest
 
 LABEL maintainer="Tiffany Timbers <tiffany.timbers@stat.ubc.ca>"
 
