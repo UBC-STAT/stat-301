@@ -448,7 +448,7 @@ test_4.0 <- function() {
 
 
 test_4.1 <- function() {
-    check_MC(answer4.1, getPermutations(LETTERS[1:6]), '93e311a221d93a15962a246827baabdc')
+    check_MC(answer4.1, getPermutations(LETTERS[1:6]), 'd110f00cfb1b248e835137025804a23b')
 }
 
 # +
