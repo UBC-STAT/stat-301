@@ -37,13 +37,22 @@ RUN mamba install --quiet --yes \
     'r-aer' \
     'r-latex2exp' \
     'r-gsdesign' \
+    'r-car' \
+    'r-cardata' \
+    'r-mlbench' \
+    'r-qqplotr' \
+    'r-see' \
+    'r-glmbb' \
+    'r-boot' \
+    'r-caret' \
     && mamba clean --all -f -y \
     && fix-permissions "${CONDA_DIR}" \
     && fix-permissions "/home/${NB_USER}" \
     && Rscript -e "remotes::install_github('allisonhorst/palmerpenguins@v0.1.0')" \
     && Rscript -e "install.packages('faux', repos='http://cran.us.r-project.org')" \
     && Rscript -e "install.packages('contextual', repos='http://cran.us.r-project.org')" \
-    && Rscript -e "install.packages('ISLR', repos='http://cran.us.r-project.org')"
+    && Rscript -e "install.packages('ISLR', repos='http://cran.us.r-project.org')" \
+    && Rscript -e "install.packages('ISLR2', repos='http://cran.us.r-project.org')"
 
 # Install nbgitpuller, jupytext, jlab-git
 RUN pip install git+https://github.com/data-8/nbgitpuller@c23461d4f7ce47ec4e0d2bcfc3b2fde4939b80f8 \
