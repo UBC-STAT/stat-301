@@ -42,7 +42,6 @@ RUN mamba install --quiet --yes \
     'r-mlbench' \
     'r-qqplotr' \
     'r-see' \
-#     'r-glmbb' \
     'r-boot' \
     'r-caret' \
     && mamba clean --all -f -y \
@@ -52,7 +51,7 @@ RUN mamba install --quiet --yes \
     && Rscript -e "install.packages('faux', repos='http://cran.us.r-project.org')" \
     && Rscript -e "install.packages('contextual', repos='http://cran.us.r-project.org')" \
     && Rscript -e "install.packages('ISLR', repos='http://cran.us.r-project.org')" \
-    # && Rscript -e "install.packages('ISLR2', repos='http://cran.us.r-project.org')" \
+    && Rscript -e "install.packages('ISLR2', repos='http://cran.us.r-project.org')" \
     && Rscript -e "install.packages('glmbb', repos='http://cran.us.r-project.org')" \
 
 # Install nbgitpuller, jupytext, jlab-git
