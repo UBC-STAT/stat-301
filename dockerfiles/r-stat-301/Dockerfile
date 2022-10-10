@@ -52,7 +52,7 @@ RUN mamba install --quiet --yes \
     && Rscript -e "install.packages('faux', repos='http://cran.us.r-project.org')" \
     && Rscript -e "install.packages('contextual', repos='http://cran.us.r-project.org')" \
     && Rscript -e "install.packages('ISLR', repos='http://cran.us.r-project.org')" \
-    && Rscript -e "install.packages('ISLR2', repos='http://cran.us.r-project.org')"
+#     && Rscript -e "install.packages('ISLR2', repos='http://cran.us.r-project.org')" \
 
 # Install nbgitpuller, jupytext, jlab-git
 RUN pip install git+https://github.com/data-8/nbgitpuller@c23461d4f7ce47ec4e0d2bcfc3b2fde4939b80f8 \
