@@ -60,7 +60,8 @@ RUN pip install git+https://github.com/data-8/nbgitpuller@c23461d4f7ce47ec4e0d2b
   && pip install jupyterlab-git \
   && pip install jupytext --upgrade \
   && jupyter labextension install @techrah/text-shortcuts \
-  && jupyter lab build  
+  && jupyter lab build \
+  && pip install nbgitpuller
 
 # Install the extension to remove the shift+M merge shortcut
 RUN mkdir -p /home/${NB_USER}/.jupyter/lab/user-settings/\@jupyterlab/shortcuts-extension
