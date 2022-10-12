@@ -52,7 +52,7 @@ RUN mamba install --quiet --yes \
     && Rscript -e "install.packages('contextual', repos='http://cran.us.r-project.org')" \
     && Rscript -e "install.packages('ISLR', repos='http://cran.us.r-project.org')" \
     && Rscript -e "install.packages('ISLR2', repos='http://cran.us.r-project.org')" \
-    && Rscript -e "install.packages('glmbb', repos='http://cran.us.r-project.org')" \
+    && Rscript -e "install.packages('glmbb', repos='http://cran.us.r-project.org')"
 
 # Install nbgitpuller, jupytext, jlab-git
 RUN pip install git+https://github.com/data-8/nbgitpuller@c23461d4f7ce47ec4e0d2bcfc3b2fde4939b80f8 \
@@ -60,9 +60,8 @@ RUN pip install git+https://github.com/data-8/nbgitpuller@c23461d4f7ce47ec4e0d2b
   && pip install jupyterlab-git \
   && pip install jupytext --upgrade \
   && jupyter labextension install @techrah/text-shortcuts \
-  && jupyter lab build \
-  && pip install nbgitpuller
-
+  && jupyter lab build
+  
 # Install the extension to remove the shift+M merge shortcut
 RUN mkdir -p /home/${NB_USER}/.jupyter/lab/user-settings/\@jupyterlab/shortcuts-extension
 COPY rm-merge-shortcut.py /home/${NB_USER}/.jupyter/lab/user-settings/\@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings
