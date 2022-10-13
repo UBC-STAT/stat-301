@@ -309,13 +309,13 @@ getPermutations <- function(vec) {
   return(unique(rsf))
 }
 
+
 # +
 # Question 1.0
 
 test_1.0 <- function() {
-  check_TF(answer1.0, "d2a90307aac5ae8d0ef58e2fe730d38b")
+    check_TF(answer1.0, "d2a90307aac5ae8d0ef58e2fe730d38b")
 }
-
 
 # +
 # Question 1.1
