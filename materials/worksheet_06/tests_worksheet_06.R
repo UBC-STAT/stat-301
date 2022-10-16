@@ -467,13 +467,13 @@ test_2.8 <- function() {
 # Question 2.9
 
 test_2.9 <- function() {
-    check_DF(bivariate_normal_sample,
-            c("x_1","x_2"),
-            "b6a6227038bf9be67533a45a6511cc7e",
-            c("x_1","x_2"),
-            c("1e4","1e4"),
-             c("d3b84b697a7f16b54e5da3cd29e803ec",
-               "0cea6d69a2dc5a3525954d8211015962"))
+  check_DF(bivariate_normal_sample,
+           c("x_1","x_2"),
+           "5d6e7fe43b3b73e5fd2961d5162486fa",
+           c("x_1","x_2"),
+           c("1e4","1e4"),
+           c("e567ba7a4032de033c11daccee250041",
+             "ac0e5e9fc22ef83294c518e30d16bc50"))
 }
 
 # +
@@ -536,168 +536,4 @@ test_2.13 <- function() {
     check_MC(answer2.13, LETTERS[1:3],'ddf100612805359cd81fdc5ce3b9fbba')
 }
 
-# +
-# Question 3.0 
 
-test_3.0 <- function() {
-    check_MC(answer3.0, LETTERS[1:3], "ddf100612805359cd81fdc5ce3b9fbba")
-}
-
-# +
-# Question 3.1
-
-test_3.1 <- function() {
-    check_MC(answer3.1, LETTERS[1:3], "127a2ec00989b9f7faf671ed470be7f8")
-}
-
-# +
-# Question 3.2
-
-test_3.2 <- function() {
-    check_TF(answer3.2, '05ca18b596514af73f6880309a21b5dd')
-}
-
-# +
-# Question 3.3
-
-test_3.3 <- function() {
-    
-    check_numeric(pop.pool.Y, 1,"13dff35616f15788a3612d24ae7e23c5")
-}
-
-# +
-# Question 3.4
-
-
-test_3.4 <- function() {
-    check_DF_overflow(pop.pool,
-                     c("athlete","y_current_ad", "y_new_ad" ),
-                     "a7a1a6213fbb1a97362d5a9ff37cafc4",
-                     c("y_current_ad", "y_new_ad" ),
-                     c(1e4,1e4),
-                     c("dee1c433799ced445e1e58d91ddb3ffa",
-                       "064a8cfdfbb06cb4205a6aa45a1a0b06"))
-}
-
-# +
-# Question 3.5
-
-
-test_3.5 <- function() {
-    check_DF(sample_TikTok,
-                     c("replicate","athlete","y_current_ad","y_new_ad","x_self_choice","y_obs"),
-                     "b6a6227038bf9be67533a45a6511cc7e",
-                     c("replicate", "y_obs" ),
-                     c(1,1e4),
-                     c("b6a6227038bf9be67533a45a6511cc7e",
-                       "f5cd9cd8b89f942161f1c187b5ea4d46"))
-}
-
-# +
-# Question 3.6
-
-test_3.6 <- function() {
-    check_plot_factor(obs_dwell_time_boxplots,
-                     "x_self_choice",
-                      "GeomBoxplot",
-                      FALSE,
-                      "3e2e4a08c44d0224de5b7e668c75ace3",
-                      "b6a6227038bf9be67533a45a6511cc7e",
-                      TRUE)
-}
-# -
-
-# Question 3.7
-test_3.7 <- function() {
-    check_DF(conf_obs_study_TikTok_results,
-            c("term","estimate",  "std.error", "statistic", "p.value",   "conf.low" , "conf.high"),
-            "c01f179e4b57ab8bd9de309e6d576c48",
-            c("estimate",  "std.error", "statistic", "p.value",   "conf.low" , "conf.high"),
-            c(100, 100, 100,   1, 100, 100),
-            c("e5f641b8b36acfdf17185a0cfd492264",
-              "7d2842cab7725fd8f382293e410d42b2",
-              "0e5702e520327ea5a15fec70319c7598",
-              "1473d70e5646a26de3c52aa1abd85b1f",
-              "39423526bb50f888ced71b7b6fe8eee3",
-              "a557dae246c6d4f57eba2444b4938f3d"))
-}
-
-# +
-# Question 3.8
-
-test_3.8 <- function() {
-    check_MC(answer3.8, LETTERS[1:4],'127a2ec00989b9f7faf671ed470be7f8' )
-}
-
-# +
-# Question 3.9
-
-test_3.9 <- function() {
-    check_DF(MLR_obs_study_TikTok_results,
-            c("term","estimate",  "std.error", "statistic", "p.value",   "conf.low" , "conf.high"),
-            "11946e7a3ed5e1776e81c0f0ecd383d0",
-            c("estimate",  "std.error", "statistic", "p.value",   "conf.low" , "conf.high"),
-            c(100, 100, 100,   1, 100, 100),
-            c("dc154a9012120d92e7a7b57bd5d30a6c",
-              "1b0ed73227e2e7826da63b2b356975e0",
-              "82ef18400c40b2923b8ce97f346774f7",
-              "1473d70e5646a26de3c52aa1abd85b1f",
-              "d1f5eaa8dc87a470b2553d1b39978ae8",
-              "5bed3f912bd3a02da1cba0611651347a"))    
-}
-
-# +
-# Question 3.10
-
-test_3.10 <- function() {
-    check_MC(answer3.10, LETTERS[1:4], '6e7a8c1c098e8817e3df3fd1b21149d1')
-}
-
-# +
-# Question 3.11
-
-test_3.11 <- function() {
-    check_DF(sample_TikTok,
-            c("replicate", "athlete", "y_current_ad", "y_new_ad", "x_self_choice", "y_obs", "x_randomized", "y_exp"),
-             "b6a6227038bf9be67533a45a6511cc7e",
-             c("y_exp"),
-             c(1e4),
-             c("e32bccda1eb36b43ead1201a79c6aa83")
-            )
-}
-# -
-
-# Question 3.12
-test_3.12 <- function() {
-    check_plot_factor(exp_dwell_time_boxplots,
-                     "x_randomized",
-                      "GeomBoxplot",
-                      FALSE,
-                      "3e2e4a08c44d0224de5b7e668c75ace3",
-                      "b6a6227038bf9be67533a45a6511cc7e",
-                      TRUE)
-}
-
-# +
-# Question 3.13
-
-test_3.13 <- function() {
-    check_DF(exp_study_TikTok_results,
-            c("term","estimate",  "std.error", "statistic", "p.value",   "conf.low" , "conf.high"),
-            "c01f179e4b57ab8bd9de309e6d576c48",
-            c("estimate",  "std.error", "statistic", "p.value",   "conf.low" , "conf.high"),
-            c(100, 100, 100,   1, 100, 100),
-            c("8e8ba5b2107ac8ecbcbf5651370caee8",
-              "5e9df39bb0ad592a23f9d09fd6673704",
-              "2f76f30294d72a2d252c8f4aafaee698",
-              "1473d70e5646a26de3c52aa1abd85b1f",
-              "76c7d4c2f1b5253b564ca48ce74fe890",
-              "ac7329c10590742d9f1ff20331821bad"))
-}
-
-# +
-# Question 3.14
-
-test_3.14 <- function() {
-    check_MC(answer3.14, LETTERS[1:4], 'ddf100612805359cd81fdc5ce3b9fbba')
-}
