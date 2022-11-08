@@ -104,19 +104,20 @@ of your data as well.
 ### Deliverable 3: Peer Review
 
 For this peer review, you will be **individually** providing feedback to
-another group’s proposal. You will be sent an email with the proposal to
-review.
+another group’s proposal. You have randomly assigned you another proposal to
+review through Canvas.
 
-We deliberately set up the review so that each member of your group is
-assigned to review a *different* group’s proposal. This allows your
-group to collectively see a larger variety of proposals.
+Since there are many groups in the course, your group will hopefully be exposed, collectively, to a variety of proposals.
 
 #### Instructions
 
-Bundle all of your feedback into a single document of your choice, and
-submit that to canvas. There is no page limit. The teaching team will
-deliver the feedback to your reviewee.
+To complete the peer-review assigned to you, write comments in Canvas' text box or through an attached file. Recall that you'll be evaluated in the comments and feedback given. See the rubric added to the Peer Review assignment in Canvas.
 
+Remember to be _respectful and provide constructive comments_. 
+
+Following a recommendation to reviewers of BMC Genomics Journal: "Before you submit your report, please take a moment to read it through and put yourself in the place of the authors. How would you feel if you received this report? Would you find the tone courteous and professional?" Are your comments useful to strength other groups' analysis?
+
+**General guideline**
 Your review should contain the following elements:
 
 - As you read through the proposal, point out anything that you think is confusing, or is not
@@ -126,10 +127,10 @@ good to you, say why it looks good.
 - What part of the proposal is the least effective, and why? Provide a suggestion for improvement.
 - Provide feedback on English, spelling, and grammar (if applicable).
 
-The rubric can be found on canvas. In short, *mechanics* (10%) evaluates
+The rubric can be found on Canvas. In short, *mechanics* (10%) evaluates
 the composition of your submission, *reasoning* (70%) evaluates your
 feedback, and *writing* (20%) evaluates your English, spelling, and
-grammar.
+grammar. There is no page limit. 
 
 ### Deliverable 4: Final Report
 
