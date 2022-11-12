@@ -103,12 +103,11 @@ of your data as well.
 
 ### Deliverable 3: Peer Review
 
-For this peer review, your group will provide feedback to
-another group’s proposal. While initially this was planned to be an individual assignment, it has been changed to a group assignment to accommodate all technical problems we are experiencing.
+For this peer review, you will provide feedback to another proposal. While this is an individual assignment, I encourage you to work in group so that you are all explosed to multiple proposals. However, each of you need to submit comments to the student assigned to you. 
 
 #### Instructions
 
-To complete the peer-review assigned to your group, write comments in Canvas' text box or through an attached file. Recall that you'll be evaluated in the comments and feedback given. See the rubric added to the Peer Review assignment in Canvas.
+To complete the peer-review assigned to you, write comments in Canvas' text box or through an attached file. Recall that you'll be evaluated in the comments and feedback given. See the rubric added to the Peer Review assignment in Canvas. **Do not enter a grade!**
 
 Remember to be _respectful and provide constructive comments_. 
 
