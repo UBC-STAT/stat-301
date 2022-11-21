@@ -276,8 +276,9 @@
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li><a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html">BMLR: Chapter 4 - Poisson Regression</a></li>
                     <li><a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-logreg.html">BMLR: Chapter 6 - Logistic Regression</a></li>
+                    <li> <a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Chapters 4.1 to 4.3 of ISL </a></li>
+                    <li><a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html">BMLR: Chapter 4 - Poisson Regression</a></li>
                 </ul>
             </td>
             <td style="text-align: left;">
