@@ -35,7 +35,7 @@ Times are in Pacific Time
 
 - Midterm 1: Thursday, October 6th at 12:30pm
 - Midterm 2: Thursday, November 3rd at 12:30pm
-- Final Exam: TBD.
+- Final Exam: Fri Dec 16 2022 @ 12:00 pm in room cirs-1250
 
 ### Software Platforms
 
