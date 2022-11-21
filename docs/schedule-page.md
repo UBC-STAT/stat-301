@@ -338,7 +338,7 @@ All due dates will be on the last day of the week (Saturday at 23:59:59).
 - Midterm 1: Thursday, October 6th at 12:30pm
 - Midterm 2: Thursday, November 3th at 12:30pm
 - Final Group Project: Dec 3rd at 11:59pm
-- Final Exam: TBA.
+- Final Exam: Fri Dec 16 2022 @ 12:00 pm in room cirs-1250
 
 ### Learning Outcomes per Week
 
@@ -453,8 +453,7 @@ By the end of this section, students will be able to:
 1. 	Describe the logistic regression estimation procedure (categorical data as the response variable and explanatory variables), and Poisson regression estimation procedure (discrete counts as the response variable and explanatory variables).
 2. Discuss the relationship between linear regression and logistic and Poisson regression. Discuss the consequences of modelling data that is more suitable for logistic and Poisson regression models as a linear regression model.
 3. Interpret the coefficients and p-values in the logistic and Poisson regression settings.
-4. Discuss useful diagnostics for logistic and Poisson regression and explain why they should be performed. 
-5. Write a computer script to perform logistic and Poisson regression and perform model diagnostics. Interpret and communicate the results from that computer script.
+4. Write a computer script to perform logistic and Poisson regression and perform model diagnostics. Interpret and communicate the results from that computer script.
 
 #### Week 13: Classifiers as an important class of predictive models
 
