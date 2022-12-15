@@ -1,0 +1,337 @@
+---
+title: "Worksheet 11: Predictive versus generative modelling"
+output: html_document
+date: ""
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message=FALSE,warning=FALSE, echo=FALSE)
+```
+
+In this lecture you have learn new functions to code simulation studies:
+
+- `nest()`
+- `map()`
+- `update()`
+
+While these functions are very useful and handy in Data Science, they are also complex, specially the first few times you use them, and may mask other important conceptual points that you need to learn. 
+
+Here is a summary of the main concepts, showing results and hiding code. You can find the "behind the scenes" details in the original worksheet.
+
+
+### SUMMARY
+
+- Demonstrate post inference problems using simulation data (e.g., double dipping into the data set) and current practical solutions available to address these (e.g., data-splitting techniques).
+
+- Identify limitations of regularized regression (e.g., LASSO) when the main goal is to have a generative modelling (i.e., for estimation and inference) 
+
+- Illustrate how post-lasso is one way to address this problem.
+
+
+```{r}
+library(tidyverse)
+library(glmnet)
+library(broom)
+library(leaps)
+library(repr)
+library(mltools)
+
+options(repr.plot.width=10, repr.plot.height=8)
+```
+
+## Statistical Modelling
+
+In statistical modelling, the objective is to capture how a response variable, $Y$, is associated with a set of input variables, $\mathbf{X}=\left(X_1, X_2, ..., X_p\right)$. There are two main reasons that motivate us to model the relationship between $\mathbf{X}$ and $Y$: (1) prediction; and (2) inference. 
+
+In worksheet 11 you can find a full description of these goals with examples and a summary of the methods used to estimate these models. 
+
+The second part of this worksheet highlight 2 important potential problems in a data analysis:
+
+- 1) **double dipping**: the data used to build a model can *not* be reused:
+
+  - *inference*: you need different datasets to select a model *and* make inference
+  - *prediction*: you need different datasets to select a model *and* predict
+
+- 2) **bias**: regularized (aka shrinkage and penalized) methods give *biased* estimators of the regression coefficients.
+
+In this worksheet we used a simulation study to highlight and observed these problems.
+
+### 1. Double Dipping
+
+To illustrate "double dipping" problem in an inference setting, we did the following:
+
+- generated data with a response that is *not* related to any of the input variables (this way we know, by design, that $H_0$ is true!!)
+
+- use the data to select a model using forward selection
+
+- *reuse* the data to perform statistical testing on the selected model
+
+> Note that the data is reused!! 
+
+**Would something go wrong??**
+
+To answer to this question we `replicate` this study 1,000 times to obtain measure the error rate.
+
+#### Summary of worksheet questions
+
+- **Question 2.1**: generates 1000 tibbles, each with 10 covariates, an independent response, a replicate ID and 100 observations (dataset is a (100000 X 12)-tibble)
+
+```{r, }
+set.seed(20211113)
+
+n <- 100    # sample size
+p <- 10     # number of variables
+rep <- 1000 # number of replications
+
+means <- runif((p+1), 3, 10) # the mean that will be used in the 
+                             # Normal distribution for simulation.
+                             # The +1 refers to Y.  
+
+dataset <- as_tibble(
+  data.frame(
+    matrix(
+      round(rnorm((p + 1) * n * rep, 
+            means, 10), 2), 
+      ncol = p+1, 
+      byrow = TRUE
+    )
+  ) %>% 
+  rename(Y = X11) %>% 
+  mutate(replicate = rep(1:rep, n)) %>% 
+  arrange(replicate) 
+)
+```
+
+- **Question 2.1.1**: fits one LR for each replicate using `lm()` and stores the 1000 models in a complex object called `full_models`.
+
+```{r}
+full_models <- 
+    dataset %>% 
+    group_by(replicate) %>% 
+    nest() %>% 
+    mutate(models = map(.x = data, ~ lm(Y ~ ., data = .x)))
+```
+
+
+- **Question 2.1.2**: uses a given function to select only one variable in each model and calculates the F-statistic of the best model selected 
+  - note that as a result you select 1000 models of size 1 and compute 1000 F-statistics, one for each replicate
+
+```{r}
+forward_selection_step1 <- function(dataset){
+    #' Returns the F-statistic of the first
+    #' step of forward selection.
+    #'
+    #' @param dataset the dataset to be used
+
+    selected_model <- lm(Y ~ ., data = dataset[,c(paste("X",1, sep = ""), "Y")])
+    F_selected <- glance(selected_model) %>% pull(statistic)
+    
+    for( j in 2:(ncol(dataset)-1) ){ # fits one lm for each covariate and calculate the F statistic 
+        model <- lm(Y ~ ., data = dataset[,c(paste("X",j, sep = ""), "Y")])
+        F <- glance(model) %>% pull(statistic)
+        
+        
+        if (F > F_selected){
+            F_selected <- F
+            selected_model <- model
+        }
+    }
+    return(selected_model)
+}
+```
+
+```{r}
+forward_selection_F <- 
+    dataset %>% 
+    group_by(replicate) %>% 
+    nest() %>% 
+    mutate(
+        fs_model = map(.x = data, forward_selection_step1), 
+        F =  map_dbl(.x = fs_model, ~ glance(.x) %>% pull(statistic))
+    )
+```
+
+- **Question 2.1.3**: computes the $p$-value associated with the $F$-statistic computed in 2.1.2 for each replicate
+  - note that in this question you are computing 1000 $F$-tests, one for each replicate using the *same* data that you use to select the model!!
+  
+Knowing that none of the covariates in each dataset are relevant to explain the response, we expect to *reject* the null hypothesis most of the times!! 
+(we know that the null hypothesis *is true*!!). Considering randomness, you expect to be wrong in your assessment 5% of the times (if the significance level of the test is 95%)
+
+```{r}
+F_critical <- qf(0.95, 1, 98)
+```
+
+- **Question 2.1.5** measures how many times (out of 1000) you rejected $H_0$
+
+```{r}
+forward_selection_type_I_error <- 
+    forward_selection_F %>% 
+    ungroup() %>% 
+    summarise(mean(F>F_critical)) %>% 
+    pull()
+
+forward_selection_type_I_error
+```
+
+Results show that in your analysis you reject the null hypothesis 41% of the times!! (not 5% as expected) even when the null hypothesis is true!! 
+
+**Something went wrong**: using the same data to select models of size 1 (by forward selection in this case) and to test $H_0$ makes the statistical inference results **invalid**. 
+
+A way to overcome this problem is to split the data into 2 parts. Use one part to select, use the second part to run the tests.
+
+- **Question 2.2** and **Question 2.3**: 
+
+  - select the best of size 1 models with the top 50 observations of each of the 1000 tibbles (note `head(50)` in the code)
+  
+  - use last 50 observations of each of the 1000 tibbles to run the $F$-tests
+  
+  - measure the error rate again
+
+```{r}
+fs_error_split <- 
+    dataset %>% 
+    sample_n(size = nrow(.)) %>% 
+    group_by(replicate) %>% 
+    nest() %>% 
+    mutate(
+        fs_model = map(.x = data, function(d) forward_selection_step1(d %>% head(50))), 
+        F_fs = map_dbl(.x = fs_model, ~ glance(.x) %>% pull(statistic)),
+        inference_model = map2(.x = data, .y = fs_model, ~ update(.y, .~., data = .x %>% tail(50))), 
+        F_inference =  map_dbl(.x = inference_model, ~ glance(.x) %>% pull(statistic))
+    )
+```
+
+```{r}
+fs_split_type_I_error <- 
+    fs_error_split %>% 
+    ungroup() %>% 
+    summarise(mean(F_inference > qf(0.95, 1, 48))) %>% 
+    pull()
+
+fs_split_type_I_error
+```
+
+When the data is *not re-used*, the error rate is, as expected, very close to 5%!! 
+
+### 2 Bias in Regularized Methods
+
+Regularized methods have been proposed to build regression models when the main purpose is *prediction*. In that case, the bias of estimation is not a main concern. However, if you want to use these methods just to select important variables the bias can become a concern.
+
+In this worksheet we use LASSO as an example and simulated data to: 
+
+- demonstrate that the resulting estimators are biased 
+- show that the PostLASSO can be used to obtain unbiased estimators with the variables selected by LASSO
+
+The workflow is similar to that of previous section:
+
+- generated data to know the true value of the regression coefficients. This time, $\beta_1=75$, $\beta_2=-5$ and $\beta_3=0$ (this values are arbitrary)
+
+- use the data to select a model using LASSO
+
+- repeat 1000 times to obtain *many* estimates and use them to approximate the sampling distribution. 
+
+**Would something go wrong??**
+
+```{r}
+set.seed(20211113) # Do not change this.
+
+n <- 1000    # sample size
+rep <- 1000 # number of replications
+
+lasso_sim <- 
+    tibble(
+        X1 = round(
+                rnorm(n * rep, 0, 10), 
+                2),
+        X2 = round(
+                rnorm(n * rep, 0, 10), 
+                2),
+        X3 = round(
+                rnorm(n * rep, 0, 20), 
+                2),
+        Y = round(75 * X1 - 5*X2 + rnorm(n * rep, 0, 400),2)) %>% 
+    mutate(replicate = rep(1:rep, n)) %>% 
+    arrange(replicate) 
+```
+
+- **Question 2.5**: fits LASSO on each replicated dataset and stores the resulting models in a complex object called `lasso_models`.
+
+```{r}
+lasso_study <- 
+    lasso_sim %>% 
+    group_by(replicate) %>% 
+    nest() %>% 
+    mutate(
+        lasso_model = map(.x = data,
+                          ~glmnet(.x %>% select(-Y) %>% as.matrix(), 
+                                  .x %>% select(Y) %>% as.matrix(), 
+                                  alpha = 1, 
+                                  lambda = 30)))
+```
+- **Question 2.6**: extracts the estimated coefficient `beta_1` from each of the 1000 LASSO models. As a result you have 1000 estimates of $\beta_`$
+
+````{r}
+lasso_study <- 
+    lasso_study %>% 
+    mutate(lasso_beta1 = map_dbl(.x = lasso_model, ~coef(.x)[2,]))
+```
+
+- **Question 2.7**: plots the (approximation of the) sampling distribution of $\hat{\beta}_1$ obtained by LASSO.
+
+```{r}
+lasso_beta1_sampling_dist <- 
+    lasso_study %>% 
+    ggplot() + 
+    geom_histogram(aes(lasso_beta1), color='white') +
+    geom_vline(xintercept = 75, color = 'red') + 
+    geom_text(aes(75, 80), label = "True Value of\n the Parameter", color = 'red', size = 7) +
+    theme(text = element_text(size = 18)) + 
+    xlab(expression(hat(beta)[1])) + 
+    ggtitle("Lasso sample beta1's sampling distribution")
+    
+lasso_beta1_sampling_dist
+```
+
+**Something went wrong**: the red line shows the *true* value of the coefficient used to generate the data. The sampling distribution is *not* centered around that point. This problem is known as *bias* of the estimator.
+
+- **Question 2.9**: shows how to remove the bias of LASSO estimators fitting a least squares (LS) estimator *only* the variables selected by LASSO
+  - in the code note that `lm()` is used to fit LS but the covariates are only those selected by LASSO:
+
+`ls_fit = map2(.x = data, .y = lasso_selected_covariates,
+          ~lm(Y ~ ., data = .x[,c(.y, 'Y')]))`
+
+```{r}
+lasso_study <- 
+    lasso_study %>% 
+    mutate(
+        lasso_selected_covariates = map(.x = lasso_model, 
+                                        ~as_tibble(
+                                                as.matrix(coef(.x)),
+                                                rownames='covariate') %>%
+                                                filter(covariate != '(Intercept)' & abs(s0) > 10e-6) %>% 
+                                                pull(covariate)),
+        ls_fit = map2(.x = data, .y = lasso_selected_covariates,
+                     ~lm(Y ~ ., data = .x[,c(.y, 'Y')])),
+        ls_beta1 = map_dbl(.x = ls_fit, ~tidy(.x) %>% filter(term == 'X1') %>% pull(estimate)))
+```
+
+```{r}
+post_lasso_lm_beta1_sampling_dist <- 
+    lasso_study %>% 
+    ggplot() + 
+    geom_histogram(aes(ls_beta1), color='white') +
+    geom_vline(xintercept = 75, color = 'red') + 
+    geom_text(aes(75, 80), label = "True Value of\n the Parameter", color = 'red', size = 7) +
+    theme(text = element_text(size = 18)) + 
+    ggtitle("Post-Lasso sample beta1's sampling distribution")
+
+post_lasso_lm_beta1_sampling_dist
+```
+
+This time the sampling distribution is centered around the true value of the coefficient!! PostLASSO is an *unbiased* estimator.
+
+#### Remarks:
+
+- Note that Ridge is also *biased*. However, since Ridge does not select, the bias can not be removed.
+
+- Ridge can be used (and that why it was proposed) to address multicollinearity problems. Although Ridge is biased, the problem is not as severe as that resulted from multicollinearity. This is just a remark and was not illustrated in the course.
