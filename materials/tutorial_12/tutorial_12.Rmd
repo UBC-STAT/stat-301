@@ -1,0 +1,558 @@
+---
+jupyter:
+  jupytext:
+    formats: ipynb,Rmd
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.2'
+      jupytext_version: 1.12.0
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+---
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-f1e1d845873036f4", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+# Tutorial 12: Introduction to Explanatory Modeling when the Response Variable is Categorical or Discrete Counts
+<!-- #endregion -->
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-82d9926086d47a80", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+#### Lecture and Tutorial Learning Goals:
+After completing this week's lecture and tutorial work, you will be able to:
+
+1. Describe the logistic regression estimation procedure (categorical data as the response variable and explanatory variables), and Poisson regression estimation procedure (discrete counts as the response variable and explanatory variables).
+2. Discuss the relationship between linear regression and logistic and Poisson regression. Discuss the consequences of modeling data that is more suitable for logistic and Poisson regression models as a linear regression model.
+3. Interpret the coefficients and $p$-values in the logistic and Poisson regression settings.
+4. Discuss useful diagnostics for logistic and Poisson regression and explain why they should be performed.
+5. Write a computer script to perform logistic and Poisson regression and perform model diagnostics. Interpret and communicate the results from that computer script.
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-a2a153352bc44a68', 'locked': True, 'schema_version': 3, 'solution': False, 'task': False}}
+# Run this cell before continuing.
+library(tidyverse)
+library(repr)
+library(digest)
+library(infer)
+library(gridExtra)
+library(mlbench)
+library(AER)
+library(ISLR)
+library(broom)
+library(qqplotr)
+library(performance)
+library(see)
+library(MASS)
+library(glmbb)
+library(cowplot)
+source("tests_tutorial_12.R")
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-801b28434bf00853"} -->
+## 1. Poisson Regression
+
+Let us proceed with Poisson regression. This class of GLM is intended for cases where the response is a count (i.e., an integer). What do we mean by this? Firstly, we will load the dataset to be used in this section. The data frame `crabs` ([Brockmann, 1996](https://ubc.summon.serialssolutions.com/2.0.0/link/0/eLvHCXMwrV3JasMwEBUlpZBLl7Sl6YY_oE4sy5sgFEpICKU9NadcjFYSmtghCyRf0t-tJC_EPhRaepMHS8jSSPM0M3oGALkdx67tCYRyKV0GacCp9CBX60RCySMcYiigy2qpOq_F1ZiMLqL0v-mFYrZvvd4JXXcPEnOUZbU1z6W-fxdoh6eO-XQUvDyGCnXrbK_hxCkDDCHKgs9KH20FelDOR_pzWxXbdYhljTEanoF10e8iC6V2SbDK9Pg_H3gOTnPsar1kynYBjkTSAs1yC923wMkkNaVL8NVbkNXn8wcxjJ8b0euaZysTvyuzVJUYH9i6Kpsl1ijVOSbTtPZ2f6V6nYuectnbbLGdb2tNLNP5fjkVi1J-BcbDwbg_svOfQNhMIRdsu4KHEnIsIiQYJoGQvsKQmAuOsE8lojRnrPEIlZQHHIUEEs8PBVHQjaJr0EjSRNwAS8ebmMNk4DHkRYgQSt2ARoxRnzuhJG2AitmNlxnVR3x4REI41sMf6-GP8-GPd20QmVn7RZV4MB7p0u3fq96BZpY-rn1B96CxWW3FgyGOeDR6_g1rIQSN)) is a dataset detailing the **counts** of satellite male crabs residing around a female crab nest: `n_males`. 
+
+> The data frame `crabs` contains 173 observations on horseshoe crabs (*Limulus polyphemus*). The response is the count of male crabs (`n_males`) around a female breeding nest. It is subject to four input variables: a factor for the `color` of the prosoma with four levels, a factor for the condition of the posterior `spine` with three levels, the continuous variables carapace `width` (cm), and `weight` (g).
+
+Run the cell below before proceeding.
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': False, 'locked': True, 'task': False, 'grade_id': 'cell-c42393c3147ab6d0'}}
+data(crabs)
+crabs <- crabs %>%
+  rename(n_males = satell) %>%
+  dplyr::select(-y)
+
+str(crabs)
+head(crabs)
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-3245a397a3c0a56f"} -->
+**Question 1.1**
+<br>{points: 1}
+
+Create a scatterplot of `n_males` versus carapace `width` (via `geom_point()`), even though `n_males` is not continuous. The `ggplot()` object's name will be `Crabs_vs_width_scatterplot`. Recall that the response must be placed on the $y$-axis, whereas the continuous input must be on the $x$-axis. Include proper axis labels and title.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-267744b8584d386b'}}
+# Crabs_vs_width_scatterplot <- 
+#   ... %>%
+#   ggplot() +
+#   ...(aes(..., ...)) +
+#   labs(y = ..., x = ...) +
+#   ggtitle(...) +
+#   theme(
+#     text = element_text(size = 16.5),
+#     plot.title = element_text(face = "bold"),
+#     axis.title = element_text(face = "bold"),
+#     legend.title = element_text(face = "bold")) + 
+#   scale_x_continuous(breaks = seq(20, 34, 2))
+
+### BEGIN SOLUTION
+Crabs_vs_width_scatterplot <- 
+  crabs %>%
+  ggplot() +
+  geom_point(aes(width, n_males)) +
+  labs(y = "Number of Male Crabs", x = "Carapace Width (cm)") +
+  ggtitle("Scatterplot of Number of Male Crabs Versus Carapace Width") +
+  theme(
+    text = element_text(size = 14),
+    plot.title = element_text(face = "bold"),
+    axis.title = element_text(face = "bold"),
+    legend.title = element_text(face = "bold"),
+  ) + 
+  scale_x_continuous(breaks = seq(20, 34, 2))
+### END SOLUTION
+
+Crabs_vs_width_scatterplot
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-4ea95eb36fa39c91'}}
+test_1.1()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-d8dc6bd50a1e51f1"} -->
+**Question 1.2**
+<br>{points: 1}
+
+Note the characteristic horizontal pattern in the points of `Crabs_vs_width_scatterplot`, since the $y$-axis has repeated counts associated with different `width` values. Another question arises, graphically speaking, how is the variable `n_males` associated with the carapace `width`?
+
+The `Crabs_vs_width_scatterplot` above is too hard to graphically conclude something about the relationship between `n_males` and caparace `width`. Hence, let us plot the average `n_males` by non-overlapped carapace `width` groups. Create a data frame called `Crabs_group_avg_width`, which is created from `crabs` and has two columns:
+
+- `width_intervals`: a column created with column `width` via function `cut()` with `breaks = 10` (i.e., bins).
+- `mean_n_males`: the average `n_males` by each bin.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-e136e294390e75db'}}
+# Crabs_group_avg_width <- 
+#  ... %>%
+#  ...(width_intervals = ...(..., ...)) %>%
+#  group_by(...) %>% 
+#  summarise(... = ...(...)) 
+
+### BEGIN SOLUTION
+Crabs_group_avg_width <- 
+  crabs %>%
+  mutate(width_intervals = cut(width, breaks = 10)) %>%
+  group_by(width_intervals) %>% 
+  summarise(mean_n_males = mean(n_males)) 
+### END SOLUTION
+
+Crabs_group_avg_width
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-24bf5f18b3ee2717'}}
+test_1.2()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-fcf23138e5f9e32f"} -->
+**Question 1.3**
+<br>{points: 1}
+
+Create another scatterplot of `mean_n_males` on the $y$-axis versus the carapace `width_intervals` on the $x$-axis using `Crabs_group_avg_width` with `geom_point()`. The `ggplot()` object's name will be `Crabs_avg_width_scatterplot`. Include proper axis labels and title.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-72dcede930e14421'}}
+# Crabs_avg_width_scatterplot <- ... %>%
+#   ggplot() +
+#   ...(aes(..., ...), colour = "red", size = 4) +
+#   labs(y = ..., x = ...) +
+#   ggtitle(...) +
+#   theme(
+#     text = element_text(size = 14),
+#     plot.title = element_text(face = "bold"),
+#     axis.title = element_text(face = "bold"),
+#     legend.title = element_text(face = "bold"),
+#     axis.text.x = element_text(angle = 45, hjust = 1)
+#   )
+
+### BEGIN SOLUTION
+Crabs_avg_width_scatterplot <- 
+  Crabs_group_avg_width %>%
+  ggplot() +
+  geom_point(aes(width_intervals, mean_n_males), colour = "red", size = 4) +
+  labs(y = "Mean Number of Male Crabs", x = "Carapace Width Interval (cm)") +
+  ggtitle("Mean Number of Male Crabs Versus Carapace Width by Interval") +
+  theme(
+    text = element_text(size = 14),
+    plot.title = element_text(face = "bold"),
+    axis.title = element_text(face = "bold"),
+    legend.title = element_text(face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+### END SOLUTION
+
+options(repr.plot.width = 15, repr.plot.height = 7)
+plot_grid(Crabs_vs_width_scatterplot, Crabs_avg_width_scatterplot, ncol = 2)
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-c470e7f855f8f4c8'}}
+test_1.3()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-58f301f5cab01d1a"} -->
+**Question 1.4**
+<br>{points: 1}
+
+By looking at `Crabs_avg_width_scatterplot`, graphically speaking, what is the relationship between `n_males` and carapace `width`?
+
+**A.** Positive.
+
+**B.** Negative.
+
+**C.** No relationship.
+
+*Assign your answer to the object `answer1.4` (character type surrounded by quotes).*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-5f4531deea0754da'}}
+# answer1.4 <- ...
+
+### BEGIN SOLUTION
+answer1.4 <- "A"
+### END SOLUTION
+
+answer1.4
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-32224ab4e0d00a59'}}
+test_1.4()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-98e957ee7f6dfc9c"} -->
+If we compare `Crabs_vs_width_scatterplot` and `Crabs_avg_width_scatterplot`, we can see that working with the averages of `n_males` by carapace `width` intervals gives us a clearer perspective of the relationship between these two variables. Nonetheless, we need to find a suitable regression model to confirm this statistically.
+
+Recall that the residual component in an ordinary linear regression model, namely $\varepsilon_i$, is assumed to be normal, making the response $Y_i$ normal. In this case, our response variable is the "Number of male crabs" (count!). Counts distributions can be asymmetric, and they are non-negative -- the normal distribution might not be adequate. Nor the logistic regression, since we are not estimating proportions. 
+
+A very useful distribution to model counts (not the only one!) is the Poisson distribution. 
+<!-- #endregion -->
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-d07f008bc4129b8f"} -->
+**The Poisson Regression**
+
+A Poisson random variable refers to discrete data with non-negative integer values that count something in a given timeframe or even in a space such as a geographic unit. A particularity of the Poisson distribution is that its mean is equal to its variance. Thus, any factor that affects the mean will also affect the variance. This fact could be a potential drawback for using a Poisson regression model.
+
+The Poisson regression model is given by:
+
+$$Y_i|\mathbf{X}_i \sim \text{Poisson}(\lambda_i),$$
+
+$$\log(\lambda_i) = \beta_0 + \beta_1X_{1,i} + \ldots + \beta_pX_{1,p}$$
+
+where each variable has its own mean, $\lambda_i$, and variance, also $\lambda_i$. The parameter $\lambda_i$ is interpreted as the risk of an event occurring in a given timeframe or even a space. Note that $\lambda_i$ cannot be negative, hence the use of the $\log(\lambda_i)$.
+<!-- #endregion -->
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-27605b7706aedb71"} -->
+**Question 1.5**
+<br>{points: 1}
+
+For our `crabs` dataset the events are the number of male crabs, `n_males`, around a space: the female breeding nest. Suppose we want to make inference on whether the carapace `width` is related to the response `n_males`. Thus, we could use Poisson regression. Let $X_{\texttt{width}_i}$ be the $i$th value for the input `width` in our dataset `crabs`. The model's sample regression equation will be:
+
+$$\log(\lambda_i) = \beta_0 + \beta_1 X_{\texttt{width}_i}.$$
+
+Let us plot the predictions of this model on top of `Crabs_vs_width_scatterplot`. Use `geom_smooth()` with `method = "glm"` and `method.args = list(family = poisson)`.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-3a1e6d7e495e79d0'}}
+# Crabs_vs_width_scatterplot <- 
+#   Crabs_vs_width_scatterplot +
+#   ...(
+#     aes(..., ...), 
+#     ..., se = FALSE,
+#     ...)
+
+### BEGIN SOLUTION
+Crabs_vs_width_scatterplot <- 
+    Crabs_vs_width_scatterplot +
+    geom_smooth(
+        aes(width, n_males), 
+        method = "glm", se = FALSE,
+        method.args = list(family = poisson))
+### END SOLUTION
+
+Crabs_vs_width_scatterplot
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-e6f45c72012f6548'}}
+test_1.5()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-1cd6b2d8388adfad"} -->
+**Question 1.6**
+<br>{points: 1}
+
+The parameters $\beta_0, \beta_1, \dots, \beta_{p}$ in this model are also unknown. In order to fit a Poisson regression model, we can also use the function `glm()` and its argument `family = poisson` (required to specify the Poisson nature of the response), which obtains the estimates $\hat{\beta}_0, \hat{\beta}_1, \dots \hat{\beta}_{p}$. The estimates are obtained through maximum likelihood where we assume a Poisson joint probability mass function of the $n$ responses $Y_i$.
+
+Using `glm()`, estimate a Poisson regression model with `n_males` as a response and two input variables: `width` ($X_{\texttt{width}_i}$) and `color` ($X_{\texttt{color_darker}_i}$, $X_{\texttt{color_light}_i}$, and $X_{\texttt{color_medium}_i}$) for the $i$th observation:
+
+$$
+log(\lambda_i) = \beta_0 + \beta_1 X_{\texttt{width}_i} + \beta_2 X_{\texttt{color_darker}_i} + \beta_3 X_{\texttt{color_light}_i} + \beta_4 X_{\texttt{color_medium}_i}.
+$$
+
+Note that the discrete and nominal input `color` has four levels (where `dark` is the baseline): 
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': False, 'locked': True, 'task': False, 'grade_id': 'cell-a5c51d7457cd83a8'}}
+levels(crabs$color)
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-3474c3e0f1563e34"} -->
+Therefore, we have three dummy variables: $X_{\texttt{color_darker}_i}$, $X_{\texttt{color_light}_i}$, and $X_{\texttt{color_medium}_i}$. Depending on the `color`, these dummy variables take on the following values:
+
+- When `color` is `darker`, then $X_{\texttt{color_darker}_i} = 1$ while the other two dummy variables $X_{\texttt{color_light}_i} = X_{\texttt{color_medium}_i} = 0$.
+- When `color` is `light`, then $X_{\texttt{light}_i} = 1$ while the other two dummy variables $X_{\texttt{color_darker}_i} = X_{\texttt{color_medium}_i} = 0$.
+- When `color` is `medium`, then $X_{\texttt{medium}_i} = 1$ while the other two dummy variables $X_{\texttt{color_darker}_i} = X_{\texttt{color_light}_i} = 0$.
+
+Call the model `crabs_Poisson_model`.
+    
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*    
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-cce6669279499835'}}
+# crabs_Poisson_model <- ...(
+#   ...,
+#   ...,
+#   ...
+# )
+
+### BEGIN SOLUTION
+crabs_Poisson_model <- glm(
+  formula = n_males ~ width + color,
+  data = crabs,
+  family = poisson
+)
+### END SOLUTION
+
+summary(crabs_Poisson_model)
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-97cc9b41beb464bf'}}
+test_1.6()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-b7f592bf64da6cf8"} -->
+**Question 1.7**
+<br>{points: 1}
+
+Report the estimated coefficients, their standard errors, and corresponding $p$-values using `tidy()` with `crabs_Poisson_model`. Include the corresponding asymptotic 95% confidence intervals. Store the results in the variable `crabs_Poisson_model_results`.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-4deafdcc73d1ddc4'}}
+# crabs_Poisson_model_results <- 
+#   ...(..., conf.int = TRUE) %>%
+#   mutate_if(is.numeric, round, 3)
+
+### BEGIN SOLUTION
+crabs_Poisson_model_results <- 
+  tidy(crabs_Poisson_model, conf.int = TRUE) %>%
+  mutate_if(is.numeric, round, 4)
+### END SOLUTION
+
+crabs_Poisson_model_results
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-441e381e29ca858b'}}
+test_1.7()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-f95b8a861b29b15b"} -->
+**Question 1.8**
+<br>{points: 1}
+
+Add to `crabs_Poisson_model_results` the estimate, and 95% confidence interval, of $\exp\{\beta_j\}, j=0,...,p$. 
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-faa353ab9211c114'}}
+# crabs_Poisson_model_results <- 
+#   crabs_Poisson_model_results %>%
+#   mutate(
+#     exp.estimate = ...,
+#     exp.conf.low = ...,
+#     exp.conf.high = ...) %>%
+#   mutate_if(is.numeric, round, 3)
+
+### BEGIN SOLUTION
+crabs_Poisson_model_results <- 
+  crabs_Poisson_model_results %>%
+  mutate(
+    exp.estimate = exp(estimate),
+    exp.conf.low = exp(conf.low),
+    exp.conf.high = exp(conf.high)) %>%
+  mutate_if(is.numeric, round, 4)
+### END SOLUTION
+
+crabs_Poisson_model_results
+
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-1822a6990bcbbd0f'}}
+test_1.8()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-7c2691fb066e9a1e"} -->
+**Question 1.9**
+<br>{points: 1}
+
+Using a **significance level $\alpha = 0.05$**, which inputs are statistically associated to the response via their regression coefficients in `crabs_Poisson_model_results`?
+
+**A.** The continuous input `width`.
+
+**B.** The dummy variable associated with a `darker` `color`.
+
+**C.** The dummy variable associated with a `light` `color`.
+
+**D.** The dummy variable associated with a `medium` `color`
+
+*Assign your answers to the object `answer1.9`. Your answers have to be included in a single string indicating the correct options **in alphabetical order** and surrounded by quotes (e.g., `"ABCD"` indicates you are selecting the four options).*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-d1466876e62cbd8d'}}
+# answer1.9 <- 
+
+### BEGIN SOLUTION
+answer1.9 <- "ACD"
+### END SOLUTION
+
+answer1.9
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-c4b2bdbb07660385'}}
+test_1.9()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-30680ad0b12b005a"} -->
+**Question 1.10**
+<br>{points: 1}
+
+Firstly, let us focus on the coefficient interpretation corresponding to carapace `width`, *while keeping `color` constant*. Consider an observation with a given value $X_{\texttt{width}} = \texttt{w}$ cm, and another observation with a given $X_{\texttt{width + 1}} = \texttt{w} + 1$ cm (i.e., an increase of $1$ cm). Then we have their corresponding regression equations:
+
+$$
+\log \lambda_{\texttt{width}} = \beta_0 + \beta_1 \overbrace{\texttt{w}}^{X_{\texttt{width}}} + \overbrace{\beta_2 X_{\texttt{color_darker}} + \beta_3 X_{\texttt{color_light}} + \beta_4 X_{\texttt{color_medium}}}^{\text{Constant}}
+$$
+$$
+\log \lambda_{\texttt{width + 1}} = \beta_0 + \beta_1 \underbrace{(\texttt{w} + 1)}_{X_{\texttt{width + 1}}} + \underbrace{\beta_2 X_{\texttt{color_darker}} + \beta_3 X_{\texttt{color_light}} + \beta_4 X_{\texttt{color_medium}}.}_{\text{Constant}}
+$$
+
+We take the difference between both equations as:
+
+\begin{align*}
+\log \lambda_{\texttt{width + 1}} - \log \lambda_{\texttt{width}} &= \beta_1 (\texttt{w} + 1) - \beta_1 \texttt{w} \\
+&= \beta_1.
+\end{align*}
+
+Then, we apply the logarithm property for a ratio:
+
+\begin{align*}
+\log \frac{\lambda_{\texttt{width + 1}} }{\lambda_{\texttt{width}}} &= \log \lambda_{\texttt{width + 1}} - \log \lambda_{\texttt{width}} \\
+&= \beta_1.
+\end{align*}
+
+Finally, we have to exponentiate the previous equation:
+
+$$
+\frac{\lambda_{\texttt{width + 1}} }{\lambda_{\texttt{width}}} = e^{\beta_1}.
+$$
+
+The expression $\frac{\lambda_{\texttt{width + 1}} }{\lambda_{\texttt{width}}} = e^{\beta_1}$ indicates that the response varies in a multiplicative way when increased 1 cm in carapace `width`. Hence, **using the column `exp.estimate` from `crabs_Poisson_model_results`**, what is the correct interpretation of the regression equation's estimated slope for `width`?
+
+**A.** The mean count of male crabs (`n_males`) around a female breeding nest decreases by $161\%$ when increasing the carapace `width` by $1$ cm, *while keeping `color` constant*.
+
+**B.** The mean count of male crabs (`n_males`) around a female breeding nest increases by $161\%$ when increasing the carapace `width` by $1$ cm, *while keeping `color` constant*.
+
+**C.** The mean count of male crabs (`n_males`) around a female breeding nest increases by $16.1\%$ when increasing the carapace `width` by $1$ cm, *while keeping `color` constant*.
+
+**D.** The mean count of male crabs (`n_males`) around a female breeding nest decreases by $16.1\%$ when increasing the carapace `width` by $1$ cm, *while keeping `color` constant*.
+
+*Assign your answer to the object `answer1.10` (character type surrounded by quotes).*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-813f996317ff61dd'}}
+# answer1.10 <- ...
+
+### BEGIN SOLUTION
+answer1.10 <- "C"
+### END SOLUTION
+
+answer1.10
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-01b57f216ff8f262'}}
+test_1.10()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-f8af88cea66668b0"} -->
+**Question 1.11**
+<br>{points: 1}
+
+Let us move on to the interpretation of the coefficient corresponding to `light color` to the baseline level `dark`. 
+Using the `crabs_Poisson_model_results` tibble, what is the correct interpretation of the regression equation's estimated slope for a `light color`?
+
+**A.** The mean count of male crabs (`n_males`) around a female breeding nest decreases by $54.7\%$ when the `color` of the prosoma changes from `dark` to `light`, *while keeping the carapace `width` constant.*
+
+**B.** The mean count of male crabs (`n_males`) around a female breeding nest increases by $54.7\%$ when the `color` of the prosoma changes from `dark` to `light`, *while keeping the carapace `width` constant.*
+
+**C.** The mean count of male crabs (`n_males`) around a female breeding nest increases by $154.7\%$ when the `color` of the prosoma changes from `dark` to `light`, *while keeping the carapace `width` constant.*
+
+**D.** The mean count of male crabs (`n_males`) around a female breeding nest decreases by $154.7\%$ when the `color` of the prosoma changes from `dark` to `light`, *while keeping the carapace `width` constant.*
+
+*Assign your answer to the object `answer1.11` (character type surrounded by quotes).*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-9dd1384a6af3a36a'}}
+# answer1.11 <- ...
+
+### BEGIN SOLUTION
+answer1.11 <- "B"
+### END SOLUTION
+
+answer1.11
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-27d30eed0b7b8bae'}}
+test_1.11()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-96565a64571f2a45"} -->
+**Question 1.12**
+<br>{points: 1}
+
+Suppose we want to predict the mean count of male crabs (`n_males`) around a female breeding nest with a carapace `width` of $27.5$ cm and a `light` `color` of the prosoma. Then, using the function `predict()` with the object `crabs_Poisson_model`, obtain the corresponding prediction.
+
+> **Hint:** Check the argument `type` when coding this prediction.
+
+*Assign your answer to the object `answer1.12`. Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-5f4ccaec6bf73492'}}
+# answer1.12 <- 
+#   ...(...,
+#     tibble(..., ..., ...),
+#     type = ...
+#   )
+
+### BEGIN SOLUTION
+answer1.12 <- 
+  predict(crabs_Poisson_model,
+    tibble(width = 27.5, color = "light"),
+    type = "response"
+  )
+### END SOLUTION
+
+answer1.12
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-0df8c510b063bb57'}}
+test_1.12()
+```

@@ -153,44 +153,7 @@ test_1.4 <- function() {
   print("Success!")
 }
 
-#-----
 test_1.5 <- function() {
-  test_that('Did not assign answer to an object called "Default_binary_log_student"', {
-    expect_true(exists("Default_binary_log_student"))
-  })
-  
-  test_that("Solution should be a glm object", {
-    expect_true("glm" %in% class(Default_binary_log_student))
-  })
-  
-  test_that("Data frame does not contain the correct data", {
-    expect_equal(digest(as.integer(sum(Default_binary_log_student$residuals) * 10e4)), 
-                 "1473d70e5646a26de3c52aa1abd85b1f")
-  })
-  
-  print("Success!")
-}
-
-test_1.6 <- function() {
-  test_that('Did not assign answer to an object called "answer1.6"', {
-    expect_true(exists("answer1.6"))
-  })
-  
-  test_that('Solution should be a single character ("A", "B", "C", or "D")', {
-    expect_match(answer1.6, "a|b|c|d", ignore.case = TRUE)
-  })
-  
-  answer_hash <- digest(tolower(answer1.6))
-  
-  test_that("Solution is incorrect", {
-    expect_equal(answer_hash, "ddf100612805359cd81fdc5ce3b9fbba")
-  })
-  
-  print("Success!")
-}
-
-
-test_1.7 <- function() {
   test_that('Did not assign answer to an object called "Default_binary_log_model"', {
     expect_true(exists("Default_binary_log_model"))
   })
@@ -206,44 +169,7 @@ test_1.7 <- function() {
   print("Success!")
 }
 
-
-test_1.8 <- function() {
-  test_that('Did not assign answer to an object called "answer1.8"', {
-    expect_true(exists("answer1.8"))
-  })
-  
-  test_that('Solution should be a single character ("A", "B", "C", or "D")', {
-    expect_match(answer1.8, "a|b|c|d", ignore.case = TRUE)
-  })
-  
-  answer_hash <- digest(tolower(answer1.8))
-  
-  test_that("Solution is incorrect", {
-    expect_equal(answer_hash, "6e7a8c1c098e8817e3df3fd1b21149d1")
-  })
-  
-  print("Success!")
-}
-
-test_1.9 <- function() {
-  test_that('Did not assign answer to an object called "answer1.9"', {
-    expect_true(exists("answer1.9"))
-  })
-  
-  test_that('Solution should be a single character ("A", "B", "C", or "D")', {
-    expect_match(answer1.9, "a|b|c|d", ignore.case = TRUE)
-  })
-  
-  answer_hash <- digest(tolower(answer1.9))
-  
-  test_that("Solution is incorrect", {
-    expect_equal(answer_hash, "127a2ec00989b9f7faf671ed470be7f8")
-  })
-  
-  print("Success!")
-}
-
-test_1.10 <- function() {
+test_1.6 <- function() {
   test_that('Did not assign answer to an object called "Default_binary_log_model_results"', {
     expect_true(exists("Default_binary_log_model_results"))
   })
@@ -276,7 +202,7 @@ test_1.10 <- function() {
   print("Success!")
 }
 
-test_1.11 <- function() {
+test_1.7 <- function() {
   test_that('Did not assign answer to an object called "Default_binary_log_model_results"', {
     expect_true(exists("Default_binary_log_model_results"))
   })
@@ -308,12 +234,12 @@ test_1.11 <- function() {
   print("Success!")
 }
 
-test_1.12 <- function() {
-  test_that('Did not assign answer to an object called "answer1.12"', {
-    expect_true(exists("answer1.12"))
+test_1.8 <- function() {
+  test_that('Did not assign answer to an object called "answer1.8"', {
+    expect_true(exists("answer1.8"))
   })
 
-  answer_hash <- digest(tolower(answer1.12))
+  answer_hash <- digest(tolower(answer1.8))
   test_that("Solution is incorrect", {
     expect_equal(answer_hash, "8b63e49106226d2a45958a7e24c97c37")
   })
@@ -321,13 +247,48 @@ test_1.12 <- function() {
   print("Success!")
 }
 
-
-test_1.13 <- function() {
-  test_that('Did not assign answer to an object called "answer1.13"', {
-    expect_true(exists("answer1.13"))
+test_1.9 <- function() {
+  test_that('Did not assign answer to an object called "answer1.9"', {
+    expect_true(exists("answer1.9"))
   })
 
-  answer_as_numeric <- as.numeric(answer1.13)
+  test_that('Solution should be a single character ("A", "B", "C", or "D")', {
+    expect_match(answer1.9, "a|b|c|d", ignore.case = TRUE)
+  })
+
+  answer_hash <- digest(tolower(answer1.9))
+
+  test_that("Solution is incorrect", {
+    expect_equal(answer_hash, "6e7a8c1c098e8817e3df3fd1b21149d1")
+  })
+
+  print("Success!")
+}
+
+test_1.10 <- function() {
+  test_that('Did not assign answer to an object called "answer1.10"', {
+    expect_true(exists("answer1.10"))
+  })
+
+  test_that('Solution should be a single character ("A", "B", "C", or "D")', {
+    expect_match(answer1.10, "a|b|c|d", ignore.case = TRUE)
+  })
+
+  answer_hash <- digest(tolower(answer1.10))
+
+  test_that("Solution is incorrect", {
+    expect_equal(answer_hash, "127a2ec00989b9f7faf671ed470be7f8")
+  })
+
+  print("Success!")
+}
+
+test_1.11 <- function() {
+  test_that('Did not assign answer to an object called "answer1.11"', {
+    expect_true(exists("answer1.11"))
+  })
+
+  answer_as_numeric <- as.numeric(answer1.11)
   test_that("Solution should be a number", {
     expect_false(is.na(answer_as_numeric))
   })
@@ -339,12 +300,12 @@ test_1.13 <- function() {
   print("Success!")
 }
 
-test_1.14 <- function() {
-  test_that('Did not assign answer to an object called "answer1.14"', {
-    expect_true(exists("answer1.14"))
+test_1.12 <- function() {
+  test_that('Did not assign answer to an object called "answer1.12"', {
+    expect_true(exists("answer1.12"))
   })
 
-  answer_as_numeric <- as.numeric(answer1.14)
+  answer_as_numeric <- as.numeric(answer1.12)
   test_that("Solution should be a number", {
     expect_false(is.na(answer_as_numeric))
   })
