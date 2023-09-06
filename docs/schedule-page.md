@@ -196,7 +196,7 @@
             <td></td>
             <td style="text-align: left;">
                 <ul>
-                        
+                     <li> Rest </li>   
                 </ul>
             </td>
         </tr>
