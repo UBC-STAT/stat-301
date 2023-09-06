@@ -416,7 +416,7 @@ By the end of this section, students will be able to:
 8. Discuss how the desired goal of generative modelling is usually to make causal claims but it is often not easy do so (e.g., in observational studies).
 9. Discuss the impact of confounders in causal inference.
 
-#### Week 6: Model diagnostics and confounding factors
+#### Week 6: Case Study
 Presentation of a real case study that suffered from a problem of confounding. Part of the class time will be used for independent studying where the students will work on their projects with other group members. There's no class on Thursday due to "Monday-Makeup" day.
 
 #### Week 7: Model metrics for generative modelling and model selection 
