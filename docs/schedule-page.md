@@ -246,7 +246,7 @@
                     <li>Tutorial 10</li>
                     <li>Project:
                         <ul>
-                            <li>Individual: TBD</li>
+                            <li>Group Interview</li>
                         </ul>
                     </li>
                 </ul>
