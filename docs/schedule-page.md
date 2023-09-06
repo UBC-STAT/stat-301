@@ -191,7 +191,7 @@
             <td>
                 <ul>
                     <li> Tuesday: Review </li>
-                    <li> Thursday (Oct 6th): Mid-Term #1 and in-class work on project </li>
+                    <li> Thursday (Oct 26th): Mid-Term #1 and in-class work on project </li>
                 </ul>
             </td>
             <td></td>
@@ -346,10 +346,9 @@ All due dates will be on the last day of the week (Saturday at 23:59:59).
 
 #### Test Dates
 
-- Midterm 1: Thursday, October 6th at 12:30pm
-- Midterm 2: Thursday, November 3th at 12:30pm
-- Final Group Project: Dec 3rd at 11:59pm
-- Final Exam: Fri Dec 16 2022 @ 12:00 pm in room cirs-1250
+- Midterm: Thursday, October 26th at 12:30pm-1:50pm
+- Final Group Project: Dec 2nd at 11:59pm
+- Final Exam: TBD
 
 ### Learning Outcomes per Week
 
