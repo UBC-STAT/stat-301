@@ -114,7 +114,7 @@
         </tr>
         <tr>
             <td>#5</td>
-            <td> Oct 15 ~ Oct 21 </td>
+            <td> Oct 01 ~ Oct 07 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Diagnostics and confounding factors </li>
