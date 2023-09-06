@@ -165,8 +165,24 @@
             </td>
         </tr>
         <tr>
-            <td>#7</td>
-            <td> Oct 15 ~ Oct 21 </td>
+            <td>#8</td>
+            <td>Oct 15 ~ Oct 21</td>
+            <td>
+                <ul>
+                    <li> Tuesday: Review </li>
+                    <li> Thursday (Oct 26th): Mid-Term </li>
+                </ul>
+            </td>
+            <td></td>
+            <td style="text-align: left;">
+                <ul>
+                     <li> Rest </li>   
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>#8</td>
+            <td> Oct 22 ~ Oct 28 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Model assessment and selection </li>
@@ -179,24 +195,8 @@
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Worksheet 07</li>
-                    <li>Tutorial 07</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>#8</td>
-            <td>Oct 22 ~ Oct 28</td>
-            <td>
-                <ul>
-                    <li> Tuesday: Review </li>
-                    <li> Thursday (Oct 26th): Mid-Term </li>
-                </ul>
-            </td>
-            <td></td>
-            <td style="text-align: left;">
-                <ul>
-                     <li> Rest </li>   
+                    <li>Worksheet 08</li>
+                    <li>Tutorial 08</li>
                 </ul>
             </td>
         </tr>
