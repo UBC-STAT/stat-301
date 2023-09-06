@@ -14,7 +14,7 @@
     <tbody>
         <tr>
             <td>#1</td> 
-            <td>Sept 04 ~ Sept 10</td>
+            <td>Sept 03 ~ Sept 09</td>
             <td style="text-align: left;">
                 <ul>
                     <li> Review of STAT 201
@@ -41,7 +41,7 @@
         </tr>
         <tr>
             <td>#2</td>
-            <td>Sept 11 ~ Sept 17</td>
+            <td>Sept 10 ~ Sept 16</td>
             <td style="text-align: left;">
                 <ul>
                     <li> A/B Testing 
@@ -72,7 +72,7 @@
         </tr>
         <tr>
             <td>#3</td>
-            <td>Sept 18 ~ Sept 24</td>
+            <td>Sept 17 ~ Sept 23</td>
             <td style="text-align: left;">
                 <ul>
                     <li>Simple Linear Regression</li>
@@ -93,7 +93,7 @@
         </tr>
         <tr>
             <td>#4</td>
-            <td> Sept 25 ~ Oct 01</td>
+            <td> Sept 24 ~ Sept 30</td>
             <td style="text-align: left;">
                 <ul>
                     <li>Multiple Linear Regression</li>
@@ -114,7 +114,7 @@
         </tr>
         <tr>
             <td>#5</td>
-            <td>Oct 02 ~ Oct 08</td>
+            <td>Oct 01 ~ Oct 07</td>
             <td>
                 <ul>
                     <li> Tuesday: Review and work on project </li>
@@ -134,7 +134,7 @@
         </tr>
         <tr>
             <td>#6</td>
-            <td> Oct 09 ~ Oct 15 </td>
+            <td> Oct 08 ~ Oct 14 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Diagnostics and confounding factors </li>
@@ -156,7 +156,7 @@
         </tr>
         <tr>
             <td>#7</td>
-            <td> Oct 16 ~ Oct 22 </td>
+            <td> Oct 15 ~ Oct 21 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Model assessment and selection </li>
@@ -176,7 +176,7 @@
         </tr>
         <tr>
             <td>#8</td>
-            <td> Oct 23 ~ Oct 29 </td>
+            <td> Oct 22 ~ Oct 28 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Predictive Modelling </li>
@@ -198,7 +198,7 @@
         </tr>
         <tr>
             <td>#9</td>
-            <td> Oct 30 ~ Nov 05 </td>
+            <td> Oct 29 ~ Nov 04 </td>
             <td>
                 <ul>
                     <li> Tuesday: Review and work on project </li>
@@ -218,7 +218,7 @@
         </tr>
         <tr>
             <td>#10</td>
-            <td> Nov 06 ~ Nov 12 </td>
+            <td> Nov 05 ~ Nov 11 </td>
             <td>
                 <ul>
                     <li>Tuesday: 
@@ -247,7 +247,7 @@
         </tr>
         <tr>
             <td>#11</td>
-            <td> Nov 13 ~ Nov 19 </td>
+            <td> Nov 12 ~ Nov 18 </td>
             <td style="text-align: left;">
                 <ul>
                     <li>Post Selection Inference</li>
@@ -267,7 +267,7 @@
         </tr>
         <tr>
             <td>#12</td>
-            <td> Nov 20 ~ Nov 26 </td>
+            <td> Nov 19 ~ Nov 25 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Modelling Discrete Count </li>
@@ -290,7 +290,7 @@
         </tr>
         <tr>
             <td>#13</td>
-            <td> Nov 27 ~ Dec 03 </td>
+            <td> Nov 26 ~ Dec 02 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Classifiers </li>
@@ -315,7 +315,7 @@
         </tr>
         <tr>
             <td>#14</td>
-            <td> Dec 04 ~ Dec 07 </td>
+            <td> Dec 03 ~ Dec 09 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Review </li>
