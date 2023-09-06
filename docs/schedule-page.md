@@ -133,6 +133,35 @@
             </td>
         </tr>
         <tr>
+            <td>#10</td>
+            <td> Nov 05 ~ Nov 11 </td>
+            <td>
+                <ul>
+                    <li>Tuesday: 
+                        <ul>
+                            <li>Cross-validation</li>
+                            <li>In-class work on project's peer-review</li>
+                        </ul>
+                    </li>    
+                    <li>Thursday: NO CLASS due to Midterm Break</li>
+                </ul>
+            </td>
+            <td style="text-align: left;">
+                <ul>
+                    <li><a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Sections 5.1 of ISL</a></li> 
+                </ul>    
+            </td>
+            <td style="text-align: left;">
+                <ul>
+                    <li>Project:
+                        <ul>
+                            <li>Peer Review</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
             <td>#6</td>
             <td> Oct 08 ~ Oct 14 </td>
             <td style="text-align: left;">
