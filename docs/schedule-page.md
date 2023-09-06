@@ -133,17 +133,17 @@
             </td>
         </tr>
         <tr>
-            <td>#10</td>
-            <td> Nov 05 ~ Nov 11 </td>
+            <td>#6</td>
+            <td> Oct 08 ~ Oct 14 </td>
             <td>
                 <ul>
                     <li>Tuesday: 
                         <ul>
                             <li>Cross-validation</li>
-                            <li>In-class work on project's peer-review</li>
+                            <li>In-class work on project</li>
                         </ul>
                     </li>    
-                    <li>Thursday: NO CLASS due to Midterm Break</li>
+                    <li>Thursday: NO CLASS due to Make-up Monday!! </li>
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -153,17 +153,19 @@
             </td>
             <td style="text-align: left;">
                 <ul>
+                    <li>Worksheet 06
+                    </li>
                     <li>Project:
                         <ul>
-                            <li>Peer Review</li>
+                            <li>TBD</li>
                         </ul>
                     </li>
                 </ul>
             </td>
         </tr>
         <tr>
-            <td>#6</td>
-            <td> Oct 08 ~ Oct 14 </td>
+            <td>#7</td>
+            <td> Oct 15 ~ Oct 21 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Diagnostics and confounding factors </li>
@@ -178,14 +180,14 @@
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Worksheet 06</li>
-                    <li>Tutorial 06</li>
+                    <li>Worksheet 07</li>
+                    <li>Tutorial 07</li>
                 </ul>
             </td>
         </tr>
         <tr>
-            <td>#7</td>
-            <td> Oct 15 ~ Oct 21 </td>
+            <td>#8</td>
+            <td> Oct 22 ~ Oct 28 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Model assessment and selection </li>
@@ -198,14 +200,14 @@
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Worksheet 07</li>
-                    <li>Tutorial 07</li>
+                    <li>Worksheet 08</li>
+                    <li>Tutorial 08</li>
                 </ul>
             </td>
         </tr>
         <tr>
-            <td>#8</td>
-            <td> Oct 22 ~ Oct 28 </td>
+            <td>#9</td>
+            <td> Oct 29 ~ Nov 04 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Predictive Modelling </li>
@@ -220,8 +222,8 @@
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Worksheet 08</li>
-                    <li>Tutorial 08</li>
+                    <li>Worksheet 09</li>
+                    <li>Tutorial 09</li>
                 </ul>
             </td>
         </tr>
