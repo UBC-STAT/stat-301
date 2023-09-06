@@ -141,7 +141,7 @@
                 <ul>
                     <li>Tuesday: 
                         <ul>
-                            <li>Cross-validation</li>
+                            <li>Case Study</li>
                             <li>In-class work on project</li>
                         </ul>
                     </li>    
@@ -155,11 +155,10 @@
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Worksheet 06
-                    </li>
-                    <li>Project:
+                     <li>Project:
                         <ul>
-                            <li>TBD</li>
+                            <li>Group: Team Contract</li>
+                            <li>Individual: TBD</li>
                         </ul>
                     </li>
                 </ul>
@@ -180,8 +179,8 @@
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li>Worksheet 08</li>
-                    <li>Tutorial 08</li>
+                    <li>Worksheet 07</li>
+                    <li>Tutorial 07</li>
                 </ul>
             </td>
         </tr>
@@ -191,17 +190,13 @@
             <td>
                 <ul>
                     <li> Tuesday: Review </li>
-                    <li> Thursday (Oct 26th): Mid-Term #1 and in-class work on project </li>
+                    <li> Thursday (Oct 26th): Mid-Term </li>
                 </ul>
             </td>
             <td></td>
             <td style="text-align: left;">
                 <ul>
-                        <li>Project:
-                        <ul>
-                            <li> Team Contract</li>
-                        </ul>
-                    </li>
+                        
                 </ul>
             </td>
         </tr>
@@ -224,6 +219,11 @@
                 <ul>
                     <li>Worksheet 09</li>
                     <li>Tutorial 09</li>
+                    <li>Project:
+                        <ul>
+                            <li>Individual: TBD</li>
+                        </ul>
+                    </li>
                 </ul>
             </td>
         </tr>
@@ -244,6 +244,11 @@
                 <ul>
                     <li>Worksheet 10</li>
                     <li>Tutorial 10</li>
+                    <li>Project:
+                        <ul>
+                            <li>Individual: TBD</li>
+                        </ul>
+                    </li>
                 </ul>
             </td>
         </tr>
@@ -256,7 +261,7 @@
                     <li>Thursday: 
                         <ul>
                             <li>Cross-validation</li>
-                            <li>In-class work on project's peer-review</li>
+                            <li>In-class work on project</li>
                         </ul>
                     </li>    
                 </ul>
@@ -270,7 +275,7 @@
                 <ul>
                     <li>Project:
                         <ul>
-                            <li>Peer Review</li>
+                            <li>Individual: TBD</li>
                         </ul>
                     </li>
                 </ul>
@@ -318,7 +323,7 @@
                     <li>Tutorial 13</li>
                     <li>Project:
                         <ul>
-                            <li>Final Report</li>
+                            <li>Group: Final Report</li>
                         </ul>
                     </li>
                 </ul>
@@ -352,7 +357,7 @@ All due dates will be on the last day of the week (Saturday at 23:59:59).
 
 ### Learning Outcomes per Week
 
-#### Week 1: Introduction to statistical modelling and A/B testing optimization (Thursday only)
+#### Week 1: Introduction to statistical modelling and Review (Thursday only)
 
 By the end of this section, students will be able to:
 
@@ -397,11 +402,7 @@ By the end of this section, students will be able to:
 
 *Note*: due to the National Day of Truth and Reconciliation holiday, the list original learning objectives has been shortened. Topics removed will be covered later in the course, depending on available time 
 
-#### Week 5: Mid-term #1 and preparation for projects
-
-Part of the class time this week will be used for mid-term #1.The remaining time is for independent studying where the students will propose a project to perform a data analysis using statistical models with several input variables.
-
-#### Week 6: Model diagnostics and confounding factors
+#### Week 5: Model diagnostics and confounding factors
 
 By the end of this section, students will be able to:
 
@@ -415,7 +416,10 @@ By the end of this section, students will be able to:
 8. Discuss how the desired goal of generative modelling is usually to make causal claims but it is often not easy do so (e.g., in observational studies).
 9. Discuss the impact of confounders in causal inference.
 
-#### Week 7: Model selection and model metrics for generative modelling
+#### Week 6: Model diagnostics and confounding factors
+Presentation of a real case study that suffered from a problem of confounding. Part of the class time will be used for independent studying where the students will work on their projects with other group members. There's no class on Thursday due to "Monday-Makeup" day.
+
+#### Week 7: Model metrics for generative modelling and model selection 
 
 By the end of this section, students will be able to:
 
@@ -426,7 +430,11 @@ By the end of this section, students will be able to:
 • Forward selection
 • Backward selection
 
-#### Week 8: Introduction to predictive modelling 
+#### Week 8: Mid-term and preparation for projects
+
+Review and mid-term.
+
+#### Week 9: Introduction to predictive modelling 
 
 By the end of this section, students will be able to:
 
@@ -438,15 +446,7 @@ By the end of this section, students will be able to:
 6. Explain the difference between confidence intervals for prediction and prediction confidence intervals and what elements need to be estimated to construct these intervals.
 7. Write a computer script to calculate these intervals. Interpret and communicate the results from that computer script.
 
-#### Week 9: Mid-term #2 and preparation for projects
-
-Part of the class time this week will be used for mid-term #2.The remaining time is for independent studying on the selected project.
-
-#### Week 10: Work on projects (Tuesday only)
-
-Class time will be used for independent studying where the students will work on their projects with other group members. There's no class on Thursday due to the midterm break.
-
-#### Week 11 : Predictive versus generative modelling - what’s the difference?
+#### Week 10 : Predictive versus generative modelling - what’s the difference?
 
 By the end of this section, students will be able to:
 1. Give examples of questions that can be answered by generative models and others that can be answered by predictive models.
@@ -456,6 +456,10 @@ By the end of this section, students will be able to:
 5. 	Discuss post inference problems (e.g., double dipping into the data set) and current practical solutions available to address these (e.g., data-splitting techniques).
 6. 	Write a computer script to apply currently available practical solutions to post inference problems.
 7. 	Discuss how the research question being asked impacts the communication of the results.
+
+#### Week 11: Cross-validation and work on projects (Thursday only)
+
+There's no class on Tuesday due to the midterm break. Cross validation will be reviewed on Thursday. Any remaining class time will be used for independent studying where the students will work on their projects with other group members. 
 
 #### Week 12: Introduction to explanatory modelling when the response variable is categorical or a discrete count
 
