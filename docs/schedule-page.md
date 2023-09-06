@@ -197,6 +197,11 @@
                 <ul>
                     <li>Worksheet 08</li>
                     <li>Tutorial 08</li>
+                    <li>Project:
+                        <ul>
+                            <li>Individual: TBD</li>
+                        </ul>
+                    </li>
                 </ul>
             </td>
         </tr>
@@ -219,11 +224,6 @@
                 <ul>
                     <li>Worksheet 09</li>
                     <li>Tutorial 09</li>
-                    <li>Project:
-                        <ul>
-                            <li>Individual: TBD</li>
-                        </ul>
-                    </li>
                 </ul>
             </td>
         </tr>
