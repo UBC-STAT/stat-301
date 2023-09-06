@@ -114,21 +114,23 @@
         </tr>
         <tr>
             <td>#5</td>
-            <td>Oct 01 ~ Oct 07</td>
-            <td>
-                <ul>
-                    <li> Tuesday: Review and work on project </li>
-                    <li> Thursday (Oct 6th): Mid-Term #1 and in-class work on project </li>
-                </ul>
-            </td>
-            <td></td>
+            <td> Oct 15 ~ Oct 21 </td>
             <td style="text-align: left;">
                 <ul>
-                        <li>Project:
-                        <ul>
-                            <li> Team Contract</li>
-                        </ul>
-                    </li>
+                    <li> Diagnostics and confounding factors </li>
+                </ul>
+            </td>
+            <td style="text-align: left;">
+                <ul>
+                    <li> <a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Non-linear Relationships in 3.3.2, and Section 3.3.3 of ISL</a></li>
+                    <li> <a href="https://rafalab.github.io/dsbook/">Ch.19 of IntroDS</a></li>
+                    <li> <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html">Ch.1 (again) BMLR</a></li>
+                </ul>
+            </td>
+            <td style="text-align: left;">
+                <ul>
+                    <li>Worksheet 05</li>
+                    <li>Tutorial 05</li>
                 </ul>
             </td>
         </tr>
@@ -168,28 +170,6 @@
             <td> Oct 15 ~ Oct 21 </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> Diagnostics and confounding factors </li>
-                </ul>
-            </td>
-            <td style="text-align: left;">
-                <ul>
-                    <li> <a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Non-linear Relationships in 3.3.2, and Section 3.3.3 of ISL</a></li>
-                    <li> <a href="https://rafalab.github.io/dsbook/">Ch.19 of IntroDS</a></li>
-                    <li> <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-MLRreview.html">Ch.1 (again) BMLR</a></li>
-                </ul>
-            </td>
-            <td style="text-align: left;">
-                <ul>
-                    <li>Worksheet 07</li>
-                    <li>Tutorial 07</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>#8</td>
-            <td> Oct 22 ~ Oct 28 </td>
-            <td style="text-align: left;">
-                <ul>
                     <li> Model assessment and selection </li>
                 </ul>
             </td>
@@ -202,6 +182,26 @@
                 <ul>
                     <li>Worksheet 08</li>
                     <li>Tutorial 08</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>#8</td>
+            <td>Oct 22 ~ Oct 28</td>
+            <td>
+                <ul>
+                    <li> Tuesday: Review </li>
+                    <li> Thursday (Oct 6th): Mid-Term #1 and in-class work on project </li>
+                </ul>
+            </td>
+            <td></td>
+            <td style="text-align: left;">
+                <ul>
+                        <li>Project:
+                        <ul>
+                            <li> Team Contract</li>
+                        </ul>
+                    </li>
                 </ul>
             </td>
         </tr>
@@ -228,55 +228,6 @@
             </td>
         </tr>
         <tr>
-            <td>#9</td>
-            <td> Oct 29 ~ Nov 04 </td>
-            <td>
-                <ul>
-                    <li> Tuesday: Review and work on project </li>
-                    <li> Thursday (Nov 3th): Mid-Term #2 and in-class work on project proposal </li>
-                </ul>
-            </td>
-            <td></td>
-            <td style="text-align: left;">
-                <ul>
-                    <li>Project:
-                        <ul>
-                            <li>Proposal</li>
-                        </ul>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>#10</td>
-            <td> Nov 05 ~ Nov 11 </td>
-            <td>
-                <ul>
-                    <li>Tuesday: 
-                        <ul>
-                            <li>Cross-validation</li>
-                            <li>In-class work on project's peer-review</li>
-                        </ul>
-                    </li>    
-                    <li>Thursday: NO CLASS due to Midterm Break</li>
-                </ul>
-            </td>
-            <td style="text-align: left;">
-                <ul>
-                    <li><a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Sections 5.1 of ISL</a></li> 
-                </ul>    
-            </td>
-            <td style="text-align: left;">
-                <ul>
-                    <li>Project:
-                        <ul>
-                            <li>Peer Review</li>
-                        </ul>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
             <td>#10</td>
             <td> Nov 05 ~ Nov 11 </td>
             <td style="text-align: left;">
@@ -293,6 +244,35 @@
                 <ul>
                     <li>Worksheet 10</li>
                     <li>Tutorial 10</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>#11</td>
+            <td> Nov 12 ~ Nov 18 </td>
+            <td>
+                <ul>
+                    <li>Tuesday: NO CLASS due to Midterm Break</li>
+                    <li>Thursday: 
+                        <ul>
+                            <li>Cross-validation</li>
+                            <li>In-class work on project's peer-review</li>
+                        </ul>
+                    </li>    
+                </ul>
+            </td>
+            <td style="text-align: left;">
+                <ul>
+                    <li><a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Sections 5.1 of ISL</a></li> 
+                </ul>    
+            </td>
+            <td style="text-align: left;">
+                <ul>
+                    <li>Project:
+                        <ul>
+                            <li>Peer Review</li>
+                        </ul>
+                    </li>
                 </ul>
             </td>
         </tr>
