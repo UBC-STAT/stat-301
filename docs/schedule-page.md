@@ -228,26 +228,6 @@
             </td>
         </tr>
         <tr>
-            <td>#10</td>
-            <td> Nov 05 ~ Nov 11 </td>
-            <td style="text-align: left;">
-                <ul>
-                    <li>Post Selection Inference</li>
-                </ul>
-            </td>
-            <td style="text-align: left;">
-                <ul>
-                    <li><a href="http://bactra.org/notebooks/post-model-selection-inference.html">Blog Post: Post-Model-Selection Inference</a></li>
-                </ul>
-            </td>
-            <td style="text-align: left;">
-                <ul>
-                    <li>Worksheet 10</li>
-                    <li>Tutorial 10</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
             <td>#9</td>
             <td> Oct 29 ~ Nov 04 </td>
             <td>
@@ -293,6 +273,26 @@
                             <li>Peer Review</li>
                         </ul>
                     </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>#10</td>
+            <td> Nov 05 ~ Nov 11 </td>
+            <td style="text-align: left;">
+                <ul>
+                    <li>Post Selection Inference</li>
+                </ul>
+            </td>
+            <td style="text-align: left;">
+                <ul>
+                    <li><a href="http://bactra.org/notebooks/post-model-selection-inference.html">Blog Post: Post-Model-Selection Inference</a></li>
+                </ul>
+            </td>
+            <td style="text-align: left;">
+                <ul>
+                    <li>Worksheet 10</li>
+                    <li>Tutorial 10</li>
                 </ul>
             </td>
         </tr>
