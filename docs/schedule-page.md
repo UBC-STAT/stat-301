@@ -419,7 +419,11 @@ By the end of this section, students will be able to:
 #### Week 6: Case Study
 Presentation of a real case study that suffered from a problem of confounding. Part of the class time will be used for independent studying where the students will work on their projects with other group members. There's no class on Thursday due to "Monday-Makeup" day.
 
-#### Week 7: Model metrics for generative modelling and model selection 
+#### Week 7: Mid-term and preparation for projects
+
+Review and mid-term.
+
+#### Week 8: Model metrics for generative modelling and model selection 
 
 By the end of this section, students will be able to:
 
@@ -429,10 +433,6 @@ By the end of this section, students will be able to:
 • F-test to compare nested models
 • Forward selection
 • Backward selection
-
-#### Week 8: Mid-term and preparation for projects
-
-Review and mid-term.
 
 #### Week 9: Introduction to predictive modelling 
 
