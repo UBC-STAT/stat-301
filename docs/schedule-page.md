@@ -210,6 +210,11 @@
             <td style="text-align: left;">
                 <ul>
                     <li> Predictive Modelling </li>
+                    <li>Project:
+                        <ul>
+                            <li>Individual: TBD</li>
+                        </ul>
+                    </li> 
                 </ul>
             </td>
             <td style="text-align: left;">
