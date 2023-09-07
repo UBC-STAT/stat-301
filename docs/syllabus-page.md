@@ -143,19 +143,23 @@ Our server will automatically snapshot at the due date/time. Also, please **do n
             </tr>
             <tr>
                 <td>Individual Assignment 1</td>
-                <td>5%</td>
+                <td>4%</td>
             </tr>
             <tr>
                 <td>Individual Assignment 2</td>
-                <td>5%</td>
+                <td>4%</td>
             </tr>
             <tr>
                 <td>Individual Assignment 3</td>
-                <td>5%</td>
+                <td>4%</td>
             </tr>
             <tr>
                 <td>Group Interview with TA</td>
-                <td>5%</td>
+                <td>4%</td>
+            </tr>
+            <tr>
+                <td>Individual Assignment 4</td>
+                <td>4%</td>
             </tr>
             <tr>
                 <td>Group Final Report</td>
