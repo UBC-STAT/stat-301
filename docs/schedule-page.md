@@ -210,11 +210,6 @@
             <td style="text-align: left;">
                 <ul>
                     <li> Predictive Modelling </li>
-                    <li>Project:
-                        <ul>
-                            <li>Individual: TBD</li>
-                        </ul>
-                    </li> 
                 </ul>
             </td>
             <td style="text-align: left;">
@@ -228,6 +223,11 @@
                 <ul>
                     <li>Worksheet 09</li>
                     <li>Tutorial 09</li>
+                    <li>Project:
+                        <ul>
+                            <li>Individual: TBD</li>
+                        </ul>
+                    </li> 
                 </ul>
             </td>
         </tr>
