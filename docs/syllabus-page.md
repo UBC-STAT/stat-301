@@ -36,6 +36,7 @@ Times are in Pacific Time
 
 - Midterm: Thursday, October 26th at 12:30pm-1:50pm
 - Final Exam: TBA (2 hours)
+- Final Group Project Report: Dec 9th at 11:59pm
 
 ### Software Platforms
 
