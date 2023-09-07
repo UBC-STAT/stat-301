@@ -8,7 +8,7 @@ Please read the [COVID-19 instructions](https://ubc-stat.github.io/stat-301/covi
 ### Prerequisites
 
 - STAT 201: Statistical Inference for Data Science
-- One of MATH 100, MATH 102, MATH 104, MATH 110, MATH 120, MATH 180, MATH 184, SCIE 001
+- DSCI 100 and STAT 201
 - Access to a computer
     - If a student does not have their own laptop or chromebook, students may be able to [loan a laptop from the UBC library](https://services.library.ubc.ca/computers-technology/technology-borrowing/)
 
@@ -16,31 +16,31 @@ Please read the [COVID-19 instructions](https://ubc-stat.github.io/stat-301/covi
 Times are in Pacific Time
 
 - The lectures are **mandatory** *and* **in person** on Tuesdays and Thursdays from 12:30 to 2:00 pm
-- The lectures will be held in Leonard S. Klinck (LSK) building, Room 201
-- Tutorials will be held **in person** in Biological Sciences, Room 1000, on Thursdays from 5:00 to 6:00 pm
+- The lectures will be held in Leonard S. Klinck (LSK) building, Room 200
+- Tutorials will be held **in person** in Chemistry, Room B250, on Thursdays from 5:00 to 6:00 pm
 
-**NOTE:**
-    - Tuesday September 6th is UBC Imagine Day, so we will have our first lecture and tutorial on Thursday Sep 8th
-    - Nov 9-11th is mid-term break, so we will have only one lecture that week on Tuesday Nov 8th and there won't be a tutorial
-
+**IMPORTANT cancellations:**
+    - Tuesday September 5th is UBC Imagine Day, so we will have our first lecture and tutorial on Thursday Sep 7th.
+    - Oct 12th is "Make-up Monday", so both the lecture and the tutorial are cancelled.
+    - Nov 13-15th is mid-term break, so we will have only one lecture that week on Thursday Nov 16th. There will be a tutorial to address questions about the project.
+    
 ### Office hours and questions
 Times are in Pacific Time
 
 - **Instructor**: Wednesdays 3:30 - 4:30 pm via Zoom (link on Canvas).
-- **TA**: Fridays 2:00 - 3:00 pm via Zoom (link on Canvas).
-- Post questions on [PIAZZA](https://piazza.com/ubc.ca/winterterm12022/stat3011012022w1) for general discussions and answers!
+- **TA**: TBD
+- Post questions on [PIAZZA]([https://piazza.com/ubc.ca/winterterm12023/stat3011012023w1]) for general discussions and answers!
 - **Please, do not ask questions about course material through email!!**
 
 #### Test Dates
 
-- Midterm 1: Thursday, October 6th at 12:30pm
-- Midterm 2: Thursday, November 3rd at 12:30pm
-- Final Exam: Fri Dec 16 2022 @ 12:00 pm in room cirs-1250
+- Midterm: Thursday, October 26th at 12:30pm-1:50pm
+- Final Exam: TBA (2 hours)
 
 ### Software Platforms
 
 - Students will learn to perform their analysis using the [R programming language](https://cran.r-project.org/).
-- Worksheets and tutorial problem sets as well as the final project analysis, development, and reports will be done using [Jupyter Notebooks](http://jupyter.org/).
+- Worksheets and tutorial problem sets as well as the final project analysis, development, and reports will be done using [Jupyter Notebooks](http://jupyter.org/) and R.
 - Students will access the worksheets and tutorials in Jupyter Notebooks through Canvas. 
 
 ### Textbooks
@@ -75,16 +75,15 @@ By the end of the course, students are expected to be able to:
 
 ### Assessments
 
-Each week there will be two assignments: (1) a worksheet; and (2) a tutorial.
+Most weeks there will be two assignments: (1) a worksheet; and (2) a tutorial.
 These assignments will be due every Saturday, 23:59:59. The worksheets are
 fully autograded with visible tests to help you identify points that need
 more clarification. Therefore, reach out to the teaching team if you don't
 understand why you are getting an answer wrong in the worksheet. On the
-other hand, the tutorials are not fully autograded, and only a few exercises
-will have visible tests. You can access the assignments through Canvas ([assignments](https://canvas.ubc.ca/courses/89390/assignments)).
+other hand, the tutorials are not fully autograded. You can access the assignments through Canvas ([assignments](https://canvas.ubc.ca/courses/126185/assignments)).
 
 To submit your assignment, make sure your work is saved
-**on our server** (i.e., using the link from Canvas) before the deadline.
+**on our server** (i.e., accessed using the link from Canvas) before the deadline.
 Our server will automatically snapshot at the due date/time. Also, please **do not** rename the assignments files.
 
 #### Assessments' Weights
@@ -105,23 +104,27 @@ Our server will automatically snapshot at the due date/time. Also, please **do n
             </tr>
             <tr>
                 <td>Tutorials</td>
-                <td>15%</td>
+                <td>10%</td>
             </tr>
             <tr>
-                <td>Group project</td>
-                <td>20%</td>
+                <td>In-class clicker Qs</td>
+                <td>2%</td>
             </tr>
             <tr>
-                <td>Midterm 1</td>
-                <td>15%</td>
+                <td>Project</td>
+                <td>28%</td>
             </tr>
             <tr>
-                <td>Midterm 2</td>
-                <td>15%</td>
+                <td>Midterm </td>
+                <td>25%</td>
             </tr>
             <tr>
                 <td>Final Exam</td>
                 <td>30%</td>
+            </tr>
+            <tr>
+                <td>Bonus Piazza</td>
+                <td>1%</td>
             </tr>
         </tbody>
     </table>
@@ -136,19 +139,27 @@ Our server will automatically snapshot at the due date/time. Also, please **do n
         <tbody>
             <tr>
                 <td>Team Work Contract</td>
-                <td>2%</td>
+                <td>1%</td>
             </tr>
             <tr>
-                <td>Proposal</td>
-                <td>4%</td>
+                <td>Individual Assignment 1</td>
+                <td>5%</td>
             </tr>
             <tr>
-                <td>Peer review</td>
-                <td>3%</td>
+                <td>Individual Assignment 2</td>
+                <td>5%</td>
             </tr>
             <tr>
-                <td>Final Report</td>
-                <td>9%</td>
+                <td>Individual Assignment 3</td>
+                <td>5%</td>
+            </tr>
+            <tr>
+                <td>Group Interview with TA</td>
+                <td>5%</td>
+            </tr>
+            <tr>
+                <td>Group Final Report</td>
+                <td>5%</td>
             </tr>
             <tr>
                 <td>Teammate Evaluation</td>
@@ -161,12 +172,14 @@ Our server will automatically snapshot at the due date/time. Also, please **do n
 
 #### Exams
 
-All the exams will be open-book. You can use whatever (<em>but not whoever</em>) you want. You **are not allowed** to communicate with another person during the exams. For all the exams, the platform used will be Canvas. The types of questions can vary: reasoning, multiple-choice, multiple-answer, dropdown, true or false. Although most questions will be about the content, you can expect a few coding questions. That being said, the coding question will not be overly complicated, and we will only check your familiarity with the main functions and packages we use in the course. We **are not** trying to test your memory!!! Please don't spend energy trying to memorize everything. If you had done the worksheets and tutorial, this should not be a problem for you.
+All the exams will be on Canvas with lockdown browser. You will be able to have some printed handouts and summaries. You **are not allowed** to access any webpage or files in your computer or other electronic devices. 
 
-- **Midterms:** two 45-minute mid-terms will be administered at the start of the lecture in Weeks 5 and 9 (or Weeks 3 and 5 in Summer Terms). The first midterm will cover (roughly) Weeks 1 to 4 (i.e., Worksheets/Tutorials 1, 2, 3, and 4, plus the readings). The second midterm will focus (roughly) on Weeks 6, 7, and 8 (i.e., Worksheets/Tutorials 5, 6, 7, and 8, plus the readings), however, the content is cumulative as the concepts are dependent. Note that part of the material covered may be excluded in specific midterms. The instructors will give and post more precise information before each exam.  
+The types of questions can vary: reasoning, multiple-choice, multiple-answer, dropdown, true or false. Although most questions will be about the content, you can expect a few simple coding questions. That being said, the coding question will not be overly complicated, and we will only check your familiarity with the main functions and packages we use in the course. We **are not** trying to test your memory!!! Please don't spend energy trying to memorize everything. If you had done the worksheets and tutorial, this should not be a problem for you.
+
+- **Midterm:** administered during the full lecture of Week 8. The midterm will cover Worksheets/Tutorials 1-5 and 7, plus the readings. 
 
 - **Final Exam:** The final exam will be a two-hour exam and it will cover the material of
-the **entire course**. Notwithstanding the grading weights presented above, <em>students must pass the final exam</em> to pass the course.
+the **entire course**. However, more emphasis will be given to the second part of the course (i.e., Worksheets/Tutorials 9-10 and 12-13). Notwithstanding the grading weights presented above, <em>students must pass the final exam</em> to pass the course.
 
 ### Policies
 
@@ -174,7 +187,7 @@ the **entire course**. Notwithstanding the grading weights presented above, <em>
 
 - Please, read the [COVID-19 instructions](https://ubc-stat.github.io/stat-301/covid-safety.html) document for absences related to COVID-19.
 - Regular attendance to lecture and tutorials is expected of students. Students who are unavoidably absent because of illness or other reasons should inform the instructor(s) of the course as soon as possible, preferably, prior to the start of the lecture/tutorial. 
-- There will be no make-up exams. Students who miss Midterm 1, Midterm 2 or an assignment and want to request an Academic Concession need to contact the Instructor as soon as possible and provide a self-declaration form (available on canvas). Failing to present a declaration may result in a grade of zero.
+- There will be no make-up exams. Students who miss the Midterm or an assignment and want to request an Academic Concession need to contact the Instructor as soon as possible and provide a self-declaration form (available on canvas). Failing to present a declaration may result in a grade of zero.
 - Late submissions of *worksheets* and *tutorials* will receive a grade of 0. 
 - For other assessments, late submission is defined as any work submitted after the deadline. Late submissions will receive a 50% deduction penalty of the original grade in the first occurrence if submitted within 48 hours of the deadline. Hence a maximum attainable grade for the first piece of work submitted late is 50%. Any additional pieces of work that are submitted late will receive a grade of 0 for subsequent occurrences. Any submission after 48 hours of the original deadline will receive a grade of 0.
 
@@ -246,5 +259,5 @@ Repeated plagiarism of any form could result in larger penalties, including fail
 
 ### Attribution
 
-This syllabus was copied almost in its entirety from the [DSCI 100 syllabus](https://github.com/UBC-DSCI/dsci-100/blob/master/README.md), with only minor modifications.
+This syllabus was copied almost in its entirety from the [DSCI 100 syllabus](https://github.com/UBC-DSCI/dsci-100/blob/master/README.md), with modifications according to this course material.
 Parts of DSCI 100 syllabus, hence of this syllabus, have been copied from the [UBC MDS Policies](https://ubc-mds.github.io/policies/).
