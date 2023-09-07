@@ -356,7 +356,7 @@ All due dates will be on the last day of the week (Saturday at 23:59:59).
 #### Test Dates
 
 - Midterm: Thursday, October 26th at 12:30pm-1:50pm
-- Final Group Project: Dec 2nd at 11:59pm
+- Final Group Project Report: Dec 9th at 11:59pm
 - Final Exam: TBD
 
 ### Learning Outcomes per Week
