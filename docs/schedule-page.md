@@ -416,7 +416,7 @@ By the end of this section, students will be able to:
 9. Discuss the impact of confounders in causal inference.
 
 #### Week 6: Case Study
-Presentation of a real case study that suffered from a problem of confounding. Part of the class time will be used for independent studying where the students will work on their projects with other group members. There's no class on Thursday due to "Monday-Makeup" day.
+Presentation of a real case study that suffered from a problem of confounding. Part of the class time will be used for independent studying where the students will work on their projects with other group members. There's no class on Thursday due to "Make-up Monday" day.
 
 #### Week 7: Model metrics for generative modelling and model selection 
 
