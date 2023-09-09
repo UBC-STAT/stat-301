@@ -54,7 +54,8 @@
             </td>
             <td style="text-align: left;">
                 <ul>
-                    <li> <a href="https://hbr.org/2017/06/a-refresher-on-ab-testing">A/B Testing </a></li>
+                    <li> <a href="https://hbr.org/2017/06/a-refresher-on-ab-testing">A/B Testing Summary</a></li>
+                    <li> <a href="https://vwo.com/ab-testing/#a-b-testing-examples">A/B Testing Examples</a></li>
                     <li> <a href="https://www.youtube.com/watch?v=AJX4W3MwKzU">Optimizely video</a></li>
                         <ul>
                             <li> 11' to 14'40'' </li>
