@@ -1,5 +1,7 @@
 ## Schedule
 
+Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.html)
+
 <table id="course-schedule">
     <caption>Table 1: Course Calendar</caption>
     <thead>
