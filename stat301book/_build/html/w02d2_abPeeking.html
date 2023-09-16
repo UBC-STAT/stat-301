@@ -1,0 +1,775 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Principled Peeking in A/B Testing &#8212; Statistical Modelling for Data Science</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="A/B Testing" href="w02d1_abTesting.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Statistical Modelling for Data Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Statistical modelling for Data Science
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="w02d1_abTesting.html">
+   A/B Testing
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Principled Peeking in A/B Testing
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/w02d2_abPeeking.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fw02d2_abPeeking.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/w02d2_abPeeking.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sequential-testing">
+   Sequential testing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principled-peeking">
+   Principled Peeking
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bonferroni">
+     Bonferroni
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretation">
+     Interpretation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-a-testing-again">
+     A/A Testing (again)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretations-of-bonferroni-correction">
+     Interpretations of Bonferroni correction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pocock-s-boundaries">
+   Pocock’s boundaries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     A/A Testing (again)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretations-of-pocock-correction">
+     Interpretations of Pocock correction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#o-brien-fleming-s-boundaries">
+   O’Brien-Fleming’s boundaries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretations-of-o-brien-fleming-correction">
+     Interpretations of O’Brien-Fleming correction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type-i-error-rate-control">
+     Type I error rate control
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#number-of-erroneous-rejections-among-100-experiments">
+       Number of erroneous rejections among 100 experiments
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-and-key-concepts-learned">
+   Summary and key concepts learned
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Principled Peeking in A/B Testing</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sequential-testing">
+   Sequential testing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principled-peeking">
+   Principled Peeking
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bonferroni">
+     Bonferroni
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretation">
+     Interpretation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-a-testing-again">
+     A/A Testing (again)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretations-of-bonferroni-correction">
+     Interpretations of Bonferroni correction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pocock-s-boundaries">
+   Pocock’s boundaries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     A/A Testing (again)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretations-of-pocock-correction">
+     Interpretations of Pocock correction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#o-brien-fleming-s-boundaries">
+   O’Brien-Fleming’s boundaries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretations-of-o-brien-fleming-correction">
+     Interpretations of O’Brien-Fleming correction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type-i-error-rate-control">
+     Type I error rate control
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#number-of-erroneous-rejections-among-100-experiments">
+       Number of erroneous rejections among 100 experiments
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-and-key-concepts-learned">
+   Summary and key concepts learned
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="principled-peeking-in-a-b-testing">
+<h1>Principled Peeking in A/B Testing<a class="headerlink" href="#principled-peeking-in-a-b-testing" title="Permalink to this headline">¶</a></h1>
+<center>
+<img src="https://images.unsplash.com/photo-1546903353-4649964874f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3950&q=80)"
+ width=700>
+</center>
+<p>Image from <a class="reference external" href="https://unsplash.com/photos/F85pIdl7cS8">Unsplash</a> by Pawel Szvmanski and <a class="reference external" href="https://towardsdatascience.com/unlocking-peeking-in-ab-tests-7847b9c2f6bb">Unlocking Peeking in AB-Tests</a> by Dennis Meisner</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In the previous chapter we examined the early peeking problem using a simulation study. We noticed that although classical tests can be used in A/B testing problems, those tests are designed for a fixed sample size. Analyzing a sample smaller than planned and stopping the experiment based on early results seriously inflates the type I error rate of the experiment. The goal of this chapter is to introduce some basic techniques of principled peeking.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Stopping an experiment and rejecting <span class="math notranslate nohighlight">\(H_0\)</span> as soon as an observed <span class="math notranslate nohighlight">\(p\)</span>-value is below the specified significance level can drastically inflate the type I error rate</p>
+</div>
+</div>
+<div class="section" id="sequential-testing">
+<h2>Sequential testing<a class="headerlink" href="#sequential-testing" title="Permalink to this headline">¶</a></h2>
+<p><strong>Sequential tests</strong> are decision rules that allows users to test data sequentially as data come in:</p>
+<ul class="simple">
+<li><p>The experiment may be stopped earlier, meaning the sample size is dynamic, rather than fixed</p></li>
+<li><p>Many tests (a.k.a., multiple comparisons) are performed (sequentially)</p></li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If you make lots of comparisons, the error rates are inflated!!</p>
+</div>
+<p>There are different classes of sequential approaches:</p>
+<div class="tip admonition">
+<p class="admonition-title">Definition</p>
+<p><strong>Group sequential designs</strong>: the analyst <em>pre-specifies</em> when to inspect the data (interim analysis) and performs each analysis as a fixed sample one.</p>
+<p><strong>Full sequential designs</strong>: the analyst performs an analysis after every new observation, sequentially, in a principled way.</p>
+</div>
+<p>New platforms allow users to test data sequentially as data come in:</p>
+<ul class="simple">
+<li><p>Users <em>are</em> monitoring results as they collect data and are making decisions accordingly</p></li>
+<li><p>Users need to adaptively determine the sample size of the experiments</p></li>
+<li><p>There are large opportunity costs associated with longer experiments</p></li>
+<li><p>When done correctly, stopping an experiment earlier (or re-designing it) can be beneficial</p></li>
+</ul>
+</div>
+<div class="section" id="principled-peeking">
+<h2>Principled Peeking<a class="headerlink" href="#principled-peeking" title="Permalink to this headline">¶</a></h2>
+<p>Can we control the risk of wrongly rejecting the null hypothesis in A/B testing when early peeking and stopping is desired?</p>
+<p>Many methods have been proposed to address this problem in the context of <strong>A/B testing experimental designs</strong>:</p>
+<ul class="simple">
+<li><p>A basic way to control the type I error rate inflation in multiple testing problems is to adjust the p-value. For example, p-values (or critical values) can be adjusted using a Bonferroni corection.</p></li>
+<li><p>Some new methods propose using a different test statistics and computing <span class="math notranslate nohighlight">\(p\)</span>-values differently. For example, in the <em>Optimizely platform</em>, a mixture sequential probability ratio test (mSPRT) is performed and <em>always valid</em> <span class="math notranslate nohighlight">\(p\)</span>-values are constructed.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>With a principled peeking approach, the significance level of each interim analysis is set at a level that controls the Type I error rate, even if the experiment is stopped earlier.</p>
+</div>
+<div class="section" id="bonferroni">
+<h3>Bonferroni<a class="headerlink" href="#bonferroni" title="Permalink to this headline">¶</a></h3>
+<p>Although originally designed for independent tests, Bonferroni correction can be used to control the type I error rate in A/B testing</p>
+<p><strong>Bonferroni’s correction</strong> can be thought as:</p>
+<ul class="simple">
+<li><p>an adjustment of the <span class="math notranslate nohighlight">\(p\)</span>-values, multiplying them by the number of comparisons, and keeping the significance level at a desired threshold, or</p></li>
+<li><p>an adjustment of the significance threshold <span class="math notranslate nohighlight">\(\alpha\)</span>, dividing it by the number of comparisons, and using raw p-values, or</p></li>
+<li><p>(an adjustment of) the critical value, computed with a sampling distribution, corresponding to the adjusted significance threshold</p></li>
+</ul>
+<div class="cell tag_remove_input tag_remove_output docutils container">
+</div>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/w02d2_abPeeking_6_0.png" src="_images/w02d2_abPeeking_6_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="interpretation">
+<h3>Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this headline">¶</a></h3>
+<p>You can compare the <strong>observed t-statistic</strong> with the critical value obtained from the sampling distribuiton to test the null hypothesis:</p>
+<ul class="simple">
+<li><p><strong>Unadjusted test</strong>: Since the test-statistic (red dot) is greater than the (unadjusted) critical value (black dot), we have evidence to reject the null hypothesis.</p></li>
+<li><p><strong>Bonferroni adjusted test</strong>: Since the test-statistic (red dot) is smaller than the Bonferroni adjusted critical value (blue dot), we do <em>not</em> have enough evidence to reject the null hypothesis.</p></li>
+</ul>
+<p>Alternatively, you can compare the <strong><span class="math notranslate nohighlight">\(p\)</span>-value</strong> with the pre-set significance level to test the null hypothesis:</p>
+<ul class="simple">
+<li><p><strong>Unadjusted test</strong>: Since the <span class="math notranslate nohighlight">\(p\)</span>-value (red area) is smaller than the (unadjusted) significance level (grey area), we have evidence to reject the null hypothesis.</p></li>
+<li><p><strong>Bonferroni adjusted test</strong>: Since the <span class="math notranslate nohighlight">\(p\)</span>-value (red area) is larger than the Bonferroni adjusted significance level (blue area), we do <em>not</em> have enough evidence to reject the null hypothesis.</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Note that you can also adjust the <span class="math notranslate nohighlight">\(p\)</span>-value of a test using a Bonferroni correction!</p>
+</div>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/w02d2_abPeeking_8_0.png" src="_images/w02d2_abPeeking_8_0.png" />
+</div>
+</div>
+<p>Since the <em>adjusted</em> <span class="math notranslate nohighlight">\(p\)</span>-value (light red area) is larger than the significance level (grey area), we do <em>not</em> have enough evidence to reject the null hypothesis.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The solid red area correspond to the unadjusted <span class="math notranslate nohighlight">\(p\)</span>-value.</p>
+</div>
+</div>
+<div class="section" id="a-a-testing-again">
+<h3>A/A Testing (again)<a class="headerlink" href="#a-a-testing-again" title="Permalink to this headline">¶</a></h3>
+<p>To examine if the Bonferroni’s correction effectively controls the type I error rate, we will use again the <strong>A/A experimental design</strong></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>We know that the (true) effect size is 0 in an A/A experiment!</p>
+</div>
+<div class="cell tag_remove_input docutils container">
+</div>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/w02d2_abPeeking_12_0.png" src="_images/w02d2_abPeeking_12_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="interpretations-of-bonferroni-correction">
+<h3>Interpretations of Bonferroni correction<a class="headerlink" href="#interpretations-of-bonferroni-correction" title="Permalink to this headline">¶</a></h3>
+<p>In <em>one</em> A/A testing simulated experiment, using unadjusted quantities:</p>
+<ul class="simple">
+<li><p>you would reject <span class="math notranslate nohighlight">\(H_0\)</span>: the observed (unadjusted) t-statistic is bigger than the (unadjusted) critical value</p></li>
+</ul>
+<p>Using Bonferroni’s adjusted quantities:</p>
+<ul class="simple">
+<li><p>you would fail to reject <span class="math notranslate nohighlight">\(H_0\)</span>: the observed (unadjusted) t-statistic is smaller than the (adjusted) critical value</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The Bonferroni’s adjusted critical value is larger than the unadjusted one: the test is <em>more conservative</em>!  With the adjustment, we erroneously reject <span class="math notranslate nohighlight">\(H_0\)</span> less often!! it controls the type I error rate!!</p>
+</div>
+</div>
+</div>
+<div class="section" id="pocock-s-boundaries">
+<h2>Pocock’s boundaries<a class="headerlink" href="#pocock-s-boundaries" title="Permalink to this headline">¶</a></h2>
+<p>Other methods can be used to control the type I error rate in A/B testing experiments with early stops.</p>
+<p>The <strong>Pocock method</strong> computes a <em>common</em> critical value for all interim analyses.</p>
+<ul class="simple">
+<li><p>the Pocock’s boundary is not an adjustment of the quantile of a <span class="math notranslate nohighlight">\(t\)</span>-distribution</p></li>
+<li><p>we can easily get the critical values for this design using <code class="docutils literal notranslate"><span class="pre">gsDesign::gsDesign()</span></code></p></li>
+</ul>
+<div class="attention admonition">
+<p class="admonition-title">Remarks</p>
+<p><strong>Note 1</strong>: <code class="docutils literal notranslate"><span class="pre">gsDesign()</span></code> outputs a full sequential design. You can read more about this package <a class="reference external" href="https://keaven.github.io/gsDesign/reference/gsDesign.html">here</a></p>
+<p><strong>Note 2</strong>: a caveat about this package is that two-sample tests are based on <span class="math notranslate nohighlight">\(z\)</span>-statistics. However, results are nearly equivalent to a <span class="math notranslate nohighlight">\(t\)</span>-test. More can be read <a class="reference external" href="https://keaven.github.io/gsDesign/articles/nNormal.html">here</a></p>
+</div>
+<div class="section" id="id1">
+<h3>A/A Testing (again)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>To examine if the Pocock method effectively controls the type I error rate, we can use again the <strong>A/A experimental design</strong></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>We know that the (true) effect size is 0 in an A/A experiment!</p>
+</div>
+<div class="cell tag_hide_input tag_remove_output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this cell to get a Pocock design!</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">gsDesign</span><span class="p">)</span>
+
+<span class="n">design_pocock</span> <span class="o">&lt;-</span> <span class="nf">gsDesign</span><span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="m">20</span><span class="p">,</span> <span class="c1">#number of interim analysis planned</span>
+                          <span class="n">test.type</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="c1"># for one-sided tests</span>
+                          <span class="n">delta</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="c1"># default effect size</span>
+                          <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.05</span><span class="p">,</span> <span class="c1">#type II error rate</span>
+                          <span class="n">beta</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">,</span> <span class="c1"># type II error rate</span>
+                          <span class="n">sfu</span> <span class="o">=</span> <span class="s">&#39;Pocock&#39;</span><span class="p">)</span>
+                          
+<span class="n">crit_pocock</span> <span class="o">&lt;-</span> <span class="n">design_pocock</span><span class="o">$</span><span class="n">upper</span><span class="o">$</span><span class="n">bound</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/w02d2_abPeeking_17_0.svg" src="_images/w02d2_abPeeking_17_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="interpretations-of-pocock-correction">
+<h3>Interpretations of Pocock correction<a class="headerlink" href="#interpretations-of-pocock-correction" title="Permalink to this headline">¶</a></h3>
+<p>In <em>one</em> A/A testing simulated experiment, using unadjusted quantities:</p>
+<ul class="simple">
+<li><p>you would reject <span class="math notranslate nohighlight">\(H_0\)</span>: the observed (unadjusted) t-statistic is bigger than the (unadjusted) critical value</p></li>
+</ul>
+<p>Using Pocock’s critical values:</p>
+<ul class="simple">
+<li><p>you would fail to reject <span class="math notranslate nohighlight">\(H_0\)</span>: the observed (unadjusted) t-statistic is smaller than the (adjusted) critical value</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The Bonferroni’s adjusted critical value is larger than Pocock’s critical values: the Bonferroni test is the <em>most conservative</em> test. Pocock method gives some control of the type I error rate!! Bonferroni gives a more conservative control of the type I error rate!!</p>
+</div>
+</div>
+</div>
+<div class="section" id="o-brien-fleming-s-boundaries">
+<h2>O’Brien-Fleming’s boundaries<a class="headerlink" href="#o-brien-fleming-s-boundaries" title="Permalink to this headline">¶</a></h2>
+<p>Another method available in <code class="docutils literal notranslate"><span class="pre">gsDesign</span></code> is the <strong>O’Brien-Fleming method</strong></p>
+<p>Unlike previous methods, the O’Brien-Fleming method uses <em>non-uniform</em> boundaries</p>
+<ul class="simple">
+<li><p>the test has conservative critical values for earlier interim analyses and less conservative values (closer to the unadjusted critical values) as more data are collected</p></li>
+</ul>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">design_of</span> <span class="o">&lt;-</span> <span class="nf">gsDesign</span><span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="m">20</span><span class="p">,</span> <span class="c1">#number of interim analysis planned</span>
+                          <span class="n">test.type</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="c1"># for one-sided tests</span>
+                          <span class="n">delta</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="c1"># default effect size</span>
+                          <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.05</span><span class="p">,</span> <span class="c1">#type I error rate</span>
+                          <span class="n">beta</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">,</span> <span class="c1"># type II error rate</span>
+                          <span class="n">sfu</span> <span class="o">=</span> <span class="s">&#39;OF&#39;</span><span class="p">)</span>
+                          
+<span class="n">crit_of</span> <span class="o">&lt;-</span> <span class="n">design_of</span><span class="o">$</span><span class="n">upper</span><span class="o">$</span><span class="n">bound</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/w02d2_abPeeking_21_0.svg" src="_images/w02d2_abPeeking_21_0.svg" /></div>
+</div>
+<div class="section" id="interpretations-of-o-brien-fleming-correction">
+<h3>Interpretations of O’Brien-Fleming correction<a class="headerlink" href="#interpretations-of-o-brien-fleming-correction" title="Permalink to this headline">¶</a></h3>
+<p>In <em>one</em> A/A testing simulated experiment, using unadjusted quantities:</p>
+<ul class="simple">
+<li><p>you would reject <span class="math notranslate nohighlight">\(H_0\)</span>: the observed (unadjusted) t-statistic is bigger than the (unadjusted) critical value</p></li>
+</ul>
+<p>Using O’Brien-Fleming’s critical values:</p>
+<ul class="simple">
+<li><p>you would fail to reject <span class="math notranslate nohighlight">\(H_0\)</span>: the observed (unadjusted) t-statistic is smaller than the (adjusted) critical value</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The O’Brien-Fleming’s critical values are non-constant!! The test is <em>very</em> conservative at the beginning when less data is available and becomes less conservative as more data is collected. </font></p>
+</div>
+</div>
+<div class="section" id="type-i-error-rate-control">
+<h3>Type I error rate control<a class="headerlink" href="#type-i-error-rate-control" title="Permalink to this headline">¶</a></h3>
+<p>To better understand the type I error rate control of the 3 approaches, you need to repeat the experiments <em>many</em> times and calculate the rate at which you erroneously reject <span class="math notranslate nohighlight">\(H_0\)</span>.</p>
+<div class="section" id="number-of-erroneous-rejections-among-100-experiments">
+<h4>Number of erroneous rejections among 100 experiments<a class="headerlink" href="#number-of-erroneous-rejections-among-100-experiments" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">120</span><span class="p">)</span>
+
+<span class="c1">### Run this before continuing</span>
+<span class="n">multiple_times_sequential_tests</span> <span class="o">&lt;-</span> <span class="nf">tibble</span><span class="p">(</span><span class="n">experiment</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">seq_test</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">.x</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">,</span> 
+                          <span class="n">.f</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">incremental_t_test</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">1000</span><span class="p">,</span> <span class="n">d_0</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">sample_increase_step</span> <span class="o">=</span> <span class="m">50</span><span class="p">,</span> 
+                              <span class="n">mean_current</span> <span class="o">=</span> <span class="m">200</span><span class="p">,</span> <span class="n">sd_current</span> <span class="o">=</span> <span class="m">50</span><span class="p">,</span> <span class="n">sd_new</span> <span class="o">=</span> <span class="m">50</span><span class="p">)))</span>
+
+<span class="n">typeI_rate</span>  <span class="o">&lt;-</span> <span class="n">multiple_times_sequential_tests</span> <span class="o">%&gt;%</span> 
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">reject</span> <span class="o">=</span> <span class="nf">map_dbl</span><span class="p">(</span><span class="n">.x</span> <span class="o">=</span> <span class="n">seq_test</span><span class="p">,</span> <span class="n">.f</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">p_value</span><span class="o">&lt;</span><span class="m">0.05</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">n_reject_bonferroni</span> <span class="o">=</span> <span class="nf">map_dbl</span><span class="p">(</span><span class="n">.x</span> <span class="o">=</span> <span class="n">seq_test</span><span class="p">,</span> <span class="n">.f</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">p_value</span> <span class="o">&lt;</span> <span class="m">0.05</span><span class="o">/</span><span class="m">20</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">n_reject_pocock</span> <span class="o">=</span> <span class="nf">map_dbl</span><span class="p">(</span><span class="n">.x</span> <span class="o">=</span> <span class="n">seq_test</span><span class="p">,</span> <span class="n">.f</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">statistic</span> <span class="o">&gt;</span> <span class="n">crit_pocock</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">n_reject_OF</span> <span class="o">=</span> <span class="nf">map_dbl</span><span class="p">(</span><span class="n">.x</span> <span class="o">=</span> <span class="n">seq_test</span><span class="p">,</span> <span class="n">.f</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">statistic</span> <span class="o">&gt;</span> <span class="n">crit_of</span><span class="p">)</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="nf">summarise</span><span class="p">(</span><span class="n">Unadjusted</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">reject</span><span class="p">),</span>
+              <span class="n">Bonferroni</span><span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n_reject_bonferroni</span><span class="p">),</span>
+              <span class="n">Pocock</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n_reject_pocock</span><span class="p">),</span>
+              <span class="n">OBrienFleming</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n_reject_OF</span><span class="p">),</span>
+              <span class="n">expected_n_rejections</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+<span class="n">typeI_rate</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 1 × 5</caption>
+<thead>
+	<tr><th scope=col>Unadjusted</th><th scope=col>Bonferroni</th><th scope=col>Pocock</th><th scope=col>OBrienFleming</th><th scope=col>expected_n_rejections</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>24</td><td>2</td><td>7</td><td>4</td><td>5</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+<p>For the simulated experiments in the example above:</p>
+<ul class="simple">
+<li><p>the type I error rate using unadjusted values was 24% (way above the planned 5% value)</p></li>
+<li><p>the type I error rate using Bonferroni was 2% (below the planned 5% value)</p></li>
+<li><p>the type I error rate using Pocock was 7% (above the planned 5% value)</p></li>
+<li><p>the type I error rate using O’Brien-Flemming was 4% (slightly below the planned 5% value)</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Using a <strong>principled peeking</strong> procedure, the data can be sequentially analyzed and the experiment can be stopped earlier while controlling the type I error rate.</p>
+</div>
+</div>
+<div class="section" id="summary-and-key-concepts-learned">
+<h2>Summary and key concepts learned<a class="headerlink" href="#summary-and-key-concepts-learned" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>In many A/B testing experiments, users would like to stop their experiments earlier depending on the results of interim analyses</p></li>
+<li><p>If you make lots of comparisons, but don’t correct for it, your error rates are inflated!! Naively peeking at the data many times and stopping the experiment earlier than planned increases the probability of <em>incorrectly</em> rejecting the null hypothesis.</p></li>
+<li><p>Stops must be part of the experimental design and appropriate testing methods must be used!</p></li>
+<li><p>A possible way to control the type I error rated is to use a <strong>Bonferroni adjustment</strong> of the <span class="math notranslate nohighlight">\(p\)</span>-values (or equivalently the significance level or critical values). As with other multiple comparison problems, the Bonferroni’s correction in sequential analysis is very conservative and can affect the power of the test!!</p></li>
+<li><p>The <strong>Pocock method</strong> offers a less conservative way of controlling the type I error rate in sequential testing with early stops.</p></li>
+<li><p>The <strong>O’Brien-Fleming method</strong> offers a less conservative way of controlling the type I error rate in sequential testing with early stops.</p></li>
+</ol>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Principled peeking is ok and even beneficial in A/B testing. The experimental design is a very important piece of any statistical analysis!</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="w02d1_abTesting.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">A/B Testing</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Gabriela Cohen Freue<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
