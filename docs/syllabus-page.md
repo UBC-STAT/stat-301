@@ -46,6 +46,8 @@ Times are in Pacific Time
 
 ### Textbooks
 
+- Class notes by Gabriela Cohen Freue can be found [here](https://ubc-stat.github.io/stat301book/intro.html)
+  
 - James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An introduction to statistical learning: With applications in R. 
   - Available ONLINE at UBC Library: http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014
 - Rafael Irizarry. Introduction to Data Science. 
