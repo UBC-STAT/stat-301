@@ -295,7 +295,7 @@ test_1.6 <- function() {
 # Question 1.8
 
 test_1.8 <- function() {
-    check_MC(answer1.8, getPermutations(LETTERS[1:4]), "257ffd0fec52cbf9ff2dba41f66d6b26")
+    check_MC(answer1.8, getPermutations(LETTERS[1:4]), "6e7a8c1c098e8817e3df3fd1b21149d1")
 }
 
 # +
