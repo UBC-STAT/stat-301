@@ -161,7 +161,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                      <li>Project:
                         <ul>
                             <li>Group: Team Contract</li>
-                            <li>Individual: TBD</li>
+                            <li>Individual: Data and Questions</li>
                         </ul>
                     </li>
                 </ul>
@@ -201,7 +201,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                 <ul>
                      <li>Project:
                         <ul>
-                            <li>Individual: TBD</li>
+                            <li>Individual: EDA and Visualization</li>
                         </ul>
                     </li>   
                 </ul>
@@ -228,7 +228,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                     <li>Tutorial 09</li>
                     <li>Project:
                         <ul>
-                            <li>Individual: TBD</li>
+                            <li>Individual: Methods and Plan</li>
                         </ul>
                     </li> 
                 </ul>
@@ -282,7 +282,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                 <ul>
                     <li>Project:
                         <ul>
-                            <li>Individual: TBD</li>
+                            <li>Individual: Draft Report</li>
                         </ul>
                     </li>
                 </ul>
