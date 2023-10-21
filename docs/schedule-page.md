@@ -197,15 +197,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                 </ul>
             </td>
             <td></td>
-            <td style="text-align: left;">
-                <ul>
-                     <li>Project:
-                        <ul>
-                            <li>Individual: EDA and Visualization</li>
-                        </ul>
-                    </li>   
-                </ul>
-            </td>
+            <td></td>
         </tr>
         <tr>
             <td>#9</td>
@@ -228,7 +220,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                     <li>Tutorial 09</li>
                     <li>Project:
                         <ul>
-                            <li>Individual: Methods and Plan</li>
+                            <li>Individual: EDA and Visualization</li>
                         </ul>
                     </li> 
                 </ul>
@@ -253,6 +245,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                     <li>Tutorial 10</li>
                     <li>Project:
                         <ul>
+                            <li>Individual: Methods and Plan</li>
                             <li>Group Interview</li>
                         </ul>
                     </li>
@@ -278,15 +271,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                     <li><a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Sections 5.1 of ISL</a></li> 
                 </ul>    
             </td>
-            <td style="text-align: left;">
-                <ul>
-                    <li>Project:
-                        <ul>
-                            <li>Individual: Draft Report</li>
-                        </ul>
-                    </li>
-                </ul>
-            </td>
+            <td></td>
         </tr>
         <tr>
             <td>#12</td>
@@ -308,6 +293,11 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                 <ul>
                     <li>Worksheet 12</li>
                     <li>Tutorial 12</li>
+                    <li>Project:
+                        <ul>
+                            <li>Individual: Draft Report</li>
+                            </ul>
+                        </li>
                 </ul>
             </td>
         </tr>
@@ -328,11 +318,6 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                 <ul>
                     <li>Worksheet 13</li>
                     <li>Tutorial 13</li>
-                    <li>Project:
-                        <ul>
-                            <li>Group: Final Report</li>
-                        </ul>
-                    </li>
                 </ul>
             </td>
         </tr>
@@ -349,7 +334,12 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                     <li>Review all course material</li>
                 </ul>
             </td>
-            <td></td>
+            <td><li>Project:
+                        <ul>
+                            <li>Group: Final Report</li>
+                        </ul>
+                    </li>
+                    </td>
         </tr>
     </tbody>
 </table>
