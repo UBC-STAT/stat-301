@@ -32,7 +32,7 @@ jobs:
         draft: false
         prerelease: false
     - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@v4
+      uses: elgohr/Publish-Docker-Github-Action@v5
       with:
         name: ubcdsci/r-stat-301
         username: ${{ secrets.DOCKER_USERNAME }}
@@ -40,7 +40,7 @@ jobs:
         workdir: dockerfiles/r-stat-301
         tags: "latest,${{ steps.bump.outputs.new_tag }}"
     - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@v4
+      uses: elgohr/Publish-Docker-Github-Action@v5
       with:
         name: ubcdsci/r-stat-301-grading
         username: ${{ secrets.DOCKER_USERNAME }}
