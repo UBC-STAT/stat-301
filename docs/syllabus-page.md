@@ -28,14 +28,14 @@ Times are in Pacific Time
 Times are in Pacific Time
 
 - **Instructor**: Wednesdays 3:30 - 4:30 pm via Zoom (link on Canvas).
-- **TA**: TBD
+- **TA**: Fridays 11 am - 12 pm via Zoom (link on Canvas).
 - Post questions on [PIAZZA]([https://piazza.com/ubc.ca/winterterm12023/stat3011012023w1]) for general discussions and answers!
 - **Please, do not ask questions about course material through email!!**
 
 #### Test Dates
 
-- Midterm: Thursday, October 26th at 12:30pm-1:50pm
-- Final Exam: TBA (2 hours)
+- Midterm: Thursday, October 26th at 12:30 pm-1:50 pm
+- Final Exam: Wed Dec 20 2023 | 12:00 pm (2 hours), room TBD
 - Final Group Project Report: Dec 9th at 11:59pm
 
 ### Software Platforms
@@ -179,14 +179,13 @@ Our server will automatically snapshot at the due date/time. Also, please **do n
 
 #### Exams
 
-All the exams will be on Canvas with lockdown browser. You will be able to have some printed handouts and summaries. You **are not allowed** to access any webpage or files in your computer or other electronic devices. 
+All the exams will be on Canvas with lockdown browser. You will be able to have 1 letter-size page (double-sided) cheatsheet (all you can write or print). You **are not allowed** to access any webpage or files in your computer or other electronic devices. 
 
 The types of questions can vary: reasoning, multiple-choice, multiple-answer, dropdown, true or false. Although most questions will be about the content, you can expect a few simple coding questions. That being said, the coding question will not be overly complicated, and we will only check your familiarity with the main functions and packages we use in the course. We **are not** trying to test your memory!!! Please don't spend energy trying to memorize everything. If you had done the worksheets and tutorial, this should not be a problem for you.
 
-- **Midterm:** administered during the full lecture of Week 8. The midterm will cover Worksheets/Tutorials 1-5 and 7, plus the readings. 
+- **Midterm:** administered during the full lecture of Week 8. The midterm will cover Worksheets/Tutorials 1-5 and 7. Content in readings are to help you get a full understanding but won't be tested if not covered in course material. 
 
-- **Final Exam:** The final exam will be a two-hour exam and it will cover the material of
-the **entire course**. However, more emphasis will be given to the second part of the course (i.e., Worksheets/Tutorials 9-10 and 12-13). Notwithstanding the grading weights presented above, <em>students must pass the final exam</em> to pass the course.
+- **Final Exam:** The final exam will be a two-hour exam and it will cover the material of the **entire course**. However, more emphasis will be given to the second part of the course (i.e., Worksheets/Tutorials 9-10 and 12-13). Notwithstanding the grading weights presented above, <em>students must pass the final exam</em> to pass the course.
 
 ### Policies
 
