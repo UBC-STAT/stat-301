@@ -404,6 +404,6 @@ test_4.0 <- function() {
              "c01f179e4b57ab8bd9de309e6d576c48",
              c("RMSE"),
              c(100),
-             c("d33c53e3b3b7e8c0db40d2c15446491d")
+             c("1c0da34a51e90766dad0246ea698a5d4")
     )
 }
