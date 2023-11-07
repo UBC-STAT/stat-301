@@ -220,7 +220,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                     <li>Tutorial 09</li>
                     <li>Project:
                         <ul>
-                            <li>Individual: EDA and Visualization</li>
+                            <li>Individual: EDA and Visualization (Deadline moved to Nov 7th, 11:59pm)</li>
                         </ul>
                     </li> 
                 </ul>
