@@ -91,6 +91,8 @@ The whole group will meet for 5 minutes with the TA to suggest a plan on how to 
 
 ### Deliverable 6: Individual assignment (4% weight)
 
+#### Assignment 4: Computational Code and Output 
+
 This will be the last individual assignment. Write a computation code to implement the method proposed in the previous assignment (or suggested in the interview) and use a visualization or table to report the results. In 3 or 4 sentences give a brief interpretation of the results. If needed, comment on any unexpected result or potential problems with the analysis, and possible ways to address issues encountered. If results are as expected, explain how they address the question of interest.
 
 ### Deliverable 7: Group Final Report (5% weight)
