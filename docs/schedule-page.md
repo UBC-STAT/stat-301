@@ -349,8 +349,11 @@ All due dates will be on the last day of the week (Saturday at 23:59:59).
 #### Test Dates
 
 - Midterm: Thursday, October 26th at 12:30pm-1:50pm
-- Final Exam: TBD
-- Final Group Project Report: Dec 9th at 11:59pm
+- Final Group Project Report: Dec 16th at 11:59pm
+- Final Exam: Wed Dec 20 2023 | 12:00 pm (2 hours), 
+Alphabetical split
+AAA-RUA: PHRM 1101
+SAJ-ZHU: PHRM 1201
 
 ### Learning Outcomes per Week
 
