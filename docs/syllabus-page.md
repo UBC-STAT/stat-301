@@ -35,7 +35,11 @@ Times are in Pacific Time
 #### Test Dates
 
 - Midterm: Thursday, October 26th at 12:30 pm-1:50 pm
-- Final Exam: Wed Dec 20 2023 | 12:00 pm (2 hours), room TBD
+- Final Exam: Wed Dec 20 2023 | 12:00 pm (2 hours), 
+Alphabetical split
+AAA-RUA: PHRM 1101
+SAJ-ZHU: PHRM 1201
+
 - Final Group Project Report: Dec 9th at 11:59pm
 
 ### Software Platforms
