@@ -15,32 +15,29 @@ Please read the [COVID-19 instructions](https://ubc-stat.github.io/stat-301/covi
 ### When and where?
 Times are in Pacific Time
 
-- The lectures are **mandatory** *and* **in person** on Tuesdays and Thursdays from 12:30 to 2:00 pm
-- The lectures will be held in Leonard S. Klinck (LSK) building, Room 200
-- Tutorials will be held **in person** in Chemistry, Room B250, on Thursdays from 5:00 to 6:00 pm
+- The lectures are **mandatory** *and* **in person** on Monday and Wednesday
+- Tutorials will be held **in person** on Tuesday
+- Please refer the Canvas Course page for the class room information (Lectures and Tutorials)
 
 **IMPORTANT cancellations:**
-    - Tuesday September 5th is UBC Imagine Day, so we will have our first lecture and tutorial on Thursday Sep 7th.
-    - Oct 12th is "Make-up Monday", so both the lecture and the tutorial are cancelled.
-    - Nov 13-15th is mid-term break, so we will have only one lecture that week on Thursday Nov 16th. There will be a tutorial to address questions about the project.
+    - Feb 19-23 is midterm break - No lectures,Tutorials and office hours etc.
+    - March 29th is Good Friday - Not affect to STAT 301 lectures or Tutorials. Office hours are canceled
+    - April 1st Easter Monday -  No lecture
     
 ### Office hours and questions
-Times are in Pacific Time
+Please refer the Canvas course page for information. Times are in Pacific Time
 
-- **Instructor**: Wednesdays 3:30 - 4:30 pm via Zoom (link on Canvas).
-- **TA**: Fridays 11 am - 12 pm via Zoom (link on Canvas).
-- Post questions on [PIAZZA]([https://piazza.com/ubc.ca/winterterm12023/stat3011012023w1]) for general discussions and answers!
+- **Instructor**: Wednesdays 9:30 - 10:30 am via Zoom (link on Canvas).
+- **TAs**: Please refer the Canvas course page for information.
+- Post questions on Piazza Page for general discussions and answers!: Please access the Piazza page via the Canvas course page 
 - **Please, do not ask questions about course material through email!!**
 
 #### Test Dates
 
-- Midterm: Thursday, October 26th at 12:30 pm-1:50 pm
-- Final Exam: Wed Dec 20 2023 | 12:00 pm (2 hours), 
-Alphabetical split
-AAA-RUA: PHRM 1101
-SAJ-ZHU: PHRM 1201
-
-- Final Group Project Report: Dec 9th at 11:59pm
+- Midterm exam: Wednesday, March 6th at 4:00pm
+- Final Exam: To be scheduled by Classroom Services. Exam schedule is released at least 3 weeks before the final day of classes. Final Exam period: April 16-27
+- Final Group Project Report: April 12th at 11:59pm
+- Please refer the Canvas course page for details about exams and the project.
 
 ### Software Platforms
 
@@ -50,7 +47,7 @@ SAJ-ZHU: PHRM 1201
 
 ### Textbooks
 
-- Class notes by Gabriela Cohen Freue can be found [here](https://ubc-stat.github.io/stat301book/intro.html)
+- Class notes by Gabriela Cohen Freue can be found [here](https://ubc-stat.github.io/stat301book/intro.html) - for first few lectures
   
 - James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An introduction to statistical learning: With applications in R. 
   - Available ONLINE at UBC Library: http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014
