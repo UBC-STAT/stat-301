@@ -1,4 +1,4 @@
-## Group Project
+## Group Project (Case Study)
 
 As in DSCI 100 and STAT 201, students will work in groups to complete a Data Science project from the beginning
 (downloading data from the web) to the end (communicating their methods and conclusions in an electronic
