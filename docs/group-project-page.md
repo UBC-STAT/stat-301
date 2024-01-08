@@ -1,4 +1,4 @@
-## Group Project (Case Study)
+## Case Study Project
 
 As in DSCI 100 and STAT 201, students will work in groups to complete a Data Science project from the beginning
 (downloading data from the web) to the end (communicating their methods and conclusions in an electronic
@@ -8,7 +8,7 @@ For this project, you will need to formulate formulate a research question of yo
 and then identify and use a dataset to answer to the question. We list some suggested data sets below; however, we encourage you to use another data set that interests you. If you are unsure whether your dataset is adequate, please reach out to a member of the
 teaching team.
 
-**Important Note:** Although this is a group project, some related assignments will be submitted individually. You can (and are encouraged to) discuss it with your group members. However, *every* student will submit their own assignment and will receive an individual grade. 
+**Important Note:** Although this  is a group project, some related assignments will be submitted individually. You can (and are encouraged to) discuss it with your group members. However, *every* student will submit their own assignment and will receive an individual grade. 
 
 **Submission:** All assignments must be done in a Jupyter notebook, and then submitted both as an `.html` file (`File` &#8594; `Download As` &#8594; `HTML`) and an `.ipynb` file that is reproducible (i.e. works and runs without any additional files).
 
