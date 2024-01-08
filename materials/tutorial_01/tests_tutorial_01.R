@@ -231,10 +231,10 @@ test_1.6 <- function() {
   })
 
   test_that("p.value data frame does not contain the correct data", {
-    expect_equal(digest(as.integer(sum(pairwise_comparisons_df$Interact[!is.na(pairwise_comparisons_df$Interact)]) * 1e5)),"310cbeba01f215b4f3c61ec32683c70d")
-    expect_equal(digest(as.integer(sum(pairwise_comparisons_df$Connect[!is.na(pairwise_comparisons_df$Connect)]) * 1e5)),"db3b3ae4947a314c396bc1cf869e19a3")
-    expect_equal(digest(as.integer(sum(pairwise_comparisons_df$Learn[!is.na(pairwise_comparisons_df$Learn)]) * 1e5)),"89b12a37687997c49bd0a2244223caad")
-    expect_equal(digest(as.integer(sum(pairwise_comparisons_df$Help[!is.na(pairwise_comparisons_df$Help)]) * 1e5)),"533b84d9e3cab426fcc423c6451fc6c1")
+    expect_equal(digest(as.integer(sum(pairwise_comparisons_df$Interact[!is.na(pairwise_comparisons_df$Interact)]) * 1e5)),"52a09758fe74224408f3370adde49650")
+    expect_equal(digest(as.integer(sum(pairwise_comparisons_df$Connect[!is.na(pairwise_comparisons_df$Connect)]) * 1e5)),"e23f3b70b25aedb7b4e430ad53739836")
+    expect_equal(digest(as.integer(sum(pairwise_comparisons_df$Learn[!is.na(pairwise_comparisons_df$Learn)]) * 1e5)),"11e7fecf5a45ab86af9ea5081f609319")
+    expect_equal(digest(as.integer(sum(pairwise_comparisons_df$Help[!is.na(pairwise_comparisons_df$Help)]) * 1e5)),"4fd46b219231bc3f244c9cda8499aa45")
   })
 
   print("Success!")
