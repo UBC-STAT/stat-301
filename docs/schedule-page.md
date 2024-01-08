@@ -16,7 +16,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
     <tbody>
         <tr>
             <td>#1</td> 
-            <td>Sept 03 ~ Sept 09</td>
+            <td>Jan 08 ~ Jan 12</td>
             <td style="text-align: left;">
                 <ul>
                     <li> Review of STAT 201
@@ -43,7 +43,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#2</td>
-            <td>Sept 10 ~ Sept 16</td>
+            <td>Jan 15 ~ Jan 19</td>
             <td style="text-align: left;">
                 <ul>
                     <li> A/B Testing 
@@ -75,7 +75,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#3</td>
-            <td>Sept 17 ~ Sept 23</td>
+            <td>Jan 22 ~ Jan 26</td>
             <td style="text-align: left;">
                 <ul>
                     <li>Simple Linear Regression</li>
@@ -96,7 +96,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#4</td>
-            <td> Sept 24 ~ Sept 30</td>
+            <td> Jan 29 ~ Feb 2 </td>
             <td style="text-align: left;">
                 <ul>
                     <li>Multiple Linear Regression</li>
@@ -117,7 +117,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#5</td>
-            <td> Oct 01 ~ Oct 07 </td>
+            <td> Feb 5 ~ Feb 9 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Diagnostics and confounding factors </li>
@@ -139,17 +139,12 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#6</td>
-            <td> Oct 08 ~ Oct 14 </td>
+            <td> Feb 12 ~ Feb 16 </td>
             <td>
-                <ul>
-                    <li>Tuesday: 
                         <ul>
                             <li>Case Study</li>
                             <li>In-class work on project</li>
                         </ul>
-                    </li>    
-                    <li>Thursday: NO CLASS due to Make-up Monday!! </li>
-                </ul>
             </td>
             <td style="text-align: left;">
                 <ul>
@@ -169,7 +164,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#7</td>
-            <td> Oct 15 ~ Oct 21 </td>
+            <td> Feb 26 ~ March 01 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Model assessment and selection </li>
@@ -189,11 +184,11 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#8</td>
-            <td>Oct 22 ~ Oct 28</td>
+            <td>March 04 ~ March 8</td>
             <td>
                 <ul>
-                    <li> Tuesday: Review </li>
-                    <li> Thursday (Oct 26th): Mid-Term </li>
+                    <li> Monday: Review </li>
+                    <li> Wednesday (March 8th): Mid-Term </li>
                 </ul>
             </td>
             <td></td>
@@ -201,7 +196,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#9</td>
-            <td> Oct 29 ~ Nov 04 </td>
+            <td> March 11 ~ March 15 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Predictive Modelling </li>
@@ -220,7 +215,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                     <li>Tutorial 09</li>
                     <li>Project:
                         <ul>
-                            <li>Individual: EDA and Visualization (Deadline moved to Nov 7th, 11:59pm)</li>
+                            <li>Individual: EDA and Visualization </li>
                         </ul>
                     </li> 
                 </ul>
@@ -228,7 +223,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#10</td>
-            <td> Nov 05 ~ Nov 11 </td>
+            <td> March 18 ~ March 22 </td>
             <td style="text-align: left;">
                 <ul>
                     <li>Post Selection Inference</li>
@@ -254,17 +249,12 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#11</td>
-            <td> Nov 12 ~ Nov 18 </td>
+            <td> March 25 ~ March 29 </td>
             <td>
-                <ul>
-                    <li>Tuesday: NO CLASS due to Midterm Break</li>
-                    <li>Thursday: 
                         <ul>
                             <li>Cross-validation</li>
                             <li>In-class work on project</li>
                         </ul>
-                    </li>    
-                </ul>
             </td>
             <td style="text-align: left;">
                 <ul>
@@ -275,7 +265,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#12</td>
-            <td> Nov 19 ~ Nov 25 </td>
+            <td> April 01 ~ April 05 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Modelling Discrete Count </li>
@@ -303,7 +293,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#13</td>
-            <td> Nov 26 ~ Dec 02 </td>
+            <td> April 08 ~ April 12 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Classifiers </li>
@@ -323,7 +313,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#14</td>
-            <td> Dec 03 ~ Dec 09 </td>
+            <td> April 08 ~ April  12 </td>
             <td style="text-align: left;">
                 <ul>
                     <li> Review </li>
@@ -348,12 +338,10 @@ All due dates will be on the last day of the week (Saturday at 23:59:59).
 
 #### Test Dates
 
-- Midterm: wednesday, march 6th at  4:00pm.  Please see more information in the canvas course page
-- Final Group Project Report: Dec 16th at 11:59pm
-- Final Exam: Wed Dec 20 2023 | 12:00 pm (2 hours), 
-Alphabetical split
-AAA-RUA: PHRM 1101
-SAJ-ZHU: PHRM 1201
+- Midterm: Wednesday, March 6th at  4:00pm.  Please see more information in the canvas course page
+- Final Group Project Report: April 12th at 11:59pm
+- Final Exam: To be scheduled by Classroom Services. Exam schedule is released at least 3 weeks before the final day of classes. Final Exam period: April 16 - 27
+
 
 ### Learning Outcomes per Week
 
