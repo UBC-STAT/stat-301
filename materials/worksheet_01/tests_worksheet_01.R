@@ -367,7 +367,7 @@ test_2.6 <- function() {
   
   answer_hash <- digest(tolower(answer2.6))
   test_that("Solution is incorrect", {
-    expect_equal(answer_hash, "d110f00cfb1b248e835137025804a23b")
+    expect_equal(answer_hash, "6e7a8c1c098e8817e3df3fd1b21149d1")
   })
   
   print("Success!")
