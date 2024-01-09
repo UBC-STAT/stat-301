@@ -188,7 +188,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
             <td>
                 <ul>
                     <li> Monday: Review </li>
-                    <li> Wednesday (March 8th): Mid-Term </li>
+                    <li> Wednesday (March 6th): Mid-Term </li>
                 </ul>
             </td>
             <td></td>
