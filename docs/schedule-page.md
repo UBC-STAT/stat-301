@@ -184,7 +184,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
         </tr>
         <tr>
             <td>#8</td>
-            <td>March 04 ~ March 8</td>
+            <td>March 04 ~ March 08</td>
             <td>
                 <ul>
                     <li> Monday: Review </li>
