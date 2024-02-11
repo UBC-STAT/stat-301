@@ -180,8 +180,8 @@ Click the Teammate Evaluation Template link in the Canvas home page to access th
 - This is **not** a standard worksheet/tutorial. You **must** download off our server and submit the html to Canvas.
 
 ### Data
-- [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets.php) has hundreds of datasets
-- City of Vancouver data: [https://opendata.vancouver.ca/pages/home/](https://opendata.vancouver.ca/pages/home/) (or other cities, like Ottawa, Toronto, etc.)
+<!---  - [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets.php) has hundreds of datasets -->
+<!---  - City of Vancouver data: [https://opendata.vancouver.ca/pages/home/](https://opendata.vancouver.ca/pages/home/) (or other cities, like Ottawa, Toronto, etc.) -->
 - Vancouver crime data: [https://geodash.vpd.ca/opendata/](https://geodash.vpd.ca/opendata/)
 - BC data: [https://data.gov.bc.ca/](https://data.gov.bc.ca/)
 - Water survey of Canada: [https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey.html](https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey.html)
