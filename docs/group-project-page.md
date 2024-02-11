@@ -180,7 +180,7 @@ Click the Teammate Evaluation Template link in the Canvas home page to access th
 - This is **not** a standard worksheet/tutorial. You **must** download off our server and submit the html to Canvas.
 
 ### Data
-= Data for each group will be assigned randomely
+- Data for each group will be assigned randomely
 - More information will be given in the canvas course page
 <!---  - [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets.php) has hundreds of datasets -->
 <!---  - City of Vancouver data: [https://opendata.vancouver.ca/pages/home/](https://opendata.vancouver.ca/pages/home/) (or other cities, like Ottawa, Toronto, etc.) -->
