@@ -182,11 +182,11 @@ Click the Teammate Evaluation Template link in the Canvas home page to access th
 ### Data
 <!---  - [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets.php) has hundreds of datasets -->
 <!---  - City of Vancouver data: [https://opendata.vancouver.ca/pages/home/](https://opendata.vancouver.ca/pages/home/) (or other cities, like Ottawa, Toronto, etc.) -->
-- Vancouver crime data: [https://geodash.vpd.ca/opendata/](https://geodash.vpd.ca/opendata/)
-- BC data: [https://data.gov.bc.ca/](https://data.gov.bc.ca/)
-- Water survey of Canada: [https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey.html](https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey.html)
-- Climate and Weather Data: [https://climate.weather.gc.ca/](https://climate.weather.gc.ca/)
-- Sports data
+<!---  - Vancouver crime data: [https://geodash.vpd.ca/opendata/](https://geodash.vpd.ca/opendata/) -->
+<!---  - BC data: [https://data.gov.bc.ca/](https://data.gov.bc.ca/) -->
+<!---  - Water survey of Canada: [https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey.html](https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey.html) -->
+<!---  - Climate and Weather Data: [https://climate.weather.gc.ca/](https://climate.weather.gc.ca/) -->
+<!---  - Sports data -->
 
 ### Attribution
 
