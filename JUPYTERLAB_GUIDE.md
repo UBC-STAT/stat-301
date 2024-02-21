@@ -20,6 +20,7 @@ This guide contains tips and FAQs which help to avoid common issues that arise w
 5. [Why did I get a low mark on a question when all the tests passed?](#why-did-i-get-a-low-mark-on-a-question-when-all-the-tests-passed)
 6. [I made a typo in my code, can I still get marks for the question?](#i-made-a-typo-in-my-code-can-i-still-get-marks-for-the-question)
 7. [I am getting a 400 (Bad Request) or 404 (Not Found) error, how do I fix it?](#i-am-getting-a-400-bad-request-or-404-not-found-error-how-do-i-fix-it)
+8. [How do I get a blank worksheet or tutorial for practice?](#how-do-i-get-a-blank-worksheet-or-tutorial-for-practice)
 
 ## Tips
 
@@ -192,6 +193,10 @@ After clearing your browser's cache, restart the browser and try opening Jupyter
 If it still has the same error, try using Incognito or Private Browsing on your browser.
 
 Lastly, disable any browser extensions as they could interfere with JupyterLab. Also check that your browser is updated to its latest version.
+
+### How do I get a blank worksheet or tutorial for practice?
+
+Follow the instructions [here](#get-a-fresh-copy-of-a-notebook) to get a blank copy of a tutorial or worksheet.
 
 
 
