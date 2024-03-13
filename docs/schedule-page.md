@@ -263,7 +263,7 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
              <td style="text-align: left;">
                 <ul>
                     <li>Project:
-                        <ul>
+                        <ul> 
                             <li> Group Interview</li>
                         </ul>
                     </li>
