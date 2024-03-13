@@ -241,7 +241,6 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                     <li>Project:
                         <ul>
                             <li>Individual: Methods and Plan</li>
-                            <li>Group Interview</li>
                         </ul>
                     </li>
                 </ul>
@@ -263,12 +262,9 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
             </td>
              <td style="text-align: left;">
                 <ul>
-                    <li>Worksheet 10</li>
-                    <li>Tutorial 10</li>
                     <li>Project:
                         <ul>
-                            <li>Individual: Methods and Plan</li>
-                            <li>Group Interview</li>
+                            <li> Group Interview</li>
                         </ul>
                     </li>
                 </ul>
