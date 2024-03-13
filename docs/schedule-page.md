@@ -261,7 +261,18 @@ Class notes can be found [here](https://ubc-stat.github.io/stat301book/intro.htm
                     <li><a href="http://resolve.library.ubc.ca/cgi-bin/catsearch?bid=6667014">Sections 5.1 of ISL</a></li> 
                 </ul>    
             </td>
-            <td></td>
+             <td style="text-align: left;">
+                <ul>
+                    <li>Worksheet 10</li>
+                    <li>Tutorial 10</li>
+                    <li>Project:
+                        <ul>
+                            <li>Individual: Methods and Plan</li>
+                            <li>Group Interview</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td>#12</td>
