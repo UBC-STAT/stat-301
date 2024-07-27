@@ -1,0 +1,739 @@
+---
+jupyter:
+  jupytext:
+    formats: ipynb,Rmd
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.2'
+      jupytext_version: 1.16.0
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+---
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-f1e1d845873036f4", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+# Tutorial 08: Classifiers as an Important Class of Predictive Models
+<!-- #endregion -->
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-82d9926086d47a80", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+#### Lecture and Tutorial Learning Goals:
+After completing this week's lecture and tutorial work, you will be able to:
+
+1. Give an example of a research question that requires a predictive model to predict classes on new observations.
+2. Explain the trade-offs between model-based and non-model based approaches, and describe situations where each might be the preferred approach.
+3. Write a computer script to perform model selection using ridge and LASSO regressions to fit a logistic regression useful for predictive modeling.
+4. List model metrics that are suitable to evaluate predicted classes given by a predictive model with binary responses (e.g., Accuracy, Precision, Sensitivity, Specificity, Cohen's kappa).
+5. Write a computer script to compute these model metrics. Interpret and communicate the results from that computer script.
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-a2a153352bc44a68', 'locked': True, 'schema_version': 3, 'solution': False, 'task': False}}
+# Run this cell before continuing.
+library(tidyverse)
+library(repr)
+library(infer)
+library(gridExtra)
+library(caret)
+library(pROC)
+library(boot)
+library(glmnet)
+source("tests_tutorial_08.R")
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-fd783bc5ce404c85"} -->
+For this tutorial, we will keep working with the `breast_cancer` data set. 
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': False, 'locked': True, 'task': False, 'grade_id': 'cell-f577c5adc888b891'}}
+# Run this cell before continuing
+
+set.seed(20211130)
+
+breast_cancer <- read_csv("data/breast_cancer.csv") %>%
+    select(-c(
+        mean_area, area_error, concavity_error, concave_points_error, worst_radius, worst_texture, worst_perimeter,
+        worst_area, worst_smoothness, worst_compactness, worst_concavity, worst_concave_points, worst_symmetry,
+        worst_fractal_dimension)) %>% 
+    mutate(target = if_else(target == "malignant", 1, 0))
+
+breast_cancer_train <- 
+    breast_cancer %>% 
+    slice_sample(prop = 0.70)
+
+breast_cancer_test <- 
+    breast_cancer %>% 
+    anti_join(breast_cancer_train, by = "ID")
+
+breast_cancer_train <- 
+    breast_cancer_train %>% 
+    select(-ID)
+
+breast_cancer_test <- 
+    breast_cancer_test %>% 
+    select(-ID)
+
+breast_cancer_logistic_model <- 
+    glm(
+        formula = target ~ .,
+        data = breast_cancer_train,
+        family = binomial)
+
+ROC_full_log <- 
+    roc(
+        response = breast_cancer_train$target, 
+        predictor = predict(breast_cancer_logistic_model, type = "response"))
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-f72168f336dccb06"} -->
+In the worksheet, you fitted the regular logistic regression to this data set. But, we can also use *shrinkage methods* in binary logistic regression. Shrinkage methods aim to improve your model by introducing some bias in exchange for a reduction in the model's variance. In general, we have the loss function that we are trying to minimize, and the shrinkage methods add a penalty term to it:
+
+- *Ridge loss function* $ = Loss(\beta) + \lambda||\beta||_2$
+    - For example, for linear regression we have $  L_\text{Ridge}(\beta)= \sum_{i=1}^N \left(y_i - \beta_0 - \sum_{j=1}^p\beta_jX_{ij}\right)^2 + \lambda\sum_{j=1}^p\beta_j^2$
+    
+    
+- *Lasso loss function* $ = Loss(\beta) + \lambda||\beta||_1$
+    - For example, for linear regression we have $ L_\text{Lasso}(\beta) = \sum_{i=1}^N \left(y_i - \beta_0 - \sum_{j=1}^p\beta_jX_{ij}\right)^2 + \lambda\sum_{j=1}^p|\beta_j|$
+
+For the logistic regression we have:
+
+$$L_{\text{Ridge}}(\beta_0, \beta_1, \dots, \beta_{p-1}) = - \sum_{i = 1}^n  \Bigg\{ -\log \Bigg[ 1 + \exp \Bigg(\beta_0 + \sum_{j = 1}^{p -1}\beta_j x_{ij} \Bigg) \Bigg] + y_i \Bigg( \beta_0 + \sum_{j = 1}^{p -1}\beta_j x_{ij} \Bigg) \Bigg\} + \lambda \sum_{j = 1}^{p - 1} \beta_j^2,$$
+
+- *Note: don't worry about these functions; we are adding them here just FYI.*
+<!-- #endregion -->
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-13bcacdf5557880e"} -->
+The package `glmnet` takes variables only as matrices. Therefore, we need to prepare our data before fitting the regularized models using `glmnet`.
+<!-- #endregion -->
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-cf386c1a245ac102"} -->
+**Question 1.0**
+<br>{points: 1}
+
+The `glmnet` and `cv.glmnet` functions work slightly differently from the `lm` and `glm` functions. They don't receive a formula and a data frame. Instead, we need to provide $X$ and $Y$ separately. 
+Also, $X$ and $Y$ should be matrices, not data frames. So, in general, we select the covariates in the `tibble` and then pipe it to the `as.matrix()` function. 
+
+Again, we need to separate $X$ and $Y$. Therefore:
+
+- Step 1: for `matrix_X` we need to drop the response from the data frame and select the desired covariates. Finally, pipe into `as.matrix()`. 
+- Step 2: for `matrix_Y` we need to select only the response from the data frame and pipe into `as.matrix()`. 
+
+Save the covariate matrix in an object named `matrix_X_train` and the response matrix in an object named `matrix_Y_train`. 
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-8cb6ee2b2c7af17a'}}
+# matrix_X_train <- 
+#     breast_cancer_train %>%
+#     ...(...)
+#     ...()
+
+# marix_Y_train <- 
+#     breast_cancer_train %>%
+#     ...(...)
+#     ...(ncol = 1) # ncol=1 just says that the matrix should have only 1 column.
+
+### BEGIN SOLUTION
+
+matrix_X_train <- 
+    breast_cancer_train %>%
+    select(-target) %>%
+    as.matrix()
+    
+matrix_Y_train <- 
+    breast_cancer_train %>%
+    select(target) %>%
+    as.matrix(ncol = 1)
+### END SOLUTION
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-9329daabcca68052'}}
+test_1.0()
+```
+
+It is good habit to start reading documentations. Uncomment the line below to take a look at the function.
+
+```{r}
+# ?glmnet
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-d1d061fedea199cf"} -->
+## Ridge Regression
+<!-- #endregion -->
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-b81ad428712384f1"} -->
+**Question 1.1**
+<br>{points: 1}
+
+Once we have our training data prepared in `matrix_X_train` and `matrix_Y_train`, let us find the value of $\lambda$ in $L_{\text{Ridge}}(\beta_0, \beta_1, \dots, \beta_{p})$ that provides the **largest** AUC using **cross-validation** (CV). 
+
+The function `cv.glmnet()` runs a cross-validation for any estimator in the `glmnet` family. The data is divided into $k$ folds. An AUC is computed in one fold left out using a model that is trained in the remaining folds. This calculation is repeated for all folds so you get $k$ AUC values for each $\lambda$ in the grid.
+
+Recall that ridge regression is defined when `alpha` is equal to zero. 
+
+In this questions, use `auc` as the `type.measure` to measure prediction performance, and set the number of folds `nfolds` to 10. 
+
+Note that the other arguments are the same as we used before to fit a Ridge linear regression model.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-798fffbe7429d3a4'}}
+set.seed(1234) # do not change this!
+
+# breast_cancer_cv_lambda_ridge <- 
+#   cv.glmnet(
+#        x = ..., 
+#        y = ...,
+#        alpha = ...,
+#        family = ...,
+#        type.measure = ...,
+#        nfolds = ...)
+
+# breast_cancer_cv_lambda_ridge 
+
+### BEGIN SOLUTION
+
+breast_cancer_cv_lambda_ridge <- 
+    cv.glmnet(
+        x = matrix_X_train, 
+        y = matrix_Y_train,
+        alpha = 0,
+        family = "binomial",
+        type.measure = "auc",
+        nfolds = 10)
+
+### END SOLUTION
+
+breast_cancer_cv_lambda_ridge
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-835f590ffa33093d'}}
+test_1.1()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-66e037cf38a28c2e"} -->
+**Question 1.2**
+
+The object `breast_cancer_cv_lambda_ridge` from `cv.glmnet()` is a list of different elements. We find the optimum value for $\lambda$ in ridge regression with this object. We can use `breast_cancer_cv_lambda_ridge` via `plot()` to visualize the resulting cross-validation AUCs for each value of $\lambda$. Recall that there are $k$ AUC values for each $\lambda$.
+
+The resulting plot will indicate the average AUC (red dot) and error bars (in grey) on the $y$-axis along with the $\lambda$ sequence on the $x$-axis in log-scale. 
+
+
+The top $x$-axis will indicate the number of inputs whose estimated coefficients are different from zero by each value of $\lambda$. Note that for Ridge we will always see the to on this top $x$-axis since the Ridge penalty never shrinks estimates to zero. 
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-c2a4f5f034b93c5e'}}
+# Adjust these numbers so the plot looks good in your computer.
+options(repr.plot.width = 16, repr.plot.height = 8) 
+
+# plot(..., 
+#      main = "Cross-Validation with Ridge Regression\n\n")
+
+### BEGIN SOLUTION
+plot(breast_cancer_cv_lambda_ridge, 
+     main = "Cross-Validation with Ridge Regression\n\n")
+### END SOLUTION
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-e261694b0682df04"} -->
+**Question 1.3**
+<br>{points: 1}
+
+The plot in **Question 1.2** shows two vertical dotted lines. *Given an `object` coming from `cv.glmnet()`*, these lines correspond to two values of $\lambda$:
+
+- $\hat{\lambda}_{\text{min}}$ which provides the maximum average AUC out of the whole sequence for $\lambda$. We can obtain it with `object$lambda.min`.
+
+
+- $\hat{\lambda}_{\text{1SE}}$ the highest $\lambda$ for which average AUC within one standard error of the maximum. We can obtain it with `object$lambda.1se`.
+
+
+Using `breast_cancer_cv_lambda_ridge`, obtain $\hat{\lambda}_{\text{min}}$ and assign it to the variable `breast_cancer_lambda_max_AUC_ridge`.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-a021fb07ef950e15'}}
+# breast_cancer_lambda_max_AUC_ridge <- round(..., 4)
+
+
+### BEGIN SOLUTION
+breast_cancer_lambda_max_AUC_ridge <- round(breast_cancer_cv_lambda_ridge$lambda.min, 4)
+### END SOLUTION
+
+breast_cancer_lambda_max_AUC_ridge
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-614151328ec24c6b'}}
+test_1.3()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-04b486fbda1e80ec"} -->
+**Question 1.4**
+
+Visualize the estimated regression coefficients all over the $\lambda$ range. 
+
+Use `breast_cancer_cv_lambda_ridge$glmnet.fit` along with a second argument called `"lambda"` within the function `plot()`. 
+
+You will see that the estimated coefficients shrink towards zero as the value of $\lambda$ increases. Moreover, use the `abline()` function to indicate `breast_cancer_lambda_max_AUC_ridge` as a vertical dashed line in red **on the natural logarithm scale**.
+
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-c6b6e6ef693202a4'}}
+# ...(..., "lambda")
+# ...(v = ..., col = "red", lwd = 3, lty = 2)
+
+### BEGIN SOLUTION
+plot(breast_cancer_cv_lambda_ridge$glmnet.fit, "lambda")
+
+abline(v = log(breast_cancer_lambda_max_AUC_ridge), 
+       col = "red", 
+       lwd = 3, 
+       lty = 2)
+### END SOLUTION
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-adc160d84caf9fb4"} -->
+**Question 1.5**
+<br>{points: 1}
+
+Once we have the optimum value for $\lambda$, let us fit the ridge regression model we will compare versus `breast_cancer_logistic_model` (from the worksheet). We will use the function `glmnet()` along with `matrix_X_train` and `matrix_Y_train`. Extract the fit for a `lambda` value equal to `breast_cancer_lambda_max_AUC_ridge`.
+
+Call the resulting estimated model `breast_cancer_ridge_max_AUC`.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-68173370a9412726'}}
+set.seed(1234) # DO NOT CHANGE!
+
+# breast_cancer_ridge_max_AUC <- 
+#   glmnet(
+#   x = ..., 
+#   y = ...,
+#   alpha = ...,
+#   family = ...,
+#   lambda = ...
+# )
+
+#coef(breast_cancer_ridge_max_AUC)
+
+### BEGIN SOLUTION
+
+breast_cancer_ridge_max_AUC <- 
+    glmnet(
+        x = matrix_X_train, 
+        y = matrix_Y_train,
+        alpha = 0,
+        family = "binomial",
+        lambda = breast_cancer_lambda_max_AUC_ridge)
+
+### END SOLUTION
+
+coef(breast_cancer_ridge_max_AUC)
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-2c0eb422bcc9a64c'}}
+test_1.5()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-30eea616995e9e66"} -->
+**CV-AUC for a Logistic Regression (without penalization)**
+
+In `worksheet_13`, we've computed the CV missclassification error for a classical (non-penalized) logistic regression. Let's compute here the CV AUC to compare it with that of  penalized models. Read the given code if you want to learn more about CV!
+
+*Run the following cell.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': False, 'locked': True, 'task': False, 'grade_id': 'cell-f4f34fffcbe4e5db'}}
+set.seed(1234)
+num.folds <- 10
+
+folds <- createFolds(breast_cancer_train$target, k=num.folds)
+
+regr.cv <- NULL
+for (fold in 1:num.folds) {
+train.idx <- setdiff(1:nrow(breast_cancer_train), folds[[fold]])
+regr.cv[[fold]] <- glm(target ~ ., data=breast_cancer_train, subset=train.idx,
+                       family="binomial")
+    }
+
+pred.cv <- NULL
+auc.cv <- numeric(num.folds) 
+
+for (fold in 1:num.folds) {
+test.idx <- folds[[fold]]
+pred.cv[[fold]] <- data.frame(obs=breast_cancer_train$target[test.idx],
+pred=predict(regr.cv[[fold]], newdata=breast_cancer_train, type="response")[test.idx])
+auc.cv[fold] <- roc(obs ~ pred, data=pred.cv[[fold]])$auc
+    }
+
+breast_cancer_cv_ordinary <- round(mean(auc.cv),7)
+
+cat("Cross-validation AUC for the ordinary logistic model:", 
+breast_cancer_cv_ordinary)
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-e17a6bb188ec831d"} -->
+**Question 1.6**
+<br>{points: 1}
+
+To help us keep track of the AUC for different models, let's create a data frame with the AUC computed by CV for each of our models: (1) ridge logistic regression and (2) ordinary logistic regression (from the worksheet). 
+
+Note that all the average AUC values from the CV are stored in an object called `cvm` from  `cv.glmnet`. 
+
+Store the ridge and ordinary models' cross-validation AUCs in a tibble called `breast_cancer_AUC_models` with two columns:
+
+- `model`: The regression model from which we will obtain the prediction accuracy. This will be a string vector with elements: `"ordinary"` and `"ridge"`.
+- `auc`: A numerical vector with AUC corresponding to each model.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-f0afa561df6d811e'}}
+# breast_cancer_AUC_models <- 
+#     tibble(
+#         model = ...,
+#         auc = ...)
+
+# breast_cancer_AUC_models
+
+### BEGIN SOLUTION
+breast_cancer_AUC_models <- 
+    tibble(
+        model = c("ordinary", "ridge"),
+        auc = c(breast_cancer_cv_ordinary, breast_cancer_cv_lambda_ridge$cvm[breast_cancer_cv_lambda_ridge$index[1]]))
+### END SOLUTION
+
+breast_cancer_AUC_models
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-e5db713d17d45704'}}
+test_1.6()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-2c2c92a01d9b879e"} -->
+## LASSO Regression
+<!-- #endregion -->
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-7f013a0c81ea6a07"} -->
+**Question 1.7**
+<br>{points: 1}
+
+We already prepared our training data with `matrix_X_train` and `matrix_Y_train`. Now we need to find the value of $\lambda$ in $L_{\text{LASSO}}(\beta_0, \beta_1, \dots, \beta_{p-1})$ that provides the largest average AUC. 
+
+Use the function `cv.glmnet()`. Remember LASSO regression is defined when `alpha` is equal to one.  Specify the proper accuracy `type.measure` and number of folds `nfolds` (use $k = 5$) along with the correct argument for `family`.
+
+*Assign the function's output as `breast_cancer_cv_lambda_LASSO`.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-883249cf69a785fb'}}
+set.seed(1234) # do not change this!
+
+# breast_cancer_cv_lambda_LASSO <- 
+#   ...(
+#   x = ..., y = ...,
+#   alpha = ...,
+#   family = ...,
+#   type.measure = ...,
+#   nfolds = ...)
+
+# breast_cancer_cv_lambda_LASSO
+
+### BEGIN SOLUTION
+
+breast_cancer_cv_lambda_LASSO <- cv.glmnet(
+  x = matrix_X_train, y = matrix_Y_train,
+  alpha = 1,
+  family = "binomial",
+  type.measure = "auc",
+  nfolds = 5
+)
+### END SOLUTION
+
+breast_cancer_cv_lambda_LASSO
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-91d3a9c9fc9e7363'}}
+test_1.7()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-011a6ef73a2f1466"} -->
+The object `breast_cancer_cv_lambda_LASSO` is also a list of different elements we will use to obtain the LASSO regression with an optimum value for $\lambda$. As before, we can use the function `plot()` to visualize the cross-validation AUC values for each value of the $\lambda$ sequence.
+
+This time, for LASSO logistic regression, we will see different values on this top $x$-axis since the model will shrink some coefficients to exactly zero. 
+
+The following plot compares the Ridge and the LASSO path to select lambda values. You can see that for LASSO, but not for Ridge, all estimates will become zero for large $\lambda$ values.
+
+*Run the cell below.*
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-d4bcba2f51bcac63', 'locked': True, 'schema_version': 3, 'solution': False, 'task': False}}
+options(repr.plot.width = 16, repr.plot.height = 8) # Adjust these numbers so the plot looks good in your desktop.
+
+plot(breast_cancer_cv_lambda_ridge, main = "Cross-Validation with Ridge Regression\n\n")
+
+plot(breast_cancer_cv_lambda_LASSO, main = "Cross-Validation with LASSO\n\n")
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-9b5b297a5b489184"} -->
+**Question 1.8**
+<br>{points: 1}
+
+The plot of the output coming from `cv.glmnet()` shows two vertical dotted lines. These lines correspond to two values of $\lambda$:
+
+- $\hat{\lambda}_{\text{min}}$ which provides the maximum average AUC out of the whole sequence for $\lambda$. We can obtain it with `object$lambda.min`.
+
+
+- $\hat{\lambda}_{\text{1SE}}$ is the highest $\lambda$ for which the model has an average AUC within one standard error of the maximum. We can obtain it with `object$lambda.1se`.
+
+
+In some cases, $\hat{\lambda}_{\text{1SE}}$ is preferable because we can select a considerably simpler model (three variables instead of seven) without having a significant reduction of the AUC. 
+
+Using `breast_cancer_cv_lambda_LASSO`, obtain $\hat{\lambda}_{\text{1se}}$ and assign it to the variable `breast_cancer_lambda_1se_AUC_LASSO`.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-4662013411dcd6c7'}}
+# breast_cancer_lambda_1se_AUC_LASSO <- round(..., 4)
+
+### BEGIN SOLUTION
+breast_cancer_lambda_1se_AUC_LASSO <- round(breast_cancer_cv_lambda_LASSO$lambda.1se, 4)
+### END SOLUTION
+
+breast_cancer_lambda_1se_AUC_LASSO
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-ed8ce5eab9b63eca'}}
+test_1.8()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-5da6f59490c656c8"} -->
+**Question 1.9**
+<br>{points: 1}
+
+Let's compare the LASSO logistic model fit at the `lambda.1se` with `breast_cancer_log_model` and `breast_cancer_ridge_max_AUC`. 
+
+We will use the function `glmnet()` along with `breast_cancer_X_train` and `breast_cancer_Y_train`. Extract the estimated model for `lambda` equal to `breast_cancer_lambda_1se_AUC_LASSO`. Call the output `breast_cancer_LASSO_1se_AUC`.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-bc8ffa02973dbe07'}}
+set.seed(1234) # do not change this!
+
+# breast_cancer_LASSO_1se_AUC <- ...(
+#   x = ..., y = ...,
+#   alpha = ...,
+#   family = ...,
+#   lambda = ...
+# )
+
+# breast_cancer_LASSO_1se_AUC
+
+### BEGIN SOLUTION
+
+breast_cancer_LASSO_1se_AUC <- 
+    glmnet(
+        x = matrix_X_train, 
+        y = matrix_Y_train,
+        alpha = 1,
+        family = "binomial",
+        lambda = breast_cancer_lambda_1se_AUC_LASSO)
+
+### END SOLUTION
+
+coef(breast_cancer_LASSO_1se_AUC)
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-eac7fb7a73a1ecbe'}}
+test_1.9()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-0a3de48f0069fc4e"} -->
+**Question 1.10**
+<br>{points: 1}
+
+
+Based on the results above, where those estimated regression coefficients equal to zero are shown as `.`, what input variables are selected in `breast_cancer_LASSO_1se_AUC`?
+
+**A.** `mean_radius`.
+
+**B.** `mean_texture`.
+
+**C.** `mean_perimeter`.
+
+**D.** `mean_smoothness`.
+
+**E.** `mean_compactness`.
+
+**F.** `mean_concavity`.
+
+**G.** `mean_concave_points`.
+
+**H.** `mean_symmetry`.
+
+**I.** `mean_fractal_dimension`.
+
+**J.** `radius_error`.
+
+**K.** `texture_error`.
+
+**L.** `perimeter_error`.
+
+**M.** `smoothness_error`.
+
+**N.** `compactness_error`.
+
+**O.** `symmetry_error`.
+
+**P.** `fractal_dimension_error`.
+
+*Assign your answers to the object `answer1.12`. Your answers have to be included in a single string indicating the correct options **in alphabetical order** and surrounded by quotes.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-88d1ffea05d9a704'}}
+# answer1.10 <- 
+
+### BEGIN SOLUTION
+answer1.10 <- "BCG"
+### END SOLUTION
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-24ac1044844b4537'}}
+test_1.10()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-85cb8a8afe9290d7"} -->
+**Question 1.11**
+<br>{points: 1}
+
+Let's add the Lasso Logistic Regression row to our `breast_cancer_AUC_models` tibble. 
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-ebbdef6a9bbd97ec'}}
+# breast_cancer_AUC_models <- 
+#     breast_cancer_AUC_models %>% 
+#     add_row(model = ..., 
+#             auc = ...)
+
+### BEGIN SOLUTION
+
+breast_cancer_AUC_models <- 
+    breast_cancer_AUC_models %>% 
+    add_row(model = "lasso", auc = breast_cancer_cv_lambda_LASSO$cvm[breast_cancer_cv_lambda_LASSO$index["1se",]])
+
+### END SOLUTION
+
+breast_cancer_AUC_models
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-caced323bccdd520'}}
+test_1.11()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-7d6d7e68aee6ee87"} -->
+Great job! You can now choose a model that you expect will have a good prediction performance based on the CV results, without looking at the test set!! 
+
+We can see that the ridge model is slightly better, although we used the $\lambda_{\min}$ for ridge and $\lambda_{1se}$ for lasso. On the other hand, the model selected by LASSO is considerably simpler since it uses only three of the variables while keeping similar performance. 
+
+After choosing the model, you can apply the chosen model to the test set to estimate the model's performance. 
+<!-- #endregion -->
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-721dc2524874e319"} -->
+**Question 1.12**
+<br>{points: 1}
+
+Suppose you chose the LASSO model. Use the model to predict the `target` variable on the **test** set (`breast_cancer_test`). Then, use the `roc` function to obtain the ROC curve in the test set. Save the result in an object named ROC_LASSO. 
+
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-a72d2162ab0d59ef'}}
+# model_matrix_X_test <- 
+#     ...(object = ...,
+#                  data = ....)[, -1]
+
+# ROC_lasso <- 
+#     roc(
+#         response = ...,
+#         predictor = predict(...,
+#                      newx = ...)[,"s0"] ) 
+
+### BEGIN SOLUTION
+
+model_matrix_X_test <- 
+    model.matrix(object = target ~ .,
+                 data = breast_cancer_test)[, -1]
+
+ROC_lasso <- roc(
+  response = breast_cancer_test$target,
+  predictor = predict(breast_cancer_LASSO_1se_AUC,
+                      newx = model_matrix_X_test)[,"s0"] )
+
+### END SOLUTION
+
+ROC_lasso
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': True, 'locked': True, 'task': False, 'points': 1, 'grade_id': 'cell-aadb329e2f98cbfc'}}
+test_1.12()
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-138a75b77a426c32"} -->
+We can use the `plot` function to plot the `ROC_lasso` curve from the Lasso model in the test set. 
+
+*Run the cell below.*
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': True, 'grade': False, 'locked': False, 'task': False, 'grade_id': 'cell-e681613eba1a7b5b'}}
+# Adjust these numbers so the plot looks good in your desktop.
+
+options(repr.plot.width = 8, repr.plot.height = 8) 
+
+plot(ROC_lasso,
+  print.auc = TRUE, col = "blue", lwd = 3, lty = 2,
+  main = "ROC Curves for Breast Cancer Dataset"
+)
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-d286bfc8f2e59df1"} -->
+Out of curiosity, let's check how the other two models perform in the test set. 
+<!-- #endregion -->
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': False, 'locked': True, 'task': False, 'grade_id': 'cell-ef1802fce5c5970b'}}
+# Run this cell before continuing
+
+ROC_ridge <- roc(
+  response = breast_cancer_test$target,
+  predictor = predict(breast_cancer_ridge_max_AUC,
+                      newx = model_matrix_X_test )[,"s0"] )
+
+ROC_ordinary <- roc(
+  response = breast_cancer_test$target,
+  predictor = predict(breast_cancer_logistic_model,
+                      newdata = breast_cancer_test) )
+```
+
+```{r nbgrader={'schema_version': 3, 'solution': False, 'grade': False, 'locked': True, 'task': False, 'grade_id': 'cell-e40fd879f8744cc0'}}
+plot(ROC_lasso,
+  print.auc = TRUE, col = "blue", lwd = 3, lty = 2,
+  main = "ROC Curves for Breast Cancer Dataset"
+)
+
+lines.roc(ROC_ridge, col = "green", lwd = 3, lty = 2, print.auc=TRUE)
+lines.roc(ROC_ordinary, col = "red", lwd = 3, lty = 2)
+```
+
+<!-- #region nbgrader={"schema_version": 3, "solution": false, "grade": false, "locked": true, "task": false, "grade_id": "cell-00d211376f84ead1"} -->
+From the ROC curve in the test set, the LASSO model performs worse (although reasonably close) to the other two models. So you might be tempted to switch models at this point. But changing models at this stage will bring optimization bias again, making the estimates of AUC obtained here to overestimate the AUC in (new) unseen data. 
+<!-- #endregion -->

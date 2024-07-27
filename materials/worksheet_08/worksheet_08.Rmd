@@ -1,0 +1,673 @@
+---
+jupyter:
+  jupytext:
+    formats: ipynb,Rmd
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.2'
+      jupytext_version: 1.16.0
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
+---
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-f1e1d845873036f4", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+# Worksheet 08: Classifiers as an Important Class of Predictive Models
+<!-- #endregion -->
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-82d9926086d47a80", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+#### Lecture and Tutorial Learning Goals:
+After completing this week's lecture and tutorial work, you will be able to:
+
+1. Give an example of a research question that requires a predictive model to predict classes on new observations.
+2. Explain the trade-offs between model-based and non-model based approaches, and describe situations where each might be the preferred approach.
+3. Write a computer script to perform model selection using ridge and LASSO regressions to fit a logistic regression useful for predictive modeling.
+4. List model metrics that are suitable to evaluate predicted classes given by a predictive model with binary responses (e.g., Accuracy, Precision, Sensitivity, Specificity, Cohen's kappa).
+5. Write a computer script to compute these model metrics. Interpret and communicate the results from that computer script.
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-a2a153352bc44a68', 'locked': True, 'schema_version': 3, 'solution': False, 'task': False}}
+# Run this cell before continuing.
+library(tidyverse)
+library(repr)
+library(infer)
+library(gridExtra)
+library(caret)
+library(pROC)
+library(boot)
+library(glmnet)
+source("tests_worksheet_08.R")
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-d49da5ef86c90dee", "locked": true, "schema_version": 3, "solution": false, "task": false} jp-MarkdownHeadingCollapsed=true -->
+## Predicting classes
+
+In previous weeks, we have focused more on the inferential aspects of the models. This week, we are switching our focus to prediction since in many situations the inference is not a priority. 
+
+When diagnosing a disease, a doctor obtains the patient's medical history and some contextual information (e.g., profession, age, has the patient travelled abroad? etc.), wich combined with some tests results, allows the doctor to make a diagnosis. 
+
+A priori, the patient doesn't care how exactly the doctor made the diagnosis. For example, did the doctor give more importance to the patient's age? or maybe to the result of a blood test? or even a complex combination of those two? Whatever! As long as the diagnosis is correct.
+
+However, to analyze whether the doctor's process (or *model*) to make the diagnosis is reliable, we must consider different aspects. For example,
+
+- Is the doctor able to positively diagnose a high percentage of sick patients? (*sensitivity*)
+- Is the doctor able to correctly identify a high percentage of non-sick patients? (*specificity*)
+- If the doctor says that a patient is sick, is there a high chance that the patient is sick? (*precision*)
+- Considering all the doctor's positive and negative diagnoses, is the doctor right in most cases? (*accuracy*)
+
+At first glance, looking at all these aspects might look redundant. But let's try to understand why it is not. 
+
+For example, 
+
+- If the doctors always said a patient was sick, all the sick patients would be diagnosed. Therefore, the doctor would have great *sensitivity*. However, this doesn't seem very helpful, right? This would be reflected by the doctor's precision.
+- On the other hand, if the doctor only diagnoses patients as sick if there's overwhelming evidence, then the *precision* would be quite high. However, the *sensitivity* would be low, i.e., many sick patients wouldn't be diagnosed.
+- Imagine a very rare disease. Say 1 case in 100K people. If the doctor always says that the patient is not sick of that disease, then the accuracy will still be pretty high because the part he is getting wrong is quite small. Nonetheless, quite important! 
+
+We are going to define these metrics later in the worksheet; this is just a motivation to show you that, for classification problems, only one metric might not be enough to give you the whole picture. 
+<!-- #endregion -->
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-9be71f65643c5906", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+## 1. Prediction in Logistic Regression
+
+In the previous week, we introduced logistic regression as a generative model for binary responses. We have already used this model for inferential purposes. Nonetheless, this model can also be used for predictions, i.e., using an estimated logistic model (via a training set) to classify new observations from a test set. 
+
+To check prediction accuracy in classification, we cannot use metrics such as the **Root Mean Squared Error (R-MSE)** as in ordinary least squares (OLS) regression (check `worksheet_09` and `tutorial_09`). Therefore, this worksheet will introduce new metrics meant for logistic regression.
+<!-- #endregion -->
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-de7ac4434bc7a15a", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+#### Dataset
+
+For this worksheet, we will use the data frame `breast_cancer`. It is the Wisconsin Diagnostic Breast Cancer dataset ([Mangasarian et al., 1995](http://ubc.summon.serialssolutions.com/2.0.0/link/0/eLvHCXMwlV1Nb9QwEB2xPSA4tHQLohRKDoDgsDSJndiRKlApVBx74PNk2bGDKui2jbf8Ff4uM46tbpZKFZdIO55NvNLLeLx-8waAla_z2UpMEAZXtlZKzllZGSk7WTBdtDa3ts6N61aoOnUqjSGWZaAJhkN9zJfML7dHCi-yfnt-MaPmUXTIGjtpTGAi2cDr-rKkvFsPbQwYBpyafxsvQMTDbPEOVxE5yQSH8iZKHH2iKv4TrsMadLQBKk03kU9WagPHAo___7vuwXpMT7ODAU-bcMvNp3A7seOnsJG6QGQxKEzh7pKk4RQ2o91nL6Oi9ast-LN_qvufb94RAX6xvxc-ZIPtkFDXj23vB_rfiR-b9dxmx_3ZdUO_T_TYgFtsfIXHtuOBinaK84wD9-Hz0YdPhx9nsSPEDPeBJWmp6pJ3VS1tzlvR8Ua6WljWlm3RaMkMs52R1jmJWGu4a6wwtugaaauGtQWaH8Da_GzuHkJWVlpwbgpthKOz3aZsmeRWC9mJxnG7DS8STNT5IPyhaMOEO0xF_WkUZ4qrSuTomEB0k-MzgpiK3UXx4un_F_9DX3qvDjCPw2yPMbxfcCPwLXrd6lgngdMmqa5lx6cJqyoiNTzQLz3xeRq4YWZbAYxXXgGJ27CT8K5iZPOqJEFAUnl8dP2XduDOUPVPjObHsLboL92TIGmxCxPx9TteMcDshnf0L2aRR50)). It has a **binary** response `target`: whether the tumour is `benign` or `malignant`. Hence, the binary response $Y_i$ is mathematically set as:
+
+$$
+Y_i =
+\begin{cases}
+1 \; \; \; \; \mbox{if the $i$th tumour is malignant},\\
+0 \; \; \; \; 	\mbox{otherwise.}
+\end{cases}
+$$
+
+The data frame `breast_cancer` contains 569 observations from a digitized image of a breast mass' fine needle aspirate (FNA). The dataset details 30 real-valued characteristics (i.e., continuous input variables) plus the binary response and ID number. **We will only work with 16 input variables**.
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-58d728f83cde45d6', 'locked': True, 'schema_version': 3, 'solution': False, 'task': False}}
+breast_cancer <- read_csv("data/breast_cancer.csv") %>%
+  select(-c(
+    mean_area, area_error, concavity_error, concave_points_error, worst_radius, worst_texture, worst_perimeter,
+    worst_area, worst_smoothness, worst_compactness, worst_concavity, worst_concave_points, worst_symmetry,
+    worst_fractal_dimension
+  ))
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-fed4931d39f05ba2", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+**Question 1.0**
+<br>{points: 1}
+
+Replace the levels `benign` and `malignant` for `target` in the dataset `breast_cancer_train` with the numerical values `1` and `0`, respectively.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-86a9d67fa594ae9e', 'locked': False, 'schema_version': 3, 'solution': True, 'task': False}}
+# breast_cancer <- 
+#     breast_cancer %>% 
+#     ...(... = ...(..., 1, 0))
+
+### BEGIN SOLUTION
+breast_cancer <- 
+    breast_cancer %>% 
+    mutate(target = if_else(target == "malignant", 1, 0))
+
+### END SOLUTION
+
+head(breast_cancer)
+```
+
+```{r nbgrader={'grade': True, 'grade_id': 'cell-6e2885a75ccc8ce2', 'locked': True, 'points': 1, 'schema_version': 3, 'solution': False, 'task': False}}
+test_1.0()
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-eaf6ea583cad0ee1", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+**Question 1.1**
+<br>{points: 2}
+
+Since we will work with predictive modelling, let us use the *holdout method* in `breast_cancer` to produce two datasets: one for training and another for testing. Therefore, start by randomly splitting `breast_cancer` in two sets on a 70-30% basis: `breast_cancer_train` (70% of the data) and `breast_cancer_test` (the remaining 30%). You can do the following:
+
+1. Use the function [`slice_sample()`](https://dplyr.tidyverse.org/reference/slice.html) to create `breast_cancer_train` (sampling without replacement) with 70\% of the observations coming from `breast_cancer`.
+2. Use [`anti_join()`](https://dplyr.tidyverse.org/reference/filter-joins.html) with `breast_cancer` and `breast_cancer_train` to create `breast_cancer_test` by column `ID`.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-8c999de0b7705de1', 'locked': False, 'schema_version': 3, 'solution': True, 'task': False}}
+set.seed(20211130) # Do not change this
+
+# breast_cancer_train <- 
+#     ... %>% 
+#     ...(prop = ...)
+
+# breast_cancer_test <- 
+#     ... %>% 
+#     ...(..., by = "ID")
+
+### BEGIN SOLUTION
+breast_cancer_train <- 
+    breast_cancer %>% 
+    slice_sample(prop = 0.70)
+
+breast_cancer_test <- 
+    breast_cancer %>% 
+    anti_join(breast_cancer_train, by = "ID")
+
+### END SOLUTION
+
+head(breast_cancer_train)
+nrow(breast_cancer_train)
+```
+
+```{r nbgrader={'grade': True, 'grade_id': 'cell-9990adb5e3448aca', 'locked': True, 'points': 1, 'schema_version': 3, 'solution': False, 'task': False}}
+test_1.1_partI()
+```
+
+```{r nbgrader={'grade': True, 'grade_id': 'cell-e1748249da4b53b1', 'locked': True, 'points': 1, 'schema_version': 3, 'solution': False, 'task': False}}
+test_1.1_partII()
+```
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-a94a43ef4039f9fc', 'locked': True, 'schema_version': 3, 'solution': False, 'task': False}}
+# Run this cell to remove the variable "ID"
+
+breast_cancer_train <- breast_cancer_train  %>% select(-ID)
+breast_cancer_test <- breast_cancer_test  %>% select(-ID)
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-8395793c47962a29", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+**Question 1.2**
+<br>{points: 1}
+
+Using the `glm` function, fit a logistic regression model. The model's response will be `target` and the rest of the variables will be inputs. Call the resulting object `breast_cancer_logistic_model`.
+
+**Note**: You need to write most of this code cell. Go back to `worksheet_12` if you don't recall how to fit a logistic model.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-5bc9c77c17efb184', 'locked': False, 'schema_version': 3, 'solution': True, 'task': False}}
+# breast_cancer_logistic_model <- 
+#     ...
+
+### BEGIN SOLUTION
+breast_cancer_logistic_model <- 
+    glm(
+        formula = target ~ .,
+        data = breast_cancer_train,
+        family = binomial)
+### END SOLUTION
+
+summary(breast_cancer_logistic_model)
+```
+
+```{r nbgrader={'grade': True, 'grade_id': 'cell-4f91f421a400af8f', 'locked': True, 'points': 0, 'schema_version': 3, 'solution': False, 'task': False}}
+test_1.2()
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-d4109b007e5a8d2f", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+### 1.1 Error in classification
+
+We know that the predicted value of the logistic regression is a predicted probability $\hat{p}_i$
+
+> or the predicted odds or log-odds 
+
+The predicted probability can be used to predict a class. For example, if the predicted probability of having cancer is 0.8, you can predict that the patient has cancer. These models are also known as *classifiers* since you use them to predict a *class*.
+
+For example: 
+
+$$
+\hat{Y}_i =
+\begin{cases}
+1 \; \; \; \; \mbox{if $\hat{p}_i \geq 0.5$},\\
+0 \; \; \; \; \mbox{if $\hat{p}_i < 0.5$.}
+\end{cases}
+$$
+
+where $0.5$ is a threshold used to predict the classes.
+
+Of course, this is only a prediction and the patient may not actually have cancer. The difference between the actual and the predicted class is the *error* of the classifier.
+<!-- #endregion -->
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-e60940adfc8e4698", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+**Question 1.3**
+<br>{points: 1}
+
+Let’s start by checking our misclassification error rate in the training data. 
+
+Your job is to create a function with two input arguments: `y` (the actual class of the data points) and `p.hat` (the predicted probability). 
+
+- using $0.5$ as a cut-off, the function predicts the class of each observation based on the predicted probabilty `p.hat`
+
+- the predicted class is then compared to the actual class to calculate the proportion of misclassification in the sample. 
+
+> note that a different cutoff can be used depending on the context of the problem
+
+Use the created function with response variable `target` from `breast_cancer_train` and the (in-sample) predicted values from the model. Store the output in an object named `error_rate_train`.
+
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-4d6160f58cf93adb', 'locked': False, 'schema_version': 3, 'solution': True, 'task': False}}
+# misclassification_rate <- function(y, p.hat){
+#     y_hat <- round(..., 0)
+#     error_rate <- ...(abs(... - ...))
+#     return(error_rate)
+# }
+
+# error_rate_train <- 
+#     misclassification_rate(
+#         ..., 
+#         ...)
+
+### BEGIN SOLUTION
+misclassification_rate <- function(y, p.hat){
+    y_hat <- round(p.hat, 0)
+    error_rate <- mean(abs(y - y_hat))
+    return(error_rate)
+}
+
+error_rate_train <- 
+    misclassification_rate(
+        breast_cancer_train$target,
+        predict(breast_cancer_logistic_model, type = "response"))
+### END SOLUTION
+
+error_rate_train
+```
+
+```{r nbgrader={'grade': True, 'grade_id': 'cell-e46b12ee4d9228f0', 'locked': True, 'points': 1, 'schema_version': 3, 'solution': False, 'task': False}}
+test_1.3()
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-ea385eb9ec9dcf9f", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+**Question 1.4**
+<br>{points: 1}
+
+The training error rate you calculated in the previous exercise will probably underestimate the out-of-sample error (i.e., the error of data never seen by your model). The parameters were estimated based on that same data!! 
+
+We can estimate the *out-of-sample* error rate by using cross-validation. Use the function `cv.glm`, from the package `boot`, to conduct a 10-fold cross-validation. The arguments of this function are:
+
+- `glmfit`: the trained model that will be used to predict
+
+- `data`: the (test) data you want to predict (not to train the model)
+
+- `K`: number of folds for cross-validation
+
+- `cost`: function to measure error. For this question, use `misclassification_rate`. 
+
+**Note**: note that in this question the test and the training set used are the same since you are computing the confusion matrix for predictions of the training set.
+
+Store the output of the `cv.glm` in an object called `cv_logistic`.
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-f4a194e828eea4df', 'locked': False, 'schema_version': 3, 'solution': True, 'task': False}}
+set.seed(20211130) # do not change this
+
+# cv_logistic <- 
+#     cv.glm(
+#         glmfit = ..., 
+#         data = ..., 
+#         K = ..., 
+#         cost = ...)
+
+### BEGIN SOLUTION
+cv_logistic <- 
+    cv.glm(
+        glmfit = breast_cancer_logistic_model, 
+        data = breast_cancer_train, 
+        K = 10, cost = misclassification_rate )
+### END SOLUTION
+
+cv_logistic$delta[1]
+```
+
+```{r nbgrader={'grade': True, 'grade_id': 'cell-c5371c7c365a75df', 'locked': True, 'points': 1, 'schema_version': 3, 'solution': False, 'task': False}}
+test_1.4()
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-6eff54123ce5757f", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+**Question 1.5**
+<br>{points: 1}
+
+True or false?
+
+The training error is less than the 10-fold cross validation error.
+
+_Assign your answer to an object called `answer1.5`. Your answer should be either "true" or "false", surrounded by quotes._
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-ffd3a4810d740603', 'locked': False, 'schema_version': 3, 'solution': True, 'task': False}}
+# answer1.5 <- ...
+
+### BEGIN SOLUTION
+answer1.5 <- "true"
+### END SOLUTION
+```
+
+```{r nbgrader={'grade': True, 'grade_id': 'cell-e1815efdf47ce9cc', 'locked': True, 'points': 1, 'schema_version': 3, 'solution': False, 'task': False}}
+test_1.5()
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-353018c79aafc398", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+**Question 1.6**
+<br>{points: 1}
+
+True or false?
+
+The training error will **always** be lower than the cross-validation error. 
+
+_Assign your answer to an object called `answer1.6`. Your answer should be either "true" or "false", surrounded by quotes._
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-a78dae1a647d3f20', 'locked': False, 'schema_version': 3, 'solution': True, 'task': False}}
+# answer1.6 <- ...
+
+### BEGIN SOLUTION
+answer1.6 <- "false"
+### END SOLUTION
+```
+
+```{r nbgrader={'grade': True, 'grade_id': 'cell-7096aa86b0682792', 'locked': True, 'points': 1, 'schema_version': 3, 'solution': False, 'task': False}}
+test_1.6()
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-091e7009ad626655", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+### 1.2 Prediction Performance
+
+Classifiers can be evaluated using different metrics that compare the actual *versus* the predicted classes in absolute or relative values. 
+
+#### Confusion Matrix
+
+The confusion matrix shows you the types of errors made by the model. 
+
+|  Predicted \ Actual | Success | Failure |
+| :-------------: |:-------------:| :-----:|
+| **Success** | $\text{TP}$ | $\text{FP}$ |
+| **Failure** | $\text{FN}$ | $$\text{TN}$$ |
+
+
+This matrix has the following case counts:
+
+- **True positive ($\text{TP}$):** the number of observations **correctly predicted as `1`** (*Malignant*) using the threshold. 
+
+
+- **False positive ($\text{FP}$):** the number observations **incorrectly predicted as `1`** (*Malignant*) when they are in fact 0.
+
+
+- **True negative ($\text{TN}$):** the number of observations in **correctly predicted as `0`** (*Benign*).
+
+
+- **False negative ($\text{FN}$):** the number of observations in  **incorrectly predicted as `0`** (*Benign*) when in fact they are 1. 
+
+> The confusion matrix is usually calculated based on *test* data since that is the primary goal of prediction. 
+
+Luckily for us, the `confusionMatrix()` function from the package `caret` gives us the confusion matrix and other quantities to evaluate classifier. 
+
+#### Sensitivity and Specificity
+
+While the previous measures are all absolute error counts, we can also define relative measures:
+
+
+- **Sensitivity ($\text{SN}$):** the number of **correct** success predictions divided by the total number of real successes ($\text{S}$), in other words, it is the estimated probability of predicting 1 given that the true class is 1.
+$$\text{SN} = \frac{\text{TP}}{\text{TP} + \text{FN}} = \frac{\text{TP}}{\text{S}}$$
+    - *Example: the probability that a blood test is positive for a sick  patient.*
+
+
+- **Specificity ($\text{SP}$):** the number of **correct** failure predictions divided by the total number of real failures ($\text{F}$). In other words, it is the estimated probability of predicting 0 given that the true class is 0.
+$$\text{SP} = \frac{\text{TN}}{\text{TN} + \text{FP}} = \frac{\text{TN}}{\text{F}}$$
+    - *Example: the probability that a blood test is negative for a healthy  patient.*
+    
+#### Other common measures
+
+- **Precision ($\text{PR}$):** the number of **correct** success predictions divided by the total number of predicted successes.
+$$\text{PR} = \frac{\text{TP}}{\text{TP} + \text{FP}}$$
+    - *Example: the probability that a patient is sick if the blood test is positive.*
+
+
+- **Accuracy ($\text{ACC}$):** the number of **correct** predictions (both success and failure) divided by the total number of observations ($n$).
+$$\text{ACC} = \frac{\text{TP} + \text{TN}}{n}$$
+    - *Example: the probability that the blood test correctly classifies the patient.*
+
+
+- **Cohen's Kappa ($\kappa$):** It is another accuracy metric adjusted by how often the predictions and actual classification coincide just by chance. We compute it as:
+
+$$\kappa = \frac{\text{ACC} - \text{AGG}}{1 - \text{AGG}}.$$
+
+For $\kappa$, the random agreement is defined as
+
+$$\text{AGG} = \frac{\text{TP} + \text{FP}}{n} \times \frac{\text{TP} + \text{FN}}{n} + \frac{\text{FN} + \text{TN}}{n} \times \frac{\text{FP} + \text{TN}}{n}.$$
+
+> **Heads-up:** All the metrics above (except $\kappa$) have a range between $0$ and $1$, where values close to $1$ indicate good predictive performance. 
+
+> In the case of $\kappa$, it ranges between $-1$ and $1$ where values close to $1$ indicate good predictive performance.
+<!-- #endregion -->
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-fca83dfe4c59358d", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+**Question 1.7**
+<br>{points: 1}
+
+To compute the confusion matrix for the classifier built from the estimated logistic regression `breast_cancer_logistic_model`, we need to obtain predicted classes. 
+
+Use the `predict` function to obtain the predicted classes for the training set `breast_cancer_train` and store them in a variable called `breast_cancer_pred_class`.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-7768de07001d0afa', 'locked': False, 'schema_version': 3, 'solution': True, 'task': False}}
+# breast_cancer_pred_class <- 
+#   ...
+
+### BEGIN SOLUTION
+breast_cancer_pred_class <- 
+  round(predict(breast_cancer_logistic_model, type = "response"), 0)
+### END SOLUTION
+
+head(breast_cancer_pred_class, 10)
+```
+
+```{r nbgrader={'grade': True, 'grade_id': 'cell-539c1d4e1a835857', 'locked': True, 'points': 1, 'schema_version': 3, 'solution': False, 'task': False}}
+test_1.7()
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-a5f9a1545e253124", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+**Question 1.8**
+<br>{points: 1}
+
+The arguments of the `confusionMatrix()` function are:
+
+- `data`: factor with the predicted classes (use `as.factor()`).
+- `reference`: factor with the real classes (use `as.factor()`).
+- `positive`: the level considered positive (as a character). 
+
+Store the output of `confusionMatrix` in an object called `breast_cancer_confusion_matrix`.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-1f7718031c8b6b7a', 'locked': False, 'schema_version': 3, 'solution': True, 'task': False}}
+# breast_cancer_confusion_matrix <- 
+#     ...(
+#     data = as.factor(...),
+#     reference = as.factor(...),
+#     positive = ...
+# )
+
+### BEGIN SOLUTION
+breast_cancer_confusion_matrix <- 
+    confusionMatrix(
+    data = as.factor(breast_cancer_pred_class),
+    reference = as.factor(breast_cancer_train$target),
+    positive = '1'
+)
+### END SOLUTION
+
+breast_cancer_confusion_matrix
+```
+
+```{r nbgrader={'grade': True, 'grade_id': 'cell-1496d3f3bc0c04c0', 'locked': True, 'points': 1, 'schema_version': 3, 'solution': False, 'task': False}}
+test_1.8()
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-c87768c9e94a0d70", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+#### Threshold
+
+Note that the *sensitivity* (or *specificity*) of our model depends on the threshold used to predict the classes. 
+
+So far, we have predicted $\hat{y}_i = 1$ if the predicted probability, $\hat{p}_i$, was higher than 50%. But we can also use other values, like 30%, 10%, or 90%. 
+<!-- #endregion -->
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-a570194a8c7fd1ce", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+**Question 1.9**
+<br>{points: 1}
+
+What do you expect to happen if you decrease the threshold from 0.5 to 0.4.
+
+A. Both the specificity and sensitivity would stay the same.
+
+B. Both the specificity and sensitivity would increase.
+
+C. Both the specificity and sensitivity would decrease.
+
+D. The specificity would increase and sensitivity would decrease.
+
+E. The specificity would decrease and sensitivity would increase.
+
+F. There's no way to tell. 
+
+_Assign your answer to an object called `answer1.9`. Your answer should be a single character surrounded by quotes._
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-64b6aa4cd25e1098', 'locked': False, 'schema_version': 3, 'solution': True, 'task': False}}
+# answer1.9 <- ...
+
+### BEGIN SOLUTION
+answer1.9 <- "E"
+### END SOLUTION
+```
+
+```{r nbgrader={'grade': True, 'grade_id': 'cell-6314e62308714c43', 'locked': True, 'points': 1, 'schema_version': 3, 'solution': False, 'task': False}}
+test_1.9()
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-1ff747717d880769", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+**Question 1.10**
+<br>{points: 1}
+
+Let's change our confusion matrix from the previous question by adjusting the threshold to $p_0 = 0.3$. 
+
+
+1. Update your predictions using the new threshold and store it in an object named `breast_cancer_pred_class_threshold_0.3`.
+
+
+2. Use the `confusionMatrix` function to obtain the confusion matrix and associated quantities. Save the output in an object named `confusion_matrix_threshold_0.3`.
+
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-95fcb9bdb826b4af', 'locked': False, 'schema_version': 3, 'solution': True, 'task': False}}
+# p_0 <- ...
+
+# breast_cancer_pred_class_threshold_0.3 <- 
+#   as.interger(...(..., type = ...) > ...)
+
+# confusion_matrix_threshold_0.3 <- 
+#     ...(
+#     ...,
+#     ...,
+#     ...)
+
+#confusion_matrix_threshold_0.3
+
+### BEGIN SOLUTION
+p_0 <- 0.3
+
+breast_cancer_pred_class_threshold_0.3 <- 
+  as.integer(predict(breast_cancer_logistic_model, type = "response") > p_0)
+
+confusion_matrix_threshold_0.3 <- 
+    confusionMatrix(
+        data = as.factor(breast_cancer_pred_class_threshold_0.3),
+        reference = as.factor(breast_cancer_train$target),
+        positive = '1')
+### END SOLUTION
+
+confusion_matrix_threshold_0.3
+```
+
+```{r nbgrader={'grade': True, 'grade_id': 'cell-8e3d1d7c2330d231', 'locked': True, 'points': 1, 'schema_version': 3, 'solution': False, 'task': False}}
+test_1.10()
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-0e7c36595100dcbd", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+Was this what you expected?
+<!-- #endregion -->
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-66dceddef862ac64", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+### AUC and ROC 
+
+A limitation of the approach taken in the previous question is that the evaluation of the classifier depends critically on the threshold $p_0$, but the most appropriate choice of $p_0$ may not be clear. 
+
+Alternatively, we can evaluate the predictive performance of a given classifier for all possible value of $p_0 \in [0, 1]$. The resulting curve is known as the *receiver operating characteristic* (ROC) curve. 
+
+The *area under the curve* (AUC) measures the classification ability of the classifier. The AUC goes from $0$ to $1$. 
+
+> the higher the AUC, the better predictive performance!!
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Roc_curve.svg/440px-Roc_curve.svg.png)
+<!-- #endregion -->
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-8a0b3b07c1e2b569", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+**Question 1.11**
+<br>{points: 1}
+
+The package `pROC`, via its function `roc()`, plots ROC curves. You need to specify the real observed classes in the argument `response` and the predictions in `predictor`. 
+
+Using `breast_cancer_train` create the ROC curve for `breast_cancer_logistic_model` and call it `ROC_full_log`. Then, use `plot()` to display it.
+
+*Fill out those parts indicated with `...`, uncomment the corresponding code in the cell below, and run it.*
+<!-- #endregion -->
+
+```{r nbgrader={'grade': False, 'grade_id': 'cell-bd64b06b49b63a19', 'locked': False, 'schema_version': 3, 'solution': True, 'task': False}}
+options(repr.plot.width = 8, repr.plot.height = 8) # Adjust these numbers so the plot looks good in your desktop.
+
+# ROC_full_log <- roc(
+#   response = ...,
+#   predictor = ...
+# )
+# plot(...,
+#   print.auc = TRUE, col = "blue", lwd = 3, lty = 2,
+#   main = "ROC Curves for Breast Cancer Dataset"
+# )
+
+### BEGIN SOLUTION
+ROC_full_log <- 
+    roc(
+        response = breast_cancer_train$target, 
+        predictor = predict(breast_cancer_logistic_model, type = "response"))
+
+plot(ROC_full_log,
+  print.auc = TRUE, col = "blue", lwd = 3, lty = 2,
+  main = "ROC Curves for Breast Cancer Dataset"
+)
+### END SOLUTION
+```
+
+```{r nbgrader={'grade': True, 'grade_id': 'cell-dc1845ad5804f178', 'locked': True, 'points': 1, 'schema_version': 3, 'solution': False, 'task': False}}
+test_1.11()
+```
+
+<!-- #region nbgrader={"grade": false, "grade_id": "cell-ce7b18eb07e85907", "locked": true, "schema_version": 3, "solution": false, "task": false} -->
+One last comment for this worksheet is that here we have used the training data to obtain the confusion matrix. As we know, the training data will most probably be underestimating our error. A much better approach would be to use a cross-validation or the test set to make a similar analysis. 
+
+We abstained from this step to focus on the concepts but, in the tutorial, we will use cross-validation to evaluate the prediction accuracy of different classifiers.
+<!-- #endregion -->
