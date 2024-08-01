@@ -3,6 +3,7 @@ on:
   push: 
     paths: 
       - 'dockerfiles/r-stat-301/Dockerfile'
+      - 'dockerfiles/r-stat-301/conda-linux-64.lock'
       - 'dockerfiles/r-stat-301-grading/Dockerfile'
 jobs:
   build:

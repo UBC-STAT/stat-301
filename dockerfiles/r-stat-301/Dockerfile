@@ -35,11 +35,11 @@ RUN mamba update --quiet --file /tmp/conda-linux-64.lock && \
   mamba clean --all -y -f && \
   fix-permissions "${CONDA_DIR}" && \
   fix-permissions "/home/${NB_USER}" && \
-  Rscript -e "install.packages('faux', repos='http://cran.us.r-project.org')" && \
-  Rscript -e "install.packages('moderndive', repos='http://cran.us.r-project.org')"
+  Rscript -e "lib <- 'faux'; install.packages(lib, repos='http://cran.us.r-project.org'); if ( ! library(lib,character.only=TRUE,logical.return=TRUE)){quit(status=1,save='no')}" && \
+  Rscript -e "lib <- 'moderndive'; install.packages(lib, repos='http://cran.us.r-project.org'); if ( ! library(lib,character.only=TRUE,logical.return=TRUE)){quit(status=1,save='no')}"
 
-# Install pexpect from main branch to fix asyncio issue with jupyterlab_git
-RUN pip install --ignore-installed git+https://github.com/pexpect/pexpect.git@master
+# Install latest pexpect to fix asyncio issue with jupyterlab_git
+RUN pip install --no-cache pexpect==4.9.0
 
 # Disable the cell toolbar (which ignores metadata and students often accidentally click + delete grading cells)
 RUN jupyter labextension disable @jupyterlab/cell-toolbar-extension
@@ -55,6 +55,10 @@ COPY config/jupyter_server_config.py /home/${NB_USER}/.jupyter
 
 # Copy gitconfig that sets default pull strategy to rebase
 COPY config/.gitconfig /home/${NB_USER}/
+
+# install rise from fork wheel with fixed CSS
+COPY jupyterlab_rise-0.42.0-py3-none-any.whl ./
+RUN pip install wheel && pip install jupyterlab_rise-0.42.0-py3-none-any.whl && rm -f jupyterlab_rise-0.42.0-py3-none-any.whl
 
 # Make sure everything in the home folder is owned by NB_USER for running docker image locally.
 USER root
