@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: docs
+  output-dir: ../docs
   lib-dir: site_libs
   render:
     - index.qmd
