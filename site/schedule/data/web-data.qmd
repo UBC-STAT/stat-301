@@ -1,0 +1,93 @@
+## Synthetic job applicant dataset for a tech startup
+
+This table shows simulated job applicant data for a fictional tech startup based in Vancouver. It includes fake information like applicant ID, first name, position applied for, years of experience, degree major, salary expectation and willingness to relocate. All data is synthetic and is meant for practicing web scraping and data privacy techniques.
+
+
+<style>
+  /* Full width container with padding and horizontal scroll */
+  div.table-container {
+    width: 100vw; /* full viewport width */
+    padding: 40px;
+    overflow-x: auto;
+    box-sizing: border-box; /* include padding in width */
+  }
+
+  table.custom-table {
+    border-collapse: collapse;
+    width: 100%;  /* stretch to fill container */
+    border: 1px solid #ccc;
+    font-family: Arial, sans-serif;
+    table-layout: auto; 
+  }
+
+  table.custom-table thead {
+    background-color: #d0e7f9;
+  }
+
+  table.custom-table th,
+  table.custom-table td {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  table.custom-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  table.custom-table tr:hover {
+    background-color: #eef6fc;
+  }
+</style>
+
+<div class="table-container">
+  <table class="custom-table">
+    <thead>
+      <tr>
+        <th>Applicant ID</th>
+        <th>First Name</th>
+        <th>Position Applied</th>
+        <th>Years of Experience</th>
+        <th>Degree Major</th>
+        <th>Current Location</th>
+        <th>Salary Expectation</th>
+        <th>Willing to Relocate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>10001</td><td>Amira</td><td>Data Scientist</td><td>3</td><td>Computer Science</td><td>Toronto</td><td>$85,000</td><td>No</td></tr>
+      <tr><td>10002</td><td>Jacob</td><td>Data Engineer</td><td>7</td><td>Computer Science</td><td>Montreal</td><td>$110,000</td><td>Yes</td></tr>
+      <tr><td>10003</td><td>Sofia</td><td>Data Engineer</td><td>2</td><td>Data Science</td><td>Calgary</td><td>$80,000</td><td>No</td></tr>
+      <tr><td>10004</td><td>Raj</td><td>Machine Learning Engineer</td><td>12</td><td>Mathematics</td><td>Toronto</td><td>$150,000</td><td>Yes</td></tr>
+      <tr><td>10005</td><td>Emily</td><td>Data Scientist</td><td>5</td><td>Statistics</td><td>Vancouver</td><td>$95,000</td><td>No</td></tr>
+      <tr><td>10006</td><td>Wei</td><td>Data Scientist</td><td>9</td><td>Statistics</td><td>Calgary</td><td>$125,000</td><td>Yes</td></tr>
+      <tr><td>10007</td><td>Hassan</td><td>Data Engineer</td><td>1</td><td>Mathematics</td><td>Montreal</td><td>$80,000</td><td>No</td></tr>
+      <tr><td>10008</td><td>Isabella</td><td>Data Engineer</td><td>4</td><td>Computer Science</td><td>Toronto</td><td>$90,000</td><td>Yes</td></tr>
+      <tr><td>10009</td><td>Liam</td><td>Machine Learning Engineer</td><td>15</td><td>Mathematics</td><td>Calgary</td><td>$180,000</td><td>Yes</td></tr>
+      <tr><td>10010</td><td>Olivia</td><td>Data Engineer</td><td>8</td><td>Statistics</td><td>Vancouver</td><td>$110,000</td><td>No</td></tr>
+      <tr><td>10011</td><td>Mateo</td><td>Data Scientist</td><td>6</td><td>Data Science</td><td>Toronto</td><td>$105,000</td><td>Yes</td></tr>
+      <tr><td>10012</td><td>Zara</td><td>Data Engineer</td><td>10</td><td>Statistics</td><td>Vancouver</td><td>$130,000</td><td>No</td></tr>
+      <tr><td>10013</td><td>Omar</td><td>Data Engineer</td><td>3</td><td>Statistics</td><td>Calgary</td><td>$85,000</td><td>No</td></tr>
+      <tr><td>10014</td><td>Maya</td><td>Machine Learning Engineer</td><td>13</td><td>Mathematics</td><td>Montreal</td><td>$155,000</td><td>Yes</td></tr>
+      <tr><td>10015</td><td>Ethan</td><td>Data Scientist</td><td>4</td><td>Computer Science</td><td>Toronto</td><td>$90,000</td><td>No</td></tr>
+      <tr><td>10016</td><td>Yuna</td><td>Data Scientist</td><td>7</td><td>Statistics</td><td>Vancouver</td><td>$115,000</td><td>Yes</td></tr>
+      <tr><td>10017</td><td>Alex</td><td>Data Engineer</td><td>5</td><td>Computer Science</td><td>Montreal</td><td>$100,000</td><td>No</td></tr>
+      <tr><td>10018</td><td>Fatima</td><td>Data Engineer</td><td>2</td><td>Data Science</td><td>Toronto</td><td>$80,000</td><td>No</td></tr>
+      <tr><td>10019</td><td>David</td><td>Machine Learning Engineer</td><td>16</td><td>Mathematics</td><td>Calgary</td><td>$190,000</td><td>Yes</td></tr>
+      <tr><td>10020</td><td>Claire</td><td>Data Scientist</td><td>9</td><td>Data Science</td><td>Vancouver</td><td>$120,000</td><td>No</td></tr>
+      <tr><td>10021</td><td>Kai</td><td>Data Scientist</td><td>1</td><td>Data Science</td><td>Montreal</td><td>$80,000</td><td>No</td></tr>
+      <tr><td>10022</td><td>Sana</td><td>Data Engineer</td><td>8</td><td>Statistics</td><td>Toronto</td><td>$115,000</td><td>Yes</td></tr>
+      <tr><td>10023</td><td>Leo</td><td>Data Engineer</td><td>6</td><td>Mathematics</td><td>Calgary</td><td>$105,000</td><td>No</td></tr>
+      <tr><td>10024</td><td>Jasmine</td><td>Machine Learning Engineer</td><td>14</td><td>Mathematics</td><td>Vancouver</td><td>$165,000</td><td>Yes</td></tr>
+      <tr><td>10025</td><td>Michael</td><td>Data Scientist</td><td>3</td><td>Statistics</td><td>Montreal</td><td>$85,000</td><td>No</td></tr>
+      <tr><td>10026</td><td>Aisha</td><td>Data Scientist</td><td>10</td><td>Statistics</td><td>Toronto</td><td>$130,000</td><td>No</td></tr>
+      <tr><td>10027</td><td>Jason</td><td>Data Engineer</td><td>4</td><td>Computer Science</td><td>Calgary</td><td>$95,000</td><td>Yes</td></tr>
+      <tr><td>10028</td><td>Nina</td><td>Data Engineer</td><td>7</td><td>Data Science</td><td>Toronto</td><td>$115,000</td><td>No</td></tr>
+      <tr><td>10029</td><td>Ravi</td><td>Machine Learning Engineer</td><td>11</td><td>Mathematics</td><td>Vancouver</td><td>$140,000</td><td>No</td></tr>
+      <tr><td>10030</td><td>Grace</td><td>Data Scientist</td><td>5</td><td>Data Science</td><td>Montreal</td><td>$100,000</td><td>Yes</td></tr>
+    </tbody>
+  </table>
+</div>

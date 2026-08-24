@@ -1,0 +1,36 @@
+---
+title: "DSCI 200"
+subtitle: "Navigating Data: Acquisition, Exploration and Management"
+toc: false
+css: assets/index.css
+about: trestles
+image: assets/img/smooths.svg
+---
+
+
+::: {.align-center}
+
+::: {.hero-buttons}
+[Schedule](schedule/index.qmd){.btn-action-primary .btn-action .btn .btn-lg role="button"}
+[Syllabus](syllabus.qmd){.btn-action-secondary .btn-action .btn .btn-lg role="button"}
+::: 
+
+:::
+
+At the end of the course, you will be able to: 
+
+* Choose a data acquisition strategy and write reproducible scripts to read data.
+
+* Determine when data simulation is useful for analysis and plan appropriate simulations.
+
+* Identify and manage outliers and anomalies, reflecting on their impact on conclusions.
+
+* Address missing data, apply handling strategies, and assess their effect on conclusions.
+
+* Perform exploratory data analysis and understand its role in the data science pipeline.
+
+* Evaluate the impact of measurement scales, units, and errors, and apply methods to minimize them.
+
+* Assess data privacy needs, apply techniques where necessary and reflect on their impact.
+
+* Evaluate who owns the data in a given case.

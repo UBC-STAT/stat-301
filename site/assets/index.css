@@ -1,0 +1,36 @@
+.main-title {
+  font-size: 80px;
+  text-align: center;
+}
+
+.main-subtitle {
+  font-size: 50px;
+  text-align: center;
+}
+
+.btn-action-primary {
+  color: white;
+  background-color: #1a2b4c;
+  border: 2px solid #1a2b4c;
+}
+
+.btn-action-primary:hover {
+  background-color: white;
+  color: #1a2b4c;
+  border: 2px solid #1a2b4c;
+}
+
+.btn-action-secondary {
+  color: #c88b8b;
+  border: 2px solid #c88b8b;
+}
+
+.btn-action-secondary:hover {
+  color: white;
+  background-color: #c88b8b;
+}
+
+.btn-action {
+  min-width: 165px;
+  border-radius: 30px;
+}

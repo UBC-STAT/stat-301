@@ -1,0 +1,43 @@
+## {{< meta lecture >}} {.large background-image="img/smooths.png" background-opacity="0.3" background-size="50%"}
+
+[DSCI 200]{.secondary}
+
+[{{< meta author >}}]{.secondary}
+
+Last modified -- `r strftime(lubridate::today(), "%d %B %Y")`
+
+```{r setup}
+#| include: false
+source("_config.R")
+```
+
+$$
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\minimize}{minimize}
+\DeclareMathOperator*{\maximize}{maximize}
+\DeclareMathOperator*{\find}{find}
+\DeclareMathOperator{\st}{subject\,\,to}
+\newcommand{\E}{E}
+\newcommand{\Expect}[1]{\E\left[ #1 \right]}
+\newcommand{\Var}[1]{\mathrm{Var}\left[ #1 \right]}
+\newcommand{\Cov}[2]{\mathrm{Cov}\left[#1,\ #2\right]}
+\newcommand{\given}{\ \vert\ }
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\P}{\mathcal{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\snorm}[1]{\lVert #1 \rVert}
+\newcommand{\tr}[1]{\mbox{tr}(#1)}
+\newcommand{\brt}{\widehat{\beta}^R_{s}}
+\newcommand{\brl}{\widehat{\beta}^R_{\lambda}}
+\newcommand{\bls}{\widehat{\beta}_{ols}}
+\newcommand{\blt}{\widehat{\beta}^L_{s}}
+\newcommand{\bll}{\widehat{\beta}^L_{\lambda}}
+\newcommand{\U}{\mathbf{U}}
+\newcommand{\D}{\mathbf{D}}
+\newcommand{\V}{\mathbf{V}}
+$$
+

@@ -1,0 +1,25 @@
+---
+title: "Exchange Rate Data"
+format:
+  html:
+    self-contained: true
+    toc: false
+    page-layout: full
+---
+
+This dataset presents historical weekly exchange rates from 2010 to 2024, sourced from the [Frankfurter API](https://frankfurter.dev/), a free and open-source service that provides current and historical foreign exchange rates published by the **European Central Bank (ECB)**. The data includes conversion rates for **EUR**, **GBP** and **USD**, with each row representing exchange rates at the beginning of a week.
+
+```{r, echo=FALSE, warning=FALSE}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(knitr)
+library(tidyverse)
+
+# Read your dataset
+df <- read_csv("currency-data.csv")
+
+# Render as interactive table
+kable(df, format = "html", table.attr = 'class="custom-table"')
+```

@@ -1,0 +1,45 @@
+---
+title: "{{< fa calendar-alt >}} Schedule"
+format:
+  html:
+    toc: true
+---
+
+Slides are listed below for each lesson.
+
+::: {.callout-note appearance="minimal"}
+All lecture slides as `.qmd` files are available here.
+:::
+
+::: {.callout-note appearance="minimal"}
+Instructions to create `.pdf`s of the lecture slides (works in Google Chrome or Chromium). 
+
+<details>
+1.  Open some Slides in the browser.
+1.  Toggle into Print View by pressing the <kbd>E</kbd> key. (It may not appear that anything has happened)
+1.  Open the Print dialog: <kbd>CTRL</kbd> / <kbd>CMD</kbd> + <kbd>P</kbd>.
+1.  Change the **Destination** setting to **Save as PDF**.
+1.  Change the **Layout** to **Landscape**.
+1.  Change the **Margins** to **None**.
+1.  Enable the **Background graphics** option.
+1.  Click **Save**! 🎉
+
+</details>
+:::
+
+
+{{< include schedule-table.md >}}
+
+## Midterm exam
+
+The midterm exam is tentatively set to occur in the window of February 11-14, 2026. This is subject to scheduling availability in the CBTF.
+
+
+## Final exam
+
+::: {.callout-important}
+Do not make any plans to leave Vancouver before the final exam date is announced.
+:::
+
+* In person attendance is required (per Faculty of Science guidelines)
+

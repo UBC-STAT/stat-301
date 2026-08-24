@@ -1,0 +1,27 @@
+---
+title: "{{< fa brands r-project >}} Computing"
+---
+
+In this class, we will use R as our programming language. Similar to DSCI 100, we will utilize a server to complete and submit assignments. Please refer to [DSCI 100's JupyterLab Guide](https://github.com/UBC-DSCI/dsci-100-student/blob/jupyterlab-guide/JUPYTERLAB_GUIDE.md) for tips and FAQs related to using JupyterLab. 
+
+You will also need to create a Github account for the case study projects. 
+
+Students are responsible for using a device and browser compatible with all functionality of Canvas. Chrome or Firefox browsers are recommended.
+
+Below are some computing guidelines. These are edited and simplified from the [DSCI 310 Setup Instructions](https://ubc-dsci.github.io/dsci-310-student/computer-setup.html) as well as the [DSCI 100 syllabus](https://github.com/UBC-DSCI/dsci-100-student). 
+
+## Laptop requirements
+
+Students are required to bring a laptop, chromebook or tablet to both lectures and tutorials. Students who do not own a laptop, chromebook, or tablet may be able to loan a laptop from the UBC library.
+
+- Can connect to networks via a wireless connection for on campus work.
+- Is at most 6 years old (4 years old or newer is recommended).
+- Uses English as the default language. Using other languages is possible, but we have found that it often causes problems in the homework. We've done our best to fix them, but we may ask you to change it if you are having trouble.
+- Student user has full administrative access to the computer.
+
+All other required software will be provided by the instructors. Students will learn to perform their analysis using the R programming language. Worksheets problem sets as well as the case study analysis, development and report will be done using Jupyter Notebooks accessed via Canvas.
+
+> *If your computer does not meet the requirements please reach out to the teaching team and describe how it does not. We will work to accommodate you where we can.*
+
+
+
