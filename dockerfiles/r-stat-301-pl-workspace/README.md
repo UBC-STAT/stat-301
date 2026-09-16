@@ -1,0 +1,1 @@
+R based JupyterLab PrairieLearn workspace image for STAT 301.
