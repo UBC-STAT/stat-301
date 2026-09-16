@@ -23,5 +23,5 @@ jobs:
         name: ubcdsci/r-stat-301-pl-autograder
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: "r-stat-301-pl-autograder"
+        workdir: "dockerfiles/r-stat-301-pl-autograder"
         tags: "latest,${{ steps.release.outputs.tag }}"

@@ -8,4 +8,3 @@ RUN Rscript --no-save install.R aer   base   binom   boot   car   cardata   care
    kknn   latex2exp   leaps   mlbench   mltools   nycflights13   palmerpenguins  performance   plotly  qqplotr   \
    randomforest   rcurl   rmarkdown   rodbc   rpostgres   rsqlite   see   shiny  stringi  \
    testthat   tidymodels   tidyverse   titanic
-   

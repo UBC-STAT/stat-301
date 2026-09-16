@@ -24,5 +24,5 @@ jobs:
         name: ubcdsci/r-stat-301-pl-workspace
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: "r-stat-301-pl-workspace"
+        workdir: "dockerfiles/r-stat-301-pl-workspace"
         tags: "latest,${{ steps.release.outputs.tag }}"
