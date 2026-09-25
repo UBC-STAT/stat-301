@@ -20,6 +20,7 @@ dependencies:
   - r-forecast 
   - r-ggally 
   - r-ggpubr
+  - r-ggplot2
   - r-glmbb
   - r-glmnet 
   - r-gridextra 
