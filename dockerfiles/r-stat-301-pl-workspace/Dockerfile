@@ -1,4 +1,6 @@
-FROM prairielearn/workspace-jupyterlab-r:523b1a9d375f8c8e14b917eaa7195921e5ae388a
+FROM prairielearn/workspace-jupyterlab-r:2ba3e7fcb3b38e102f1706ad61fb8f0e7fc15950
+
+
 
 USER root
 

@@ -1,4 +1,4 @@
-FROM prairielearn/grader-r:17dae10c6ffd1e8bce5ef7fe24b43228a4fee6b6
+FROM prairielearn/grader-r:2ba3e7fcb3b38e102f1706ad61fb8f0e7fc15950
 
 ADD install.R /
 
