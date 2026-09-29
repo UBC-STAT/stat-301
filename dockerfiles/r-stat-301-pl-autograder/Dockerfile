@@ -1,9 +1,9 @@
-FROM prairielearn/grader-r:17dae10c6ffd1e8bce5ef7fe24b43228a4fee6b6
+FROM prairielearn/grader-r:2ba3e7fcb3b38e102f1706ad61fb8f0e7fc15950
 
 ADD install.R /
 
 RUN Rscript --no-save install.R aer   binom   boot   car   cardata   caret   caret   cowplot \
-   crayon   devtools   e1071   faraway   forecast   ggally   ggpubr  glmbb  glmnet   gridextra   \
+   crayon   devtools   e1071   faraway   forecast  ggplot2 ggally   ggpubr  glmbb  glmnet   gridextra   \
    gridgraphics   gsdesign   hexbin   htmltools   htmlwidgets   infer   irkernel   islr  islr2  janitor   \
    kknn   latex2exp   leaps   mlbench   mltools   nycflights13   palmerpenguins  performance   plotly  qqplotr   \
    randomforest   rcurl   rmarkdown   rodbc   rpostgres   rsqlite   see   shiny  stringi  \
