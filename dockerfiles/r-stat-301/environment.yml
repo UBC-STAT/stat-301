@@ -12,6 +12,7 @@ dependencies:
   - nbgitpuller
   - python=3.11
   - r-aer 
+  - r-arm
   - r-base 
   - r-binom 
   - r-boot 

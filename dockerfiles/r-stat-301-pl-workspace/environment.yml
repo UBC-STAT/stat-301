@@ -5,6 +5,7 @@ channels:
   - nodefaults
 dependencies:
   - r-aer 
+  - r-arm
   - r-base 
   - r-binom 
   - r-boot 
