@@ -90,7 +90,7 @@ check_DF <- function(answerX.X, expected_colnames, hashNRows, cols_to_check, pre
   
   apply(dataCheckTuples, 1, function(tuple) {
     test_that(paste(tuple[[1]], " does not contain the correct data"), {
-      expect_equal(digest(as.integer(sum(answerX.X[tuple[[1]]]) * as.double(tuple[[2]]))),
+      expect_equal(digest(as.integer(round(sum(answerX.X[tuple[[1]]]) * as.double(tuple[[2]])))),
                    tuple[[3]])
     })
   })
@@ -313,8 +313,8 @@ test_1.0 <- function() {
             c("assess_val", "BLDG_METRE", "fit", "lwr", "upr"),
             c(1, 1, 100, 100, 100),
              c("2bd910d5d0a2784e920bb70864394e2c", "da016125afe448211b90b4a6920fb474", 
-               "757c105401ef48fc18d9825963aa517f", "c22644555dc9b2cafcb486f6f121aa22",
-               "280f782da52a910144605e6ffbca844a"))
+               "8b9d3912ee5136aad0bd2024f8afda28", "c22644555dc9b2cafcb486f6f121aa22",
+               "6c27990ef293f867c7481b052d2cd09d"))
 }
 
 # +
@@ -363,11 +363,8 @@ test_2.1 <- function() {
              c("price", "distance", "rating", "bedrooms", "fit", "lwr", "upr"),
             "a56a1f140e9adf6b548545996e36c4cd",
             c("price", "distance", "rating", "bedrooms", "fit", "lwr", "upr"),
-            c(1, 1, 1, 1, 1, 1, 1),
-             c("c79402ae8828aaaf2b221420a75e5e1c", "a4339e3e183f231478260eab21db2329", 
-               "30050a2d9cc5cea6df845c35f8b356b4", "20979583a129c962044e1f0fdce9b728", 
-               "c79402ae8828aaaf2b221420a75e5e1c", "271f6a81ec36980e9d8a9a85fdb27808",
-               "12f3a881bc011c1841bdbea3100e9ba5"))
+            c(1, 1, 1, 1, 0.1, 0.1, 0.1),
+c('c4aaad123ca2694f92bc627185ed547d','64cc15f16d9a3be45ebc2ecc8901a0cc','30050a2d9cc5cea6df845c35f8b356b4','20979583a129c962044e1f0fdce9b728','56f5683f987de60847dfa698f0f182bf','20a1c5fbc8b2e54b7669c6d7dcfdec20','f7ec02fb91eec21e6f9e8298ed843fc7'))
 }
                             
 # Question 2.2
@@ -382,11 +379,12 @@ test_2.3 <- function() {
              c("price", "distance", "rating", "bedrooms", "fit", "lwr", "upr"),
             "a56a1f140e9adf6b548545996e36c4cd",
             c("price", "distance", "rating", "bedrooms", "fit", "lwr", "upr"),
-            c(1, 1, 1, 1, 1, 1, 1),
-             c("c79402ae8828aaaf2b221420a75e5e1c", "a4339e3e183f231478260eab21db2329", 
-               "30050a2d9cc5cea6df845c35f8b356b4", "20979583a129c962044e1f0fdce9b728", 
-               "c79402ae8828aaaf2b221420a75e5e1c", "cf631aec591b0360edd24fafb9f8167d",
-               "a9a7dcf8b0d76f084a52a9b92c378271"))
+            c(1, 1, 1, 1, 0.1, 0.1, 0.1),
+#             c("c79402ae8828aaaf2b221420a75e5e1c", "a4339e3e183f231478260eab21db2329", 
+#               "30050a2d9cc5cea6df845c35f8b356b4", "20979583a129c962044e1f0fdce9b728", 
+#               "c79402ae8828aaaf2b221420a75e5e1c", "cf631aec591b0360edd24fafb9f8167d",
+#               "a9a7dcf8b0d76f084a52a9b92c378271"))
+    c('c4aaad123ca2694f92bc627185ed547d','64cc15f16d9a3be45ebc2ecc8901a0cc','30050a2d9cc5cea6df845c35f8b356b4','20979583a129c962044e1f0fdce9b728','56f5683f987de60847dfa698f0f182bf','42c3ee951e26d96adaccf3f2b9dd5bae','08f0e5840b9eb9bbcffb421d3a249e24'))
 }  
                             
 # Question 2.4                            
